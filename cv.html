@@ -266,28 +266,5 @@ body {
         </div>
     </div>
 
-    <script>
-        // Snowflake Generator
-// Snowflake Generator
-function createSnowflakes() {
-    const snowflakeCount = 100;  // Number of snowflakes
-    const snowflakeContainer = document.body;
-    const screenWidth = window.innerWidth; // Get the current screen width
-    const screenHeight = window.innerHeight; // Get the current screen height
-
-    for (let i = 0; i < snowflakeCount; i++) {
-        let snowflake = document.createElement('div');
-        snowflake.classList.add('snowflake');
-        snowflake.style.left = `${Math.random() * screenWidth}px`;  // Random position within screen width
-        snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;  // Random fall duration
-        snowflake.style.animationDelay = `${Math.random() * 5}s`;  // Random delay before start
-        snowflake.style.top = `-${Math.random() * screenHeight}px`;  // Ensure snowflakes start from above the viewport
-        snowflakeContainer.appendChild(snowflake);
-    }
-}
-
-createSnowflakes();  // Initialize the snowfall effect
-
-    </script>
 </body>
 </html>
