@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
     <style>
 body {
-  margin: 0;
+    margin: 0;
     overflow-x: hidden;  /* Prevent horizontal scrolling */
     overflow-y: auto;    /* Allow vertical scrolling */
     background: rgb(209,226,244);
@@ -17,11 +17,49 @@ body {
     display: flex;
     justify-content: left;
     align-items: flex-start;
-    height: auto; /* Allow height to expand based on content */
-    min-height: 100vh; /* Ensure at least the full viewport height */
-    max-width: 100%; /* Ensure width is limited to screen width */
+    height: 100vh;  /* Set the height to the full viewport */
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
     font-weight: normal;
 }
+
+/* Media query for devices with width less than 768px (smartphones and small tablets) */
+@media (max-width: 768px) {
+    .content-container {
+        width: 90%;   /* Increase the width of the content container */
+        margin-left: 10px;  /* Adjust margin for better alignment */
+    }
+
+    .content-block {
+        padding: 10px;  /* Reduce padding for smaller screens */
+    }
+
+    .content-image {
+        width: 100%;  /* Make the image responsive */
+        height: auto;  /* Maintain aspect ratio */
+    }
+
+    .sidebar {
+        width: 80px;  /* Reduce the width of the sidebar on mobile */
+        padding-top: 10px;  /* Adjust padding */
+    }
+
+    .sidebar a {
+        padding: 10px;  /* Reduce padding for sidebar links */
+        font-size: 16px;  /* Reduce font size in the sidebar */
+    }
+
+    /* Adjust the text size for small screens */
+    .content-block h2 {
+        font-size: 20px;
+    }
+
+    .content-block p {
+        font-size: 14px;
+    }
+}
+
 
 
         /* Sidebar Styles */
