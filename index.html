@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snowfall Effect with Colored Text</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+body {
+  margin: 0;
+    overflow-x: hidden;  /* Prevent horizontal scrolling */
+    overflow-y: auto;    /* Allow vertical scrolling */
+    background: rgb(209,226,244);
+    position: relative;
+    font-family: 'Noto Sans', sans-serif;
+    color: #695d5e;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    height: auto; /* Allow height to expand based on content */
+    min-height: 100vh; /* Ensure at least the full viewport height */
+    max-width: 100%; /* Ensure width is limited to screen width */
+    font-weight: normal;
+}
+
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100%;
+            background-color: rgb(209,226,244);
+            color: rgb(209,226,244);
+            padding-top: 20px;
+            z-index: 20;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #695d5e;
+            text-align: left;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            border-bottom: 1px solid rgb(209,226,244);
+        }
+
+        .sidebar a:hover {
+            background-color: rgb(200, 218, 236);
+        }
+
+        /* Main content container */
+        .content-container {
+            width: 80%;
+            max-width: 1000px;
+            text-align: left;
+            padding-top: 20px;
+            position: relative;
+            z-index: 10;
+            margin-left: 220px; /* Adjusted to leave space for sidebar */
+        }
+
+        .content-block {
+            background-color: rgba(255, 255, 255, 0);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
+        }
+
+        .content-block h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #695d5e; /* Custom text color */
+        }
+
+        .content-block p {
+            font-size: 16px;
+            line-height: 1.6;
+            font-weight: normal;
+            color: #695d5e; /* Custom text color */
+        }
+
+        /* Custom Divider */
+        hr.divider {
+            width: 80%;
+            height: 2px;
+            background-color: #ffffff;
+            border: none;
+            margin: 20px auto;
+        }
+
+        .snowflake {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            background-color: white;
+            opacity: 0.8;
+            border-radius: 30%;
+            animation: fall 5s linear infinite, smallZigzag 5s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        /* New container for text and image */
+.text-with-image {
+    display: flex;
+    align-items: top;
+    gap: 20px; /* Space between image and text */
+}
+
+.content-image {
+    width: 400px;  /* Adjust the size of the image */
+    height: 500px;
+ /* Optional: rounds the corners of the image */
+}
+
+
+        @keyframes fall {
+            0% { top: -200px; }  /* Start snowflakes from even higher offscreen */
+            100% { top: 100vh; } /* Fall to the bottom of the viewport */
+        }
+
+        @keyframes smallZigzag {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(20px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="cv.html" >CV</a>
+        <a href="Contact.html">Contact</a>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-container">
+        <div class="content-block">
+          <div class="text-with-image">
+            <img src="static/img/imgfile.jpg" alt="Image Description" class="content-image">
+            <p>Hojeong Lee graduated from Seoul National University with a Bachelor of Fine Arts in Industrial Design,
+                and currently is a researcher at the Korea Advanced Institute of Science and Technology.<br>
+                She is interested in artificially animated machines, environments, and computers as continuum of lives. She seeks emotional bonds between them and humans. <br>
+                Her research interest lies in HCI and HRI. She is currently conducting research in the fields of wearable haptic device, soft actuators, and ergonomics for XR.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Latest News</h2>
+            <h3>2024 </h3>
+            <p>            
+                <strong>Dec</strong>   Won the Dean's Award : Research Award from LACS, KAIST<br>
+                
+                <strong>Dec</strong>   The paper that I participated in, ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction by Hyungil Yi, is published in IEEE ISMAR<br><hr>
+                
+                <strong>Oct</strong>  Presented a paper at UbiComp 2024 in Melbourne, Austrailia<br><hr>
+                
+                <strong>Sep</strong>   My paper, EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR, is published in IMWUT Vol.8<br><hr>
+                
+                <strong> Aug</strong>   Presented the invited paper at Korea Haptics Conference 2024 in Kyeongju, South Korea<br>
+                
+                <strong>Aug</strong>   Presented a paper at IEA 2024 in jeju, South Korea<br><hr>
+                
+                <strong>May</strong>   Presented a demo at CHI 2024 in Hawaii, USA<br><hr>
+                
+                <strong>Feb</strong>   Presented the research at HCI Korea 2024 in Hongcheon, South Korea</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Publications</h2>
+            <h3>2024</h3>
+            <p>
+                <strong>EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR</strong> <br>
+                <strong>Proc. ACM Interact. Mob. Wearable Ubiquitous Technol., Vol. 8, No. 3, Article 131. (IMWUT, 2024.9)</strong><br>
+                (Nicha Vanichvoranun*, <strong>Hojeong Lee*</strong>, Seoyeon Kim, Sang Ho Yoon) <strong>(First Co-author)</strong><br>
+                <a href="https://dl.acm.org/doi/10.1145/3678567" target="_blank" class="contact-icon">
+                    <i class="fab fa-DOI"></i> DOI</a><br><hr>
+                <strong>Optimizing Button Size to Enhance User Experience for Augmented Reality Interactions in Mobile Scenarios</strong> <br>
+                <strong> Triennial Congress of International Ergonomics Association (IEA) 2024 </strong><br>
+                in proceedings of Springer Series in Design and Innovation (2024.12)<br>
+                (<strong>Hojeong Lee</strong>, Yeahyoung Jeon, Keisuke Kudo, Paul Ssemakula, Seonghyeok Park and Shuping Xiong)<br><hr>
+                <strong>ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction</strong> <br>
+                <strong> IEEE International Symposium on Mixed and Augmented Reality (ISMAR, 2024.10)</strong><br>
+                (Hyungil Yi, <strong>Hojeong Lee</strong>, Sang Ho Yoon)<br>
+                <a href=" https://www.computer.org/csdl/proceedings-article/ismar/2024/164700a614/22f0j2Rv98k" target="_blank" class="contact-icon">
+                    <i class="fab fa-DOI"></i> DOI</a><br>
+        </div>
+    </div>
+
+    <script>
+// Snowflake Generator
+function createSnowflakes() {
+    const snowflakeCount = 300;  // Number of snowflakes
+    const snowflakeContainer = document.body;
+    const screenWidth = window.innerWidth; // Get the current screen width
+    const screenHeight = window.innerHeight; // Get the current screen height
+
+    for (let i = 0; i < snowflakeCount; i++) {
+        let snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.style.left = `${Math.random() * screenWidth}px`;  // Random position within screen width
+        snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;  // Random fall duration
+        snowflake.style.animationDelay = `${Math.random() * 5}s`;  // Random delay before start
+        snowflake.style.top = `-${Math.random() * screenHeight}px`;  // Ensure snowflakes start from above the viewport
+        snowflakeContainer.appendChild(snowflake);
+    }
+}
+
+createSnowflakes();  // Initialize the snowfall effect
+
+    </script>
+</body>
+</html>

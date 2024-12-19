@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snowfall Effect with Colored Text</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+body {
+    margin: 0;
+    overflow-x: hidden;  /* Prevent horizontal scrolling */
+    overflow-y: auto;    /* Allow vertical scrolling */
+    background: rgb(255,255,255);
+    position: relative;
+    font-family: 'Noto Sans', sans-serif;
+    color: #695d5e;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    height: auto; /* Allow height to expand based on content */
+    min-height: 100vh; /* Ensure at least the full viewport height */
+    max-width: 100%; /* Ensure width is limited to screen width */
+    font-weight: normal;
+}
+
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100%;
+            background-color: rgb(255,255,255);
+            color: rgb(209,226,244);
+            padding-top: 20px;
+            z-index: 20;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #695d5e;
+            text-align: left;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            border-bottom: 1px solid rgb(209,226,244);
+        }
+
+        .sidebar a:hover {
+            background-color: rgb(200, 218, 236);
+        }
+
+        /* Main content container */
+        .content-container {
+            width: 80%;
+            max-width: 1000px;
+            text-align: left;
+            padding-top: 20px;
+            position: relative;
+            z-index: 10;
+            margin-left: 220px; /* Adjusted to leave space for sidebar */
+        }
+
+        .content-block {
+            background-color: rgba(255, 255, 255, 0);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
+        }
+
+        .content-block h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #695d5e; /* Custom text color */
+        }
+
+        .content-block p {
+            font-size: 16px;
+            line-height: 1.6;
+            font-weight: normal;
+            color: #695d5e; /* Custom text color */
+        }
+
+        /* Custom Divider */
+        hr.divider {
+            width: 80%;
+            height: 2px;
+            background-color: #695d5e;
+            border: none;
+            margin: 20px auto;
+        }
+
+        .snowflake {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            background-color: white;
+            opacity: 0.8;
+            border-radius: 30%;
+            animation: fall 5s linear infinite, smallZigzag 5s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% { top: -50px; }  /* Start snowflakes from even higher offscreen */
+            100% { top: 100vh; } /* Fall to the bottom of the viewport */
+        }
+
+        @keyframes smallZigzag {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(20px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="index.html">Home</a>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-container">
+        <div class="content-block">
+            <h1>Hojeong Lee</h1>
+            <h3>leeho@kaist.ac.kr </h3><br>
+            <h1>CV</h1>
+            <h2>Education</h2><br>
+                <Strong>Graduate School of Culture Technology, KAIST </Strong> (Master's Student in Human-Centered Interactive Technologies Laboratory)   (2023.8 ~ 2025.8)<br>
+                
+                Advisor : Professor Sang Ho Yoon<br>
+                
+                Wearable Haptic Technology, Soft Actuator, Ergonomics in XR<br><hr>
+                
+                <Strong>College of Fine Arts, Seoul National University  (B.S. in Fine Art, Department of Design) </Strong>  (2018.3 ~ 2023.8)<br>
+                
+                Industrial Design<br>
+                
+                Media Art<br><hr>
+                
+                <Strong>Frankfurt University of Applied Science (Summer Exchange Student Program)</Strong>   (2019.7 ~ 2019.8)<br>
+                
+                Urban Design and Architecture<br><br><br>
+                
+                
+                <h2>Publications </h2><br>
+                
+                <Strong>EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR</Strong> <br>
+                
+                Proc. ACM Interact. Mob. Wearable Ubiquitous Technol., Vol. 8, No. 3, Article 131. (2024.9)<br>
+                
+                (Nicha Vanichvoranun*, <Strong>Hojeong Lee*</Strong>, Seoyeon Kim, Sang Ho Yoon) <Strong>(First Co-author)</Strong><br>
+                <a href="https://dl.acm.org/doi/10.1145/3678567" target="_blank" class="contact-icon">
+                    <i class="fab fa-DOI"></i> DOI</a><br><hr>
+                
+                <Strong>Optimizing Button Size to Enhance User Experience for Augmented Reality Interactions in Mobile Scenarios</Strong> <br>
+                
+                22nd Triennial Congress of International Ergonomics Association (IEA) 2024<br>
+                
+                in proceedings of Springer Series in Design and Innovation (2024.12)<br>
+                
+                (<Strong>Hojeong Lee</Strong>, Yeahyoung Jeon, Keisuke Kudo, Paul Ssemakula, Seonghyeok Park and Shuping Xiong)<br><hr>
+                
+                <Strong>ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction</Strong> <br>
+                
+                Proc. IEEE International Symposium on Mixed and Augmented Reality (ISMAR, 2024.10)<br>
+                
+                (Hyungil Yi, <Strong>Hojeong Lee</Strong>, Sang Ho Yoon)<br>
+                
+                <a href=" https://www.computer.org/csdl/proceedings-article/ismar/2024/164700a614/22f0j2Rv98k" target="_blank" class="contact-icon">
+                    <i class="fab fa-DOI"></i> DOI</a><br><br><br>
+                
+                
+                <h2> Research Projects </h2><br>
+                <Strong>Development of a multimodal haptic rendering technology based on atypical objects (ETRI)</Strong><br>
+                Human-Centered Interactive Technologies Laboratory (Professor Sang Ho Yoon, KAIST)  <br>
+                Full-time Researcher (2023.7 ~ 2025.8) <br><hr>
+                <Strong>Development of a generalized research framework and advanced modeling techniques for safety and comfort assessment of industrial exoskeletons (NRF)</Strong><br>
+                    Human Factors and Ergonomics Lab (Professor Shuping Xiong, KAIST) <br>
+                Research project participation (2024.06.01 ~ 2024.08.31) <br><hr>
+                
+                <Strong> Developing the model and criteria of evaluating motion sickness in automobile driving scenarios (Hyundai NGV)</Strong><br>
+
+                Human Interface System Lab (Professor Myung Hwan Yun, Seoul National University)  <br>
+                
+                Research Assistant (2023.1 ~ 2023.6) <br><br><br>
+
+                
+                 <h2>Activities</h2><br>
+                
+                 <Strong>CHI'24 Demo of 'Adaptive and Immersive XR Interactions with Wearable Interfaces (Demo of KAIST HCI Tech Lab)' (2024.5)</Strong><br>
+                 <a href="https://dl.acm.org/doi/10.1145/3613905.3648652" target="_blank" class="contact-icon">
+                    <i class="fab fa-DOI"></i> DOI</a><br>
+                
+                    Demo on the wearable haptic and sensing devices including  EStatiG<br><hr>
+                
+                    <Strong>Student President of the Department of Design (Seoul National University, 2019.12 - 2020.12)</Strong><br>
+                
+                    Directed several projects and workshops, including the crowds-funding project for selling artworks of student artists (Goods)<br><hr>
+                
+                    <Strong>Urban redesign project for Frankfurt Neue Strasse and Offenbach station (Frankfurt University of Applied Science, 2019.7)</Strong><br>
+                
+                    Suggested the Design for the public space in Frankfurt Neue Strasse and Offenbach station, UX scenario<br><br><br>
+                
+                
+                
+                <h2>Exhibitions</h2><br>
+                
+                <Strong>Seoul Design 2022 (2022, Granted by Seoul Design Foundation)</Strong> <br>
+                
+                매몽매몽 Dream Trade (Haeun Ki, Yuri Kim, Heejung Yu, Hojeong Lee, Seyun Jun, Sungyun Jang)<br>
+                
+                Designer (Directing, 3D design, Mock-up, Web Design)<br><hr>
+                
+                <Strong>SNU DESIGN WEEK (2022, College of Fine Arts, Seoul National University) </Strong><br>
+                
+                HETERHOM  (Hojeong Lee)<br>
+                
+                Designer (3D design, Mock-up)<br><hr>
+                
+                <Strong>ZER01NE DAY 2021 (2021, Hyundai Motors Group)</Strong> <br>
+                
+                headspace (Keunwook Kim)
+                <a href="https://kimkeunwook.com/headspace" target="_blank" class="contact-icon">
+                    <i class="fab fa-DOI"></i> LINK</a><br>
+                
+                Design Assistant ( 3D design, Exhibition Design, Prototyping)<br><hr>
+                
+                <Strong>Artspace@snu (2021, Seoul National University)</Strong> <br>
+                
+                원 Wishes   (Hojeong Lee, Tekmin Kim, Minki Cho) (Link)<br>
+                
+                Designer (Directing, Interaction Design, Visual Design)<br><br><br>
+                
+                
+               
+             <h2>Honors and Awards </h2><br>
+             <Strong>Deans Award : Research Award 2024 LACS KAIST</Strong><br><hr>
+                
+                <Strong> CHI 2024:  Popular Choice Winner (HCI Tech Lab)</Strong>
+                <a href="https://chi2024.acm.org/" target="_blank" class="contact-icon">
+                    <i class="fab fa-DOI"></i> LINK</a><br><br><br>
+                
+                
+                <h2> Academic Services</h2> <br>
+                
+                <Strong>Review</Strong><br>
+                
+                CHI 24'<br><hr>
+                
+                <Strong>Student Volunteer</Strong><br>
+                
+                UbiComp/ ISWC 2024<br><br><br>
+                
+                
+                <h2>Work Experience</h2><br>
+                
+                <Strong>GLoim (2020.6 ~ 2022.8)</Strong><br>
+                
+                Virtual Exhibition Designer (3D design, Virtual Exhibition Design)<br>
+                
+                    Designed Korea Women Inventors Association Expo 2021 (Virtual Exhibition)<br>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Snowflake Generator
+// Snowflake Generator
+function createSnowflakes() {
+    const snowflakeCount = 100;  // Number of snowflakes
+    const snowflakeContainer = document.body;
+    const screenWidth = window.innerWidth; // Get the current screen width
+    const screenHeight = window.innerHeight; // Get the current screen height
+
+    for (let i = 0; i < snowflakeCount; i++) {
+        let snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.style.left = `${Math.random() * screenWidth}px`;  // Random position within screen width
+        snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;  // Random fall duration
+        snowflake.style.animationDelay = `${Math.random() * 5}s`;  // Random delay before start
+        snowflake.style.top = `-${Math.random() * screenHeight}px`;  // Ensure snowflakes start from above the viewport
+        snowflakeContainer.appendChild(snowflake);
+    }
+}
+
+createSnowflakes();  // Initialize the snowfall effect
+
+    </script>
+</body>
+</html>
