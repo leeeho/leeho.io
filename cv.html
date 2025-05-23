@@ -111,7 +111,12 @@ body {
     .content-block p,
     .content-block h3,
     .content-block strong { font-size: 1em; }
-}
+}        .highlight2 {
+            background: rgb(255, 255, 255);
+            padding: 0.08em 0.22em;
+            border-radius: 0em;
+            box-decoration-break: clone;
+        }
 
 @media (max-width: 600px) {
     body {
@@ -145,12 +150,11 @@ body {
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <a href="index.html" >Home</a>
-        <a href="cv.html" >CV</a>
-        <a href="contact.html" >Contact</a>
-    </div>
+<div class="sidebar">
+    <a href="index.html"><span class="highlight2">Home</span></a>
+    <a href="cv.html"><span class="highlight2">CV</span></a>
+    <a href="contact.html"><span class="highlight2">Contact</span></a>
+</div>
 
     <!-- Content Area -->
     <div class="content-container">
