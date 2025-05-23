@@ -12,7 +12,7 @@
             color: #695d5e;
             min-height: 100vh;
             max-width: 100vw;
-            background: url('static/img/bg_pc.jpg') no-repeat center center fixed;
+            background: url('static/img/bg_pc2.jpg') no-repeat center center fixed;
             background-size: cover;
             background-attachment: fixed;
         }
@@ -67,18 +67,13 @@
             border-radius: 8px;
             object-fit: cover;
         }
-        /* --- Highlighted text style --- */
-        .highlight-text, 
-        .content-block h2, 
-        .content-block h3, 
-        .content-block p, 
-        .content-block strong {
-            background: rgba(255,255,255,0);
-            padding: 0.08em 0.2em;
+        /* --- Highlighter effect for inline text --- */
+        .highlight {
+            background: rgba(255,255,255,0.75);
+            padding: 0.08em 0.22em;
             border-radius: 0.32em;
             box-decoration-break: clone;
         }
-
         @media (max-width: 800px) {
             body {
                 background: url('static/img/bg_mobile.jpg') no-repeat center center fixed;
@@ -154,58 +149,71 @@
         <a href="contact.html">Contact</a>
     </div>
     <!-- Content Area -->
-    <div class="content-container highlight-text">
+    <div class="content-container">
         <div class="content-block">
-            <h2>Hojeong Lee </h2><br>
+            <h2><span class="highlight">Hojeong Lee</span></h2><br>
             <div class="text-with-image">
-                <img src="static/img/imgfile.jpg" alt="Image Description" class="content-image">
-                <p> I am a researcher, designer, and an engineer.<br><br>
-                    My research focuses on wearable haptic glove and soft actuators for enhancing the use of human hand. <br>
-                    As an artist and designer, I seek emotional bonds between artificially animated machines, environments, computers as continuum of lives and humans.<br><br>
-                    I graduated from Seoul National University with a Bachelor of Fine Arts in Industrial Design, and currently am a researcher at Korea Advanced Institute of Science and Technology.<br>
-                    My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.<br>
+                <p>
+                    I am a <span class="highlight">researcher, designer, and an engineer.</span><br><br>
+                    My research focuses on <span class="highlight">wearable haptic glove and soft actuators for enhancing the use of human hand.</span> <br>
+                    As an artist and designer, I seek emotional bonds between <span class="highlight">artificially animated machines, environments, computers as continuum of lives and humans.</span><br><br>
+                    I graduated from <span class="highlight">Seoul National University</span> with a Bachelor of Fine Arts in Industrial Design, and currently am a researcher at <span class="highlight">Korea Advanced Institute of Science and Technology</span>.<br>
+                    My works have been published in <span class="highlight">IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI</span>, and exhibited at <span class="highlight">DDP Seoul</span>.<br>
                 </p>
             </div>
         </div>
         <div class="content-block">
-            <h2>Latest News</h2>
-            <h3>2025 </h3>
+            <h2><span class="highlight">Latest News</span></h2>
+            <h3><span class="highlight">2025</span></h3>
             <p>
-                <strong>Apr</strong> My paper, 3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback, is accepted for IEEE World Haptics Conference 2025 <br><hr>
-            <h3>2024 </h3>
+                <strong>Apr</strong>
+                <span class="highlight">My paper, 3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback, is accepted for IEEE World Haptics Conference 2025</span> <br><hr>
+            </p>
+            <h3><span class="highlight">2024</span></h3>
             <p>
-                <strong>Dec</strong> Won the Dean's Award : Research Award from LACS, KAIST<br>
-                <strong>Dec</strong> The paper that I participated in, ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction by Hyungil Yi, is published in IEEE ISMAR<br><hr>
-                <strong>Oct</strong> Presented a paper at UbiComp 2024 in Melbourne, Austrailia<br><hr>
-                <strong>Sep</strong> My paper, EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR, is published in IMWUT Vol.8<br><hr>
-                <strong> Aug</strong> Presented the invited paper at Korea Haptics Conference 2024 in Kyeongju, South Korea<br>
-                <strong>Aug</strong> Presented a paper at IEA 2024 in jeju, South Korea<br><hr>
-                <strong>May</strong> Presented a demo at CHI 2024 in Hawaii, USA<br><hr>
-                <strong>Feb</strong> Presented the research at HCI Korea 2024 in Hongcheon, South Korea</p>
+                <strong>Dec</strong>
+                <span class="highlight">Won the Dean's Award : Research Award from LACS, KAIST</span><br>
+                <strong>Dec</strong>
+                <span class="highlight">The paper that I participated in, ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction by Hyungil Yi, is published in IEEE ISMAR</span><br><hr>
+                <strong>Oct</strong>
+                <span class="highlight">Presented a paper at UbiComp 2024 in Melbourne, Austrailia</span><br><hr>
+                <strong>Sep</strong>
+                <span class="highlight">My paper, EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR, is published in IMWUT Vol.8</span><br><hr>
+                <strong>Aug</strong>
+                <span class="highlight">Presented the invited paper at Korea Haptics Conference 2024 in Kyeongju, South Korea</span><br>
+                <strong>Aug</strong>
+                <span class="highlight">Presented a paper at IEA 2024 in jeju, South Korea</span><br><hr>
+                <strong>May</strong>
+                <span class="highlight">Presented a demo at CHI 2024 in Hawaii, USA</span><br><hr>
+                <strong>Feb</strong>
+                <span class="highlight">Presented the research at HCI Korea 2024 in Hongcheon, South Korea</span>
+            </p>
         </div>
         <div class="content-block">
-            <h2>Publications</h2>
-            <h3>2025</h3>
+            <h2><span class="highlight">Publications</span></h2>
+            <h3><span class="highlight">2025</span></h3>
             <p>
                 <strong>3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback</strong> <br>
-                <strong>IEEE World Haptics Conference (WHC, 2025) </strong><br>
-                (<strong>Hojeong Lee</strong>, Eunho Kim, Sang Ho Yoon) <br><hr>
-            <h3>2024</h3>
+                <span class="highlight"><strong>IEEE World Haptics Conference (WHC, 2025) </strong></span><br>
+                (<span class="highlight"><strong>Hojeong Lee</strong>, Eunho Kim, Sang Ho Yoon</span>) <br><hr>
+            </p>
+            <h3><span class="highlight">2024</span></h3>
             <p>
                 <strong>EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR</strong> <br>
-                <strong>Proc. ACM Interact. Mob. Wearable Ubiquitous Technol., Vol. 8, No. 3, Article 131. (IMWUT, 2024.9)</strong><br>
-                (Nicha Vanichvoranun*, <strong>Hojeong Lee*</strong>, Seoyeon Kim, Sang Ho Yoon) <strong>(First Co-author)</strong><br>
+                <span class="highlight"><strong>Proc. ACM Interact. Mob. Wearable Ubiquitous Technol., Vol. 8, No. 3, Article 131. (IMWUT, 2024.9)</strong></span><br>
+                (<span class="highlight">Nicha Vanichvoranun*, <strong>Hojeong Lee*</strong>, Seoyeon Kim, Sang Ho Yoon</span>) <strong>(First Co-author)</strong><br>
                 <a href="https://dl.acm.org/doi/10.1145/3678567" target="_blank" class="contact-icon">
-                    <i class="fab fa-DOI"></i> DOI</a><br><hr>
+                    <span class="highlight"><i class="fab fa-DOI"></i> DOI</span></a><br><hr>
                 <strong>Optimizing Button Size to Enhance User Experience for Augmented Reality Interactions in Mobile Scenarios</strong> <br>
-                <strong> Triennial Congress of International Ergonomics Association (IEA) 2024 </strong><br>
+                <span class="highlight"><strong>Triennial Congress of International Ergonomics Association (IEA) 2024</strong></span><br>
                 in proceedings of Springer Series in Design and Innovation (2024.12)<br>
-                (<strong>Hojeong Lee</strong>, Yeahyoung Jeon, Keisuke Kudo, Paul Ssemakula, Seonghyeok Park and Shuping Xiong)<br><hr>
+                (<span class="highlight"><strong>Hojeong Lee</strong>, Yeahyoung Jeon, Keisuke Kudo, Paul Ssemakula, Seonghyeok Park and Shuping Xiong</span>)<br><hr>
                 <strong>ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction</strong> <br>
-                <strong> IEEE International Symposium on Mixed and Augmented Reality (ISMAR, 2024.10)</strong><br>
-                (Hyungil Yi, <strong>Hojeong Lee</strong>, Sang Ho Yoon)<br>
-                <a href=" https://www.computer.org/csdl/proceedings-article/ismar/2024/164700a614/22f0j2Rv98k" target="_blank" class="contact-icon">
-                    <i class="fab fa-DOI"></i> DOI</a><br>
+                <span class="highlight"><strong>IEEE International Symposium on Mixed and Augmented Reality (ISMAR, 2024.10)</strong></span><br>
+                (<span class="highlight">Hyungil Yi, <strong>Hojeong Lee</strong>, Sang Ho Yoon</span>)<br>
+                <a href="https://www.computer.org/csdl/proceedings-article/ismar/2024/164700a614/22f0j2Rv98k" target="_blank" class="contact-icon">
+                    <span class="highlight"><i class="fab fa-DOI"></i> DOI</span></a><br>
+            </p>
         </div>
     </div>
 </body>
