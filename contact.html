@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snowfall Effect with Colored Text</title>
+    <title>Hojeong Lee</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
     <style>
 body {
     margin: 0;
     overflow-x: hidden;  /* Prevent horizontal scrolling */
     overflow-y: auto;    /* Allow vertical scrolling */
-    background: rgb(209,226,244);
+    background: rgb(255,255,255);
     position: relative;
     font-family: 'Noto Sans', sans-serif;
     color: #695d5e;
@@ -31,7 +31,7 @@ body {
             left: 0;
             width: 100px;
             height: 100%;
-            background-color: rgb(209,226,244);
+            background-color: rgb(255,255,255);
             color: rgb(209,226,244);
             padding-top: 20px;
             z-index: 20;
@@ -44,11 +44,11 @@ body {
             padding: 15px;
             text-decoration: none;
             font-size: 18px;
-            border-bottom: 1px solid rgb(209,226,244);
+            border-bottom: 1px solid rgb(225, 235, 252);
         }
 
         .sidebar a:hover {
-            background-color: rgb(200, 218, 236);
+            background-color: rgb(200, 200, 200);
         }
 
         /* Main content container */
@@ -137,7 +137,7 @@ body {
             position: absolute;
             width: 7px;
             height: 7px;
-            background-color: white;
+            background-color: rgba(255, 192, 203, 90);
             opacity: 0.8;
             border-radius: 30%;
             animation: fall 5s linear infinite, smallZigzag 5s ease-in-out infinite;
@@ -158,7 +158,9 @@ body {
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="index.html">Home</a>
+        <a href="index.html" >Home</a>
+        <a href="cv.html" >CV</a>
+        <a href="contact.html" >Contact</a>
     </div>
 
     <div class="content-container">
@@ -167,20 +169,20 @@ body {
         <div class="contact-section">
             <h3>Contact</h3>
             <p> <strong>leeho@kaist.ac.kr</strong> <br>
-            +82-010-8794-8425<br>
         N5, 291 Daehakro, Yuseong-gu, Daejeon, Republic of Korea <br></p>
             <div class="contact-icons">
-                <a href="https://www.instagram.com/leeho._" target="_blank" class="contact-icon">
-                    <i class="fab fa-instagram"></i> Instagram
+                <a href=" https://scholar.google.com/citations?hl=en&user=qp40iEEAAAAJ" class="contact-icon">
+                    <i class="fas fa-envelope"></i> Google Scholar
                 </a>
+                
                 <a href="https://www.linkedin.com/in/leeho99" target="_blank" class="contact-icon">
                     <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
                 <a href="https://www.hcitech.org" class="contact-icon">
                     <i class="fas fa-envelope"></i> Lab Link
                 </a>
-                <a href=" https://scholar.google.com/citations?hl=en&user=qp40iEEAAAAJ" class="contact-icon">
-                    <i class="fas fa-envelope"></i> Google Scholar
+                <a href="https://www.instagram.com/leeho._" target="_blank" class="contact-icon">
+                    <i class="fab fa-instagram"></i> Instagram
                 </a>
                
             </div>
@@ -191,7 +193,7 @@ body {
     <script>
 // Snowflake Generator
 function createSnowflakes() {
-    const snowflakeCount = 300;  // Number of snowflakes
+    const snowflakeCount = 100;  // Number of snowflakes
     const snowflakeContainer = document.body;
     const screenWidth = window.innerWidth; // Get the current screen width
     const screenHeight = window.innerHeight; // Get the current screen height

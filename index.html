@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snowfall Effect with Colored Text</title>
+    <title>Hojeong Lee</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
     <style>
 body {
@@ -69,12 +69,14 @@ body {
             left: 0;
             width: 100px;
             height: 100%;
-            background-color: rgb(209,226,244);
-            color: rgb(209,226,244);
+            background-color: #fff;
+            color: #695d5e;
             padding-top: 20px;
             z-index: 20;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
         }
-
         .sidebar a {
             display: block;
             color: #695d5e;
@@ -82,85 +84,124 @@ body {
             padding: 15px;
             text-decoration: none;
             font-size: 18px;
-            border-bottom: 1px solid rgb(209,226,244);
+            border-bottom: 1px solid #d1e2f4;
         }
-
         .sidebar a:hover {
-            background-color: rgb(200, 218, 236);
+            background-color: #e6e6e6;
         }
 
-        /* Main content container */
         .content-container {
             width: 80%;
             max-width: 1000px;
-            text-align: left;
             padding-top: 20px;
             position: relative;
-            z-index: 10;
-            margin-left: 220px; /* Adjusted to leave space for sidebar */
+            margin-left: 120px;
         }
-
         .content-block {
-            background-color: rgba(255, 255, 255, 0);
+            background: none;
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
         }
-
         .content-block h2 {
             font-size: 24px;
             margin-bottom: 10px;
             font-weight: bold;
-            color: #695d5e; /* Custom text color */
+            color: #695d5e;
         }
-
         .content-block p {
             font-size: 16px;
             line-height: 1.6;
             font-weight: normal;
-            color: #695d5e; /* Custom text color */
+            color: #695d5e;
+        }
+        .text-with-image {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .content-image {
+            width: 400px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        @media (max-width: 800px) {
+            .content-container {
+                width: 95%;
+                margin-left: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .sidebar {
+                position: static;
+                width: 100vw;
+                height: auto;
+                flex-direction: row;
+                justify-content: space-around;
+                border-bottom: 1px solid #d1e2f4;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            .sidebar a {
+                display: inline-block;
+                padding: 10px 18px;
+                font-size: 16px;
+                border: none;
+                border-right: 1px solid #d1e2f4;
+            }
+            .sidebar a:last-child {
+                border-right: none;
+            }
+            .text-with-image {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .content-image {
+                width: 100%;
+                max-width: 320px;
+                height: auto;
+                margin: 0 auto;
+                display: block;
+            }
+            .content-block {
+                padding: 12px;
+            }
+            .content-block h2 {
+                font-size: 20px;
+            }
+            .content-block p {
+                font-size: 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            .sidebar {
+                font-size: 15px;
+            }
+            .content-block h2 {
+                font-size: 18px;
+            }
+            .content-block p {
+                font-size: 14px;
+            }
         }
 
-        /* Custom Divider */
-        hr.divider {
-            width: 80%;
-            height: 2px;
-            background-color: #ffffff;
-            border: none;
-            margin: 20px auto;
-        }
-
+        /* Snowflake animation stays the same */
         .snowflake {
             position: absolute;
             width: 7px;
             height: 7px;
-            background-color: white;
+            background-color: rgba(255, 192, 203, 0.9);
             opacity: 0.8;
-            border-radius: 30%;
+            border-radius: 70%;
             animation: fall 5s linear infinite, smallZigzag 5s ease-in-out infinite;
             z-index: 1;
         }
-
-        /* New container for text and image */
-.text-with-image {
-    display: flex;
-    align-items: top;
-    gap: 20px; /* Space between image and text */
-}
-
-.content-image {
-    width: 400px;  /* Adjust the size of the image */
-    height: 500px;
- /* Optional: rounds the corners of the image */
-}
-
-
         @keyframes fall {
-            0% { top: -200px; }  /* Start snowflakes from even higher offscreen */
-            100% { top: 100vh; } /* Fall to the bottom of the viewport */
+            0% { top: -200px; }
+            100% { top: 100vh; }
         }
-
         @keyframes smallZigzag {
             0%, 100% { transform: translateX(0); }
             50% { transform: translateX(20px); }
@@ -170,45 +211,49 @@ body {
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="cv.html" >CV</a>
-        <a href="Contact.html">Contact</a>
+        <a href="index.html">Home</a>
+        <a href="cv.html">CV</a>
+        <a href="contact.html">Contact</a>
     </div>
-
     <!-- Content Area -->
     <div class="content-container">
         <div class="content-block">
+              <h2>Hojeong Lee </h2><br>
           <div class="text-with-image">
             <img src="static/img/imgfile.jpg" alt="Image Description" class="content-image">
-            <p>Hojeong Lee graduated from Seoul National University with a Bachelor of Fine Arts in Industrial Design,
-                and currently is a researcher at the Korea Advanced Institute of Science and Technology.<br>
-                She is interested in artificially animated machines, environments, and computers as continuum of lives. She seeks emotional bonds between them and humans. <br>
-                Her research interest lies in HCI and HRI. She is currently conducting research in the fields of wearable haptic device, soft actuators, and ergonomics for XR.</p>
+            <p> I am a researcher, designer, and an engineer.<br><br>
+                My research focuses on wearable haptic glove and soft actuators for enhancing the use of human hand. <br>
+                As an artist and designer, I seek emotional bonds between artificially animated machines, environments, computers as continuum of lives and humans.<br><br>
+                I graduated from Seoul National University with a Bachelor of Fine Arts in Industrial Design, and currently am a researcher at Korea Advanced Institute of Science and Technology.<br>
+                My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.<br>
+                </p>
         </div>
 
         <div class="content-block">
             <h2>Latest News</h2>
+             <h3>2025 </h3>
+            <p>            
+                <strong>Apr</strong>   My paper, 3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback, is accepted for IEEE World Haptics Conference 2025 <br><hr>
             <h3>2024 </h3>
             <p>            
                 <strong>Dec</strong>   Won the Dean's Award : Research Award from LACS, KAIST<br>
-                
                 <strong>Dec</strong>   The paper that I participated in, ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction by Hyungil Yi, is published in IEEE ISMAR<br><hr>
-                
                 <strong>Oct</strong>  Presented a paper at UbiComp 2024 in Melbourne, Austrailia<br><hr>
-                
                 <strong>Sep</strong>   My paper, EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR, is published in IMWUT Vol.8<br><hr>
-                
                 <strong> Aug</strong>   Presented the invited paper at Korea Haptics Conference 2024 in Kyeongju, South Korea<br>
-                
                 <strong>Aug</strong>   Presented a paper at IEA 2024 in jeju, South Korea<br><hr>
-                
                 <strong>May</strong>   Presented a demo at CHI 2024 in Hawaii, USA<br><hr>
-                
                 <strong>Feb</strong>   Presented the research at HCI Korea 2024 in Hongcheon, South Korea</p>
         </div>
 
         <div class="content-block">
             <h2>Publications</h2>
-            <h3>2024</h3>
+            <h3>2025</h3>
+            <p>
+                <strong>3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback</strong> <br>
+                <strong>IEEE World Haptics Conference (WHC, 2025) </strong><br>
+                (<strong>Hojeong Lee</strong>, Eunho Kim, Sang Ho Yoon) <br><hr>
+                <h3>2024</h3>
             <p>
                 <strong>EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR</strong> <br>
                 <strong>Proc. ACM Interact. Mob. Wearable Ubiquitous Technol., Vol. 8, No. 3, Article 131. (IMWUT, 2024.9)</strong><br>
@@ -225,29 +270,6 @@ body {
                 <a href=" https://www.computer.org/csdl/proceedings-article/ismar/2024/164700a614/22f0j2Rv98k" target="_blank" class="contact-icon">
                     <i class="fab fa-DOI"></i> DOI</a><br>
         </div>
-    </div>
-
-    <script>
-// Snowflake Generator
-function createSnowflakes() {
-    const snowflakeCount = 300;  // Number of snowflakes
-    const snowflakeContainer = document.body;
-    const screenWidth = window.innerWidth; // Get the current screen width
-    const screenHeight = window.innerHeight; // Get the current screen height
-
-    for (let i = 0; i < snowflakeCount; i++) {
-        let snowflake = document.createElement('div');
-        snowflake.classList.add('snowflake');
-        snowflake.style.left = `${Math.random() * screenWidth}px`;  // Random position within screen width
-        snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;  // Random fall duration
-        snowflake.style.animationDelay = `${Math.random() * 5}s`;  // Random delay before start
-        snowflake.style.top = `-${Math.random() * screenHeight}px`;  // Ensure snowflakes start from above the viewport
-        snowflakeContainer.appendChild(snowflake);
-    }
-}
-
-createSnowflakes();  // Initialize the snowfall effect
-
-    </script>
+        </div>
 </body>
 </html>

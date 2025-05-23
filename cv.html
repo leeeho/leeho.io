@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snowfall Effect with Colored Text</title>
+    <title>Hojeong Lee</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
     <style>
 body {
@@ -48,7 +48,7 @@ body {
         }
 
         .sidebar a:hover {
-            background-color: rgb(200, 218, 236);
+            background-color: rgb(200, 200, 200);
         }
 
         /* Main content container */
@@ -118,7 +118,9 @@ body {
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="index.html">Home</a>
+        <a href="index.html" >Home</a>
+        <a href="cv.html" >CV</a>
+        <a href="contact.html" >Contact</a>
     </div>
 
     <!-- Content Area -->
@@ -205,7 +207,16 @@ body {
                     Suggested the Design for the public space in Frankfurt Neue Strasse and Offenbach station, UX scenario<br><br><br>
                 
                 
+               
+             <h2>Honors and Awards </h2><br>
+             <Strong>Dean's Award : Research Award 2024, LACS KAIST</Strong><br><hr>
                 
+                <Strong> CHI 2024:  Popular Choice Winner (HCI Tech Lab)</Strong>
+                <a href="https://chi2024.acm.org/" target="_blank" class="contact-icon">
+                    <i class="fab fa-DOI"></i> LINK</a><br><br><br>
+                
+
+            
                 <h2>Exhibitions</h2><br>
                 
                 <Strong>Seoul Design 2022 (2022, Granted by Seoul Design Foundation)</Strong> <br>
@@ -233,22 +244,13 @@ body {
                 원 Wishes   (Hojeong Lee, Tekmin Kim, Minki Cho) (Link)<br>
                 
                 Designer (Directing, Interaction Design, Visual Design)<br><br><br>
-                
-                
-               
-             <h2>Honors and Awards </h2><br>
-             <Strong>Deans Award : Research Award 2024 LACS KAIST</Strong><br><hr>
-                
-                <Strong> CHI 2024:  Popular Choice Winner (HCI Tech Lab)</Strong>
-                <a href="https://chi2024.acm.org/" target="_blank" class="contact-icon">
-                    <i class="fab fa-DOI"></i> LINK</a><br><br><br>
-                
-                
+
+            
                 <h2> Academic Services</h2> <br>
                 
                 <Strong>Review</Strong><br>
                 
-                CHI 24'<br><hr>
+                CHI 24', Augmented Humans 25', WHC 25' <br><hr>
                 
                 <Strong>Student Volunteer</Strong><br>
                 
@@ -266,28 +268,5 @@ body {
         </div>
     </div>
 
-    <script>
-        // Snowflake Generator
-// Snowflake Generator
-function createSnowflakes() {
-    const snowflakeCount = 100;  // Number of snowflakes
-    const snowflakeContainer = document.body;
-    const screenWidth = window.innerWidth; // Get the current screen width
-    const screenHeight = window.innerHeight; // Get the current screen height
-
-    for (let i = 0; i < snowflakeCount; i++) {
-        let snowflake = document.createElement('div');
-        snowflake.classList.add('snowflake');
-        snowflake.style.left = `${Math.random() * screenWidth}px`;  // Random position within screen width
-        snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;  // Random fall duration
-        snowflake.style.animationDelay = `${Math.random() * 5}s`;  // Random delay before start
-        snowflake.style.top = `-${Math.random() * screenHeight}px`;  // Ensure snowflakes start from above the viewport
-        snowflakeContainer.appendChild(snowflake);
-    }
-}
-
-createSnowflakes();  // Initialize the snowfall effect
-
-    </script>
 </body>
 </html>
