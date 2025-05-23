@@ -17,33 +17,28 @@
             background-attachment: fixed;
         }
         .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100px;
-            height: 100%;
-            background: transparent;
-            color: #ffffff;
-            padding-top: 20px;
-            z-index: 20;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s;
-        }
-        .sidebar a {
-            display: block;
-            color:rgba(230,230,230,0);
-            text-align: left;
-            padding: 15px;
-            text-decoration: none;
-            font-size: 18px;
-            border-bottom: 1px solid #d1e2f4;
-            background: transparent;
-            transition: background 0.2s;
-        }
-        .sidebar a:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-        }
+    /* Existing sidebar styles */
+    color: #fff;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    /* keep the font-family as you wish (remove if you want default) */
+}
+.sidebar a {
+    color: #fff !important;
+    background: none !important;
+    border: none !important;
+    border-bottom: none !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    /* remove hover bg */
+    transition: color 0.2s;
+}
+.sidebar a:hover {
+    background: none !important;
+    color: #ffe680 !important; /* or pick any color for hover */
+}
+
         .content-container {
             width: 80%;
             max-width: 1000px;
