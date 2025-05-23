@@ -6,70 +6,24 @@
     <title>Hojeong Lee</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
     <style>
-body {
-    margin: 0;
-    overflow-x: hidden;  /* Prevent horizontal scrolling */
-    overflow-y: auto;    /* Allow vertical scrolling */
-    background: rgb(209,226,244);
-    position: relative;
-    font-family: 'Noto Sans', sans-serif;
-    color: #695d5e;
-    display: flex;
-    justify-content: left;
-    align-items: flex-start;
-    height: 100vh;  /* Set the height to the full viewport */
-    max-width: 1920px;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: normal;
-}
-
-/* Media query for devices with width less than 768px (smartphones and small tablets) */
-@media (max-width: 768px) {
-    .content-container {
-        width: 90%;   /* Increase the width of the content container */
-        margin-left: 10px;  /* Adjust margin for better alignment */
-    }
-
-    .content-block {
-        padding: 10px;  /* Reduce padding for smaller screens */
-    }
-
-    .content-image {
-        width: 100%;  /* Make the image responsive */
-        height: auto;  /* Maintain aspect ratio */
-    }
-
-    .sidebar {
-        width: 80px;  /* Reduce the width of the sidebar on mobile */
-        padding-top: 10px;  /* Adjust padding */
-    }
-
-    .sidebar a {
-        padding: 10px;  /* Reduce padding for sidebar links */
-        font-size: 16px;  /* Reduce font size in the sidebar */
-    }
-
-    /* Adjust the text size for small screens */
-    .content-block h2 {
-        font-size: 20px;
-    }
-
-    .content-block p {
-        font-size: 14px;
-    }
-}
-
-
-
-        /* Sidebar Styles */
+        body {
+            margin: 0;
+            font-family: 'Noto Sans', sans-serif;
+            color: #695d5e;
+            min-height: 100vh;
+            max-width: 100vw;
+            /* Background image for PC */
+            background: url('static/img/bg_pc.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-attachment: fixed;
+        }
         .sidebar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100px;
             height: 100%;
-            background-color: #fff;
+            background: rgba(255,255,255,0.97);
             color: #695d5e;
             padding-top: 20px;
             z-index: 20;
@@ -89,7 +43,6 @@ body {
         .sidebar a:hover {
             background-color: #e6e6e6;
         }
-
         .content-container {
             width: 80%;
             max-width: 1000px;
@@ -98,7 +51,7 @@ body {
             margin-left: 120px;
         }
         .content-block {
-            background: none;
+            background: rgba(255,255,255,0.90);
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 8px;
@@ -128,6 +81,12 @@ body {
             object-fit: cover;
         }
         @media (max-width: 800px) {
+            body {
+                /* Background image for mobile */
+                background: url('static/img/bg_mobile.jpg') no-repeat center center fixed;
+                background-size: cover;
+                background-attachment: fixed;
+            }
             .content-container {
                 width: 95%;
                 margin-left: 0;
@@ -143,6 +102,7 @@ body {
                 border-bottom: 1px solid #d1e2f4;
                 padding-top: 0;
                 padding-bottom: 0;
+                background: rgba(255,255,255,0.97);
             }
             .sidebar a {
                 display: inline-block;
@@ -186,26 +146,6 @@ body {
                 font-size: 14px;
             }
         }
-
-        /* Snowflake animation stays the same */
-        .snowflake {
-            position: absolute;
-            width: 7px;
-            height: 7px;
-            background-color: rgba(255, 192, 203, 0.9);
-            opacity: 0.8;
-            border-radius: 70%;
-            animation: fall 5s linear infinite, smallZigzag 5s ease-in-out infinite;
-            z-index: 1;
-        }
-        @keyframes fall {
-            0% { top: -200px; }
-            100% { top: 100vh; }
-        }
-        @keyframes smallZigzag {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(20px); }
-        }
     </style>
 </head>
 <body>
@@ -218,34 +158,33 @@ body {
     <!-- Content Area -->
     <div class="content-container">
         <div class="content-block">
-              <h2>Hojeong Lee </h2><br>
-          <div class="text-with-image">
-            <img src="static/img/imgfile.jpg" alt="Image Description" class="content-image">
-            <p> I am a researcher, designer, and an engineer.<br><br>
-                My research focuses on wearable haptic glove and soft actuators for enhancing the use of human hand. <br>
-                As an artist and designer, I seek emotional bonds between artificially animated machines, environments, computers as continuum of lives and humans.<br><br>
-                I graduated from Seoul National University with a Bachelor of Fine Arts in Industrial Design, and currently am a researcher at Korea Advanced Institute of Science and Technology.<br>
-                My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.<br>
+            <h2>Hojeong Lee </h2><br>
+            <div class="text-with-image">
+                <img src="static/img/imgfile.jpg" alt="Image Description" class="content-image">
+                <p> I am a researcher, designer, and an engineer.<br><br>
+                    My research focuses on wearable haptic glove and soft actuators for enhancing the use of human hand. <br>
+                    As an artist and designer, I seek emotional bonds between artificially animated machines, environments, computers as continuum of lives and humans.<br><br>
+                    I graduated from Seoul National University with a Bachelor of Fine Arts in Industrial Design, and currently am a researcher at Korea Advanced Institute of Science and Technology.<br>
+                    My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.<br>
                 </p>
+            </div>
         </div>
-
         <div class="content-block">
             <h2>Latest News</h2>
-             <h3>2025 </h3>
-            <p>            
-                <strong>Apr</strong>   My paper, 3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback, is accepted for IEEE World Haptics Conference 2025 <br><hr>
+            <h3>2025 </h3>
+            <p>
+                <strong>Apr</strong> My paper, 3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback, is accepted for IEEE World Haptics Conference 2025 <br><hr>
             <h3>2024 </h3>
-            <p>            
-                <strong>Dec</strong>   Won the Dean's Award : Research Award from LACS, KAIST<br>
-                <strong>Dec</strong>   The paper that I participated in, ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction by Hyungil Yi, is published in IEEE ISMAR<br><hr>
-                <strong>Oct</strong>  Presented a paper at UbiComp 2024 in Melbourne, Austrailia<br><hr>
-                <strong>Sep</strong>   My paper, EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR, is published in IMWUT Vol.8<br><hr>
-                <strong> Aug</strong>   Presented the invited paper at Korea Haptics Conference 2024 in Kyeongju, South Korea<br>
-                <strong>Aug</strong>   Presented a paper at IEA 2024 in jeju, South Korea<br><hr>
-                <strong>May</strong>   Presented a demo at CHI 2024 in Hawaii, USA<br><hr>
-                <strong>Feb</strong>   Presented the research at HCI Korea 2024 in Hongcheon, South Korea</p>
+            <p>
+                <strong>Dec</strong> Won the Dean's Award : Research Award from LACS, KAIST<br>
+                <strong>Dec</strong> The paper that I participated in, ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction by Hyungil Yi, is published in IEEE ISMAR<br><hr>
+                <strong>Oct</strong> Presented a paper at UbiComp 2024 in Melbourne, Austrailia<br><hr>
+                <strong>Sep</strong> My paper, EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR, is published in IMWUT Vol.8<br><hr>
+                <strong> Aug</strong> Presented the invited paper at Korea Haptics Conference 2024 in Kyeongju, South Korea<br>
+                <strong>Aug</strong> Presented a paper at IEA 2024 in jeju, South Korea<br><hr>
+                <strong>May</strong> Presented a demo at CHI 2024 in Hawaii, USA<br><hr>
+                <strong>Feb</strong> Presented the research at HCI Korea 2024 in Hongcheon, South Korea</p>
         </div>
-
         <div class="content-block">
             <h2>Publications</h2>
             <h3>2025</h3>
@@ -253,7 +192,7 @@ body {
                 <strong>3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback</strong> <br>
                 <strong>IEEE World Haptics Conference (WHC, 2025) </strong><br>
                 (<strong>Hojeong Lee</strong>, Eunho Kim, Sang Ho Yoon) <br><hr>
-                <h3>2024</h3>
+            <h3>2024</h3>
             <p>
                 <strong>EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR</strong> <br>
                 <strong>Proc. ACM Interact. Mob. Wearable Ubiquitous Technol., Vol. 8, No. 3, Article 131. (IMWUT, 2024.9)</strong><br>
@@ -270,6 +209,6 @@ body {
                 <a href=" https://www.computer.org/csdl/proceedings-article/ismar/2024/164700a614/22f0j2Rv98k" target="_blank" class="contact-icon">
                     <i class="fab fa-DOI"></i> DOI</a><br>
         </div>
-        </div>
+    </div>
 </body>
 </html>
