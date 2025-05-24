@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hojeong Lee</title>
+<link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ancizar Serif', serif;
+            color: #000000;
+            min-height: 100vh;
+            max-width: 100vw;
+            background: url('static/img/bg_pc2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .sidebar {
+    /* Existing sidebar styles */
+     font-family: 'Ancizar Serif', serif;
+    color: #000000;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    /* keep the font-family as you wish (remove if you want default) */
+}
+.sidebar a {
+    color: #000000 !important;
+    background: none !important;
+    border: none !important;
+    border-bottom: none !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    /* remove hover bg */
+    transition: color 0.2s;
+}
+.sidebar a:hover {
+    background: none !important;
+    color: #000000 !important; /* or pick any color for hover */
+}
+
+        .content-container {
+            width: 80%;
+            max-width: 1000px;
+            padding-top: 30px;
+            position: relative;
+            margin-left: 120px;
+        }
+        .content-block {
+            padding: 30px;
+             background-image: url('static/img/memo.png'); 
+    background-size: 100% 100%;  
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+        }
+                .content-block2 {
+            padding: 18px;
+            margin-left: 2px;
+            margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+        }
+        .text-with-image {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .content-image {
+            width: 400px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        /* --- Highlighter effect for inline text --- */
+        .highlight {
+            background: rgb(255, 251, 0);
+            padding: 0.08em 0.22em;
+            border-radius: 0em;
+            box-decoration-break: clone;
+        }
+        
+        /* --- Highlighter effect for inline text --- */
+        .highlight2 {
+            background: rgb(255, 255, 255);
+            padding: 0.08em 0.22em;
+            border-radius: 0em;
+            box-decoration-break: clone;
+        }
+
+@media (max-width: 900px) {
+    .content-container {
+        width: 96%;
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .sidebar {
+        width: 100vw;
+        height: auto;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        position: static;
+        box-shadow: none;
+        border-bottom: 1px solid #d1e2f4;
+        padding: 0;
+        background: #fff;
+    }
+    .sidebar a {
+        display: inline-block;
+        border-bottom: none;
+        border-right: 1px solid #d1e2f4;
+        padding: 12px 18px;
+        font-size: 16px;
+    }
+    .sidebar a:last-child {
+        border-right: none;
+    }
+    .content-block {
+    background-size: 100% 100%;  
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+        padding: 10px;
+        margin-bottom: 25px;
+    }
+    .content-block h1 { font-size: 1.7em; }
+    .content-block h2 { font-size: 1.5em; }
+        .content-block2 h1 { font-size: 1.7em; }
+    .content-block2 h2 { font-size: 1.5em; }
+    .content-block p,
+    .content-block h3,
+    .content-block strong { font-size: 1em; }
+}   
+ .content-block2 {
+        padding: 3px;
+        margin-bottom: 15px;
+    }
+  
+@media (max-width: 600px) {
+    body {
+        font-size: 0.98em;
+    }
+    .sidebar a {
+        font-size: 15px;
+        padding: 8px 8px;
+    }
+    .content-container {
+        width: 99%;
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+        .content-block {
+                         background-image: url('static/img/memo2.png'); 
+    background-size: 100% 100%;  
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+        padding: 10px;
+        margin-bottom: 25px;
+    }
+     .content-block2 {
+        padding: 3px;
+        margin-bottom: 15px;
+    }
+    .content-block h1 { font-size: 1.2em; }
+    .content-block h2 { font-size: 1.15em; }
+    .content-block2 h1 { font-size: 1.2em; }
+    .content-block2 h2 { font-size: 1.15em; }
+    .content-block {
+        padding: 20;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .sidebar a {
+        font-size: 13px;
+        padding: 6px 4px;
+    }
+            .content-block {
+                             background-image: url('static/img/memo2.png'); 
+    background-size: 100% 100%;  
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+     .content-block2 {
+        padding: 3px;
+        margin-bottom: 15px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+   <div class="sidebar">
+    <a href="index.html"><span class="highlight2">Home</span></a>
+    <a href="cv.html"><span class="highlight2">CV</span></a>
+        <a href="researches.html"><span class="highlight2">Researches</span></a>
+    <a href="contact.html"><span class="highlight2">Contact</span></a>
+   </div>
+
+           <!-- Content Area -->
+    <div class="content-container">
+        <div class="content-block">
+            <div class="text-with-image">    <img src="static/img/3.jpg" alt="Profile image" class="content-image">
+                <p>
+                   <strong>3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback</strong><br>
+                   <strong>Hojeong Lee</strong>, Eunho Kim, Sang Ho Yoon<br>
+                   A novel haptic shape rendering method synchronizing spatiotemporal vibrotactile feedback across multiple phalanges with low degrees of freedom kinesthetic feedback.<br>
+                </p>
+            </div>
+        </div>
+            
+    </div>
+
+        <!-- Content Area -->
+    <div class="content-container">
+        <div class="content-block">
+            <div class="text-with-image">    <img src="static/img/2.jpg" alt="Profile image" class="content-image">
+                <p>
+                   <strong>ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction</strong><br>
+                   Hyungil Yi, <strong>Hojeong Lee</strong>, Sang Ho Yoon<br>
+                   A haptic glove that enhances the active perception of thermo-tactile interactions by integrating thermal referrals and vibrotactile phantom sensations.<br>
+                </p>
+            </div>
+        </div>
+            
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-container">
+        <div class="content-block">
+            <div class="text-with-image">    <img src="static/img/1.jpg" alt="Profile image" class="content-image">
+                <p>
+                   <strong>EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR</strong><br>
+                   Nicha Vanichvoranun*, <strong>Hojeong Lee*</strong>, Seoyeon Kim, Sang Ho Yoon (* indicates the equal contribution)<br>
+                   A haptic glove with the double layer and multi-stacked electrostatic clutches, forming an electrostatic brake for each phalanx.<br>
+                </p>
+            </div>
+        </div>
+            
+    </div>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const images = [
+        'static/img/bg1.png',
+        'static/img/bg2.png',
+        'static/img/bg3.png'
+    ];
+    // For all .content-blocks, set a random background image
+    document.querySelectorAll('.content-block').forEach(function(block) {
+        // Pick a random image
+        const img = images[Math.floor(Math.random() * images.length)];
+        block.style.backgroundImage = `url('${img}')`;
+    });
+});
+</script>
+
+</body>
+</html>
