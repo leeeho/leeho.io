@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hojeong Lee</title>
     <link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:wght@400&display=swap" rel="stylesheet">
     <style>
@@ -10,48 +11,49 @@
             font-family: 'Ancizar Serif', serif;
             color: #000;
             min-height: 100vh;
-            max-width: 100vw;
-            background: white;
+            background: white; /* white background */
         }
-
         .sidebar {
-            padding: 10px 20px;
+            font-family: 'Ancizar Serif', serif;
         }
         .sidebar a {
             color: #000;
-            text-decoration: none; /* remove underline */
+            text-decoration: none;
             padding: 8px 16px;
         }
         .sidebar a:hover {
-            text-decoration: underline; /* optional hover underline if you want */
+            text-decoration: underline;
         }
 
         .content-container {
             width: 80%;
             max-width: 1000px;
             padding-top: 30px;
+            position: relative;
+            margin-left: 120px; /* match your original left align */
         }
 
         .content-block {
             padding: 30px;
             background: white;
             border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1); /* subtle shadow */
             transition: box-shadow 0.2s;
             position: relative;
-            margin-bottom: 20px;
         }
         .block-link {
             text-decoration: none;
-            color: inherit; /* keep text color */
+            color: inherit;
+            display: block;
         }
         .block-link:hover .content-block {
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
         }
 
         .content-block2 {
-            padding: 18px 0;
+            padding: 18px;
+            margin-left: 2px;
+            margin-bottom: 18px;
         }
 
         .text-with-image {
@@ -61,8 +63,9 @@
         }
 
         .content-image {
-            height: 200px;
-            width: auto;
+            height: auto;
+            width: 200px;
+            max-width: 100%;
             border-radius: 8px;
             object-fit: contain;
         }
@@ -71,17 +74,35 @@
             background: rgb(255, 251, 0);
             padding: 0.08em 0.22em;
         }
-
         .highlight2 {
             background: white;
             padding: 0.08em 0.22em;
         }
 
+        /* Responsive behavior */
         @media (max-width: 900px) {
             .content-container {
                 width: 96%;
+                margin-left: 0;
                 padding-left: 0;
                 padding-right: 0;
+            }
+            .sidebar {
+                width: 100vw;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                border-bottom: 1px solid #d1e2f4;
+                padding: 0;
+                background: #fff;
+            }
+            .sidebar a {
+                padding: 12px 18px;
+                font-size: 16px;
+                border-right: 1px solid #d1e2f4;
+            }
+            .sidebar a:last-child {
+                border-right: none;
             }
             .text-with-image {
                 flex-direction: column;
@@ -94,10 +115,21 @@
             body {
                 font-size: 0.98em;
             }
+            .sidebar a {
+                font-size: 15px;
+                padding: 8px 8px;
+            }
             .content-container {
                 width: 99%;
                 padding-left: 0;
                 padding-right: 0;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .sidebar a {
+                font-size: 13px;
+                padding: 6px 4px;
             }
         }
     </style>
@@ -112,7 +144,7 @@
         <a href="contact.html"><span class="highlight2">Contact</span></a>
     </div>
 
-    <!-- Intro -->
+    <!-- Intro text -->
     <div class="content-container">
         <div class="content-block2">
             <p><span class="highlight"><strong>Click on each project to read more.</strong></span></p>
@@ -143,7 +175,7 @@
                     <p>
                         <strong>EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR</strong><br>
                         Nicha Vanichvoranun*, <strong>Hojeong Lee*</strong>, Seoyeon Kim, Sang Ho Yoon (* indicates the equal contribution)<br><br>
-                        A haptic glove with double-layer, multi-stacked electrostatic brakes for each phalanx.<br><br>
+                        A haptic glove with the double layer and multi-stacked electrostatic clutches, forming an electrostatic brake for each phalanx.<br><br>
                         Proc. ACM Interactive Mobile Wearable Ubiquitous Technology. 2024, 8, 1.
                     </p>
                 </div>
@@ -160,7 +192,7 @@
                     <p>
                         <strong>ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction</strong><br>
                         Hyungil Yi, <strong>Hojeong Lee</strong>, Sang Ho Yoon<br><br>
-                        A haptic glove that enhances thermo-tactile interaction by integrating thermal referrals and vibrotactile phantom sensations.<br><br>
+                        A haptic glove that enhances the active perception of thermo-tactile interactions by integrating thermal referrals and vibrotactile phantom sensations.<br><br>
                         2024 International Symposium on Mixed and Augmented Reality (ISMAR)
                     </p>
                 </div>
