@@ -13,17 +13,29 @@
             min-height: 100vh;
             background: white; /* white background */
         }
-        .sidebar {
-            font-family: 'Ancizar Serif', serif;
-        }
-        .sidebar a {
-            color: #000;
-            text-decoration: none;
-            padding: 8px 16px;
-        }
-        .sidebar a:hover {
-            text-decoration: underline;
-        }
+             .sidebar {
+    /* Existing sidebar styles */
+     font-family: 'Ancizar Serif', serif;
+    color: #000000;
+    background: none;
+    border: none;
+    box-shadow: none;
+    /* keep the font-family as you wish (remove if you want default) */
+}
+.sidebar a {
+    color: #000000;
+    background: none;
+    border: none;
+    border-bottom: none;
+    text-decoration: none;
+    box-shadow: none;
+    /* remove hover bg */
+    transition: color 0.2s;
+}
+.sidebar a:hover {
+    background: none;
+    color: #000000;/* or pick any color for hover */
+}
 
         .content-container {
             width: 80%;
