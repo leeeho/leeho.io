@@ -1,121 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hojeong Lee</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:wght@400&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      overflow-x: hidden;
-      overflow-y: auto;
-      background: #fff;
-      position: relative;
-      font-family: 'Noto Sans', sans-serif;
-      color: #000000;
-      min-height: 100vh;
-      width: 100%;
-      font-weight: normal;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hojeong Lee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:wght@400&display=swap" rel="stylesheet">
+    <style>
+body {
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #fff;
+    position: relative;
+    font-family: 'Noto Sans', sans-serif;
+    color: #000000;
+    min-height: 100vh;
+    width: 100%;
+    font-weight: normal;
+}
 
-    /* Sidebar Styles */
-    .sidebar {
-      font-family: 'Ancizar Serif', serif;
-      color: #000000;
-      background: none !important;
-      border: none !important;
-      box-shadow: none !important;
-      display: flex;
-      flex-direction: column;
-      padding: 10px 20px;
-      position: fixed;
-      left: 0;
-      top: 0;
-    }
+/* Sidebar Styles */
+       .sidebar {
+    /* Existing sidebar styles */
+     font-family: 'Ancizar Serif', serif;
+    color: #000000;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    /* keep the font-family as you wish (remove if you want default) */
+}
+.sidebar a {
+    color: #000000 !important;
+    background: none !important;
+    border: none !important;
+    border-bottom: none !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    /* remove hover bg */
+    transition: color 0.2s;
+}
+.sidebar a:hover {
+    background: none !important;
+    color: #000000 !important; /* or pick any color for hover */
+}
+/* Main content container */
+.content-container {
+    width: 80%;
+    max-width: 1000px;
+    padding-top: 20px;
+    margin-left: 120px;
+    box-sizing: border-box;
+}
 
-    .sidebar a {
-      color: #000000 !important;
-      background: none !important;
-      border: none !important;
-      text-decoration: none !important;
-      box-shadow: none !important;
-      margin: 10px 0;
-      transition: color 0.2s;
-    }
+.content-block {
+    background: rgba(255,255,255);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
 
-    .sidebar a:hover {
-      background: none !important;
-      color: #000000 !important;
-    }
+.content-block h1,
+.content-block h2 {
+    margin-top: 0;
+    font-weight: bold;
+    color: #000000;
+}
+.content-block p,
+.content-block h3,
+.content-block strong {
+    color: #000000;
+}
 
-    .highlight2 {
-      background: rgb(255, 255, 255);
-      padding: 0.08em 0.22em;
-      border-radius: 0em;
-      box-decoration-break: clone;
-    }
-
-    /* Main content container */
+/* Responsive styles */
+@media (max-width: 900px) {
     .content-container {
-      width: 80%;
-      max-width: 1000px;
-      padding-top: 20px;
-      margin-left: 120px;
-      box-sizing: border-box;
-    }
-
-    .content-block,
-    .content-block2 {
-      background: rgba(255, 255, 255);
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-    }
-
-    .content-block h1,
-    .content-block h2 {
-      margin-top: 0;
-      font-weight: bold;
-      color: #000000;
-    }
-
-    .content-block p,
-    .content-block h3,
-    .content-block strong {
-      color: #000000;
-    }
-
-    .content-block2 {
-      background: #f9f9f9;
-      color: #000;
-    }
-
-    .text-with-image {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .content-image {
-      width: 150px;
-      height: auto;
-      border-radius: 8px;
-      flex-shrink: 0;
-    }
-
-    /* Responsive styles */
-    @media (max-width: 900px) {
-      .content-container {
         width: 96%;
         margin-left: 0;
         padding-left: 0;
         padding-right: 0;
-      }
-
-      .sidebar {
+    }
+    .sidebar {
         width: 100vw;
         height: auto;
         flex-direction: row;
@@ -126,157 +91,129 @@
         border-bottom: 1px solid #d1e2f4;
         padding: 0;
         background: #fff;
-      }
-
-      .sidebar a {
+    }
+    .sidebar a {
         display: inline-block;
+        border-bottom: none;
         border-right: 1px solid #d1e2f4;
         padding: 12px 18px;
         font-size: 16px;
-      }
-
-      .sidebar a:last-child {
+    }
+    .sidebar a:last-child {
         border-right: none;
-      }
-
-      .content-block {
+    }
+    .content-block {
         padding: 15px 6px;
         margin-bottom: 15px;
-      }
-
-      .content-block h1 {
-        font-size: 1.7em;
-      }
-
-      .content-block h2 {
-        font-size: 1.5em;
-      }
-
-      .content-block p,
-      .content-block h3 {
-        font-size: 1.1em;
-      }
-
-      .content-block strong {
-        font-size: 1.1em;
-      }
     }
+    .content-block h1 { font-size: 1.7em; }
+    .content-block h2 { font-size: 1.5em; }
+    .content-block p,
+    .content-block h3 { font-size: 1.1em; }
+    .content-block strong { font-size: 1.1em; }
+}        .highlight2 {
+            background: rgb(255, 255, 255);
+            padding: 0.08em 0.22em;
+            border-radius: 0em;
+            box-decoration-break: clone;
+        }
 
-    @media (max-width: 600px) {
-      body {
+@media (max-width: 600px) {
+    body {
         font-size: 0.98em;
-      }
-
-      .sidebar a {
+    }
+    .sidebar a {
         font-size: 15px;
         padding: 8px 8px;
-      }
-
-      .content-container {
+    }
+    .content-container {
         width: 99%;
         margin-left: 0;
         padding-left: 0;
         padding-right: 0;
-      }
-
-      .content-block h1 {
-        font-size: 1.2em;
-      }
-
-      .content-block h2 {
-        font-size: 1.15em;
-      }
-
-      .content-block {
+    }
+    .content-block h1 { font-size: 1.2em; }
+    .content-block h2 { font-size: 1.15em; }
+    .content-block {
         padding: 10px 2px;
         margin-bottom: 10px;
-      }
-
-      .text-with-image {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .content-image {
-        width: 80%;
-        max-width: 250px;
-      }
     }
+}
 
-    @media (max-width: 400px) {
-      .sidebar a {
+@media (max-width: 400px) {
+    .sidebar a {
         font-size: 13px;
         padding: 6px 4px;
-      }
     }
-  </style>
+}
+
+    </style>
 </head>
 <body>
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <a href="index.html"><span class="highlight2">Home</span></a>
-    <a href="cv.html"><span class="highlight2">CV</span></a>
-    <a href="researches.html"><span class="highlight2">Projects</span></a>
-    <a href="contact.html"><span class="highlight2">Contact</span></a>
-  </div>
-
-  <!-- Intro text -->
-  <div class="content-container">
-    <div class="content-block2">
-      <p><strong>Click on each project to read more.</strong></p>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="index.html"><span class="highlight2">Home</span></a>
+        <a href="cv.html"><span class="highlight2">CV</span></a>
+        <a href="researches.html"><span class="highlight2">Projects</span></a>
+        <a href="contact.html"><span class="highlight2">Contact</span></a>
     </div>
-  </div>
 
-  <!-- Project 1 -->
-  <div class="content-container">
-    <div class="content-block">
-      <div class="text-with-image">
-        <img src="static/img/3.png" alt="Project image" class="content-image" />
-        <p>
-          <strong>3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback</strong><br />
-          <strong>Hojeong Lee</strong>, Eunho Kim, Sang Ho Yoon<br /><br />
-          A novel haptic shape rendering method synchronizing spatiotemporal vibrotactile feedback across multiple phalanges with low degrees of freedom kinesthetic feedback.<br /><br />
-          IEEE World Haptics Conference 2025
-        </p>
-      </div>
+    <!-- Intro text -->
+    <div class="content-container">
+        <div class="content-block2">
+            <p><span class="highlight"><strong>Click on each project to read more.</strong></span></p>
+        </div>
     </div>
-  </div>
 
-  <!-- Project 2 -->
-  <div class="content-container">
-    <a href="https://estatig.hcitech.org/" class="block-link">
-      <div class="content-block">
-        <div class="text-with-image">
-          <img src="static/img/1.png" alt="Project image" class="content-image" />
-          <p>
-            <strong>EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR</strong><br />
-            Nicha Vanichvoranun*, <strong>Hojeong Lee*</strong>, Seoyeon Kim, Sang Ho Yoon (* indicates the equal contribution)<br /><br />
-            A haptic glove with the double layer and multi-stacked electrostatic clutches, forming an electrostatic brake for each phalanx.<br /><br />
-            Proc. ACM Interactive Mobile Wearable Ubiquitous Technology. 2024, 8, 1.
-          </p>
+    <!-- Project 1 -->
+    <div class="content-container">
+        <div class="content-block">
+            <div class="text-with-image">
+                <img src="static/img/3.png" alt="Profile image" class="content-image">
+                <p>
+                    <strong>3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback</strong><br>
+                    <strong>Hojeong Lee</strong>, Eunho Kim, Sang Ho Yoon<br><br>
+                    A novel haptic shape rendering method synchronizing spatiotemporal vibrotactile feedback across multiple phalanges with low degrees of freedom kinesthetic feedback.<br><br>
+                    IEEE World Haptics Conference 2025
+                </p>
+            </div>
         </div>
-      </div>
-    </a>
-  </div>
+    </div>
 
-  <!-- Project 3 -->
-  <div class="content-container">
-    <a href="https://ieeexplore.ieee.org/abstract/document/10765498" class="block-link">
-      <div class="content-block">
-        <div class="text-with-image">
-          <img src="static/img/2.png" alt="Project image" class="content-image" />
-          <p>
-            <strong>ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction</strong><br />
-            Hyungil Yi, <strong>Hojeong Lee</strong>, Sang Ho Yoon<br /><br />
-            A haptic glove that enhances the active perception of thermo-tactile interactions by integrating thermal referrals and vibrotactile phantom sensations.<br /><br />
-            2024 International Symposium on Mixed and Augmented Reality (ISMAR)
-          </p>
-        </div>
-      </div>
-    </a>
-  </div>
+    <!-- Project 2 -->
+    <div class="content-container">
+        <a href="https://estatig.hcitech.org/" class="block-link">
+            <div class="content-block">
+                <div class="text-with-image">
+                    <img src="static/img/1.png" alt="Profile image" class="content-image">
+                    <p>
+                        <strong>EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR</strong><br>
+                        Nicha Vanichvoranun*, <strong>Hojeong Lee*</strong>, Seoyeon Kim, Sang Ho Yoon (* indicates the equal contribution)<br><br>
+                        A haptic glove with the double layer and multi-stacked electrostatic clutches, forming an electrostatic brake for each phalanx.<br><br>
+                        Proc. ACM Interactive Mobile Wearable Ubiquitous Technology. 2024, 8, 1.
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="content-container">
+        <a href="https://ieeexplore.ieee.org/abstract/document/10765498" class="block-link">
+            <div class="content-block">
+                <div class="text-with-image">
+                    <img src="static/img/2.png" alt="Profile image" class="content-image">
+                    <p>
+                        <strong>ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction</strong><br>
+                        Hyungil Yi, <strong>Hojeong Lee</strong>, Sang Ho Yoon<br><br>
+                        A haptic glove that enhances the active perception of thermo-tactile interactions by integrating thermal referrals and vibrotactile phantom sensations.<br><br>
+                        2024 International Symposium on Mixed and Augmented Reality (ISMAR)
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
 
 </body>
 </html>
