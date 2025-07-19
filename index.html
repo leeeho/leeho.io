@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hojeong Lee</title>
-<link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:wght@400&display=swap" rel="stylesheet">
     <style>
+* {
+    cursor: url(https://cur.cursors-4u.net/mechanics/mec-4/mec320.cur), auto !important;
+}
+
         body {
             margin: 0;
             font-family: 'Ancizar Serif', serif;
@@ -17,28 +21,25 @@
             background-attachment: fixed;
         }
         .sidebar {
-    /* Existing sidebar styles */
-     font-family: 'Ancizar Serif', serif;
-    color: #000000;
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    /* keep the font-family as you wish (remove if you want default) */
-}
-.sidebar a {
-    color: #000000 !important;
-    background: none !important;
-    border: none !important;
-    border-bottom: none !important;
-    text-decoration: none !important;
-    box-shadow: none !important;
-    /* remove hover bg */
-    transition: color 0.2s;
-}
-.sidebar a:hover {
-    background: none !important;
-    color: #000000 !important; /* or pick any color for hover */
-}
+            font-family: 'Ancizar Serif', serif;
+            color: #000000;
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .sidebar a {
+            color: #000000 !important;
+            background: none !important;
+            border: none !important;
+            border-bottom: none !important;
+            text-decoration: none !important;
+            box-shadow: none !important;
+            transition: color 0.2s;
+        }
+        .sidebar a:hover {
+            background: none !important;
+            color: #000000 !important;
+        }
 
         .content-container {
             width: 80%;
@@ -49,18 +50,18 @@
         }
         .content-block {
             padding: 30px;
-             background-image: url('static/img/memo.png'); 
-    background-size: 100% 100%;  
-    background-repeat: no-repeat;
-    position: relative;
-    z-index: 1;
+            background-image: url('static/img/memo.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            position: relative;
+            z-index: 1;
         }
-                .content-block2 {
+        .content-block2 {
             padding: 18px;
             margin-left: 2px;
             margin-bottom: 18px;
-    position: relative;
-    z-index: 1;
+            position: relative;
+            z-index: 1;
         }
         .text-with-image {
             display: flex;
@@ -74,15 +75,12 @@
             border-radius: 8px;
             object-fit: cover;
         }
-        /* --- Highlighter effect for inline text --- */
         .highlight {
             background: rgb(255, 251, 0);
             padding: 0.08em 0.22em;
             border-radius: 0em;
             box-decoration-break: clone;
         }
-        
-        /* --- Highlighter effect for inline text --- */
         .highlight2 {
             background: rgb(255, 255, 255);
             padding: 0.08em 0.22em;
@@ -90,124 +88,104 @@
             box-decoration-break: clone;
         }
 
-@media (max-width: 900px) {
-    .content-container {
-        width: 96%;
-        margin-left: 0;
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .sidebar {
-        width: 100vw;
-        height: auto;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        position: static;
-        box-shadow: none;
-        border-bottom: 1px solid #d1e2f4;
-        padding: 0;
-        background: #fff;
-    }
-    .sidebar a {
-        display: inline-block;
-        border-bottom: none;
-        border-right: 1px solid #d1e2f4;
-        padding: 12px 18px;
-        font-size: 16px;
-    }
-    .sidebar a:last-child {
-        border-right: none;
-    }
-    .content-block {
-                     background-image: url('static/img/memo2.png'); 
-    background-size: 100% 100%;  
-    background-repeat: no-repeat;
-    position: relative;
-    z-index: 1;
-        padding: 10px;
-        margin-bottom: 25px;
-    }
-    .content-block h1 { font-size: 1.7em; }
-    .content-block h2 { font-size: 1.5em; }
-        .content-block2 h1 { font-size: 1.7em; }
-    .content-block2 h2 { font-size: 1.5em; }
-    .content-block p,
-    .content-block h3,
-    .content-block strong { font-size: 1em; }
-}   
- .content-block2 {
-        padding: 3px;
-        margin-bottom: 15px;
-    }
-  
-@media (max-width: 600px) {
-    body {
-        font-size: 0.98em;
-    }
-    .sidebar a {
-        font-size: 15px;
-        padding: 8px 8px;
-    }
-    .content-container {
-        width: 99%;
-        margin-left: 0;
-        padding-left: 0;
-        padding-right: 0;
-    }
-        .content-block {
-                         background-image: url('static/img/memo2.png'); 
-    background-size: 100% 100%;  
-    background-repeat: no-repeat;
-    position: relative;
-    z-index: 1;
-        padding: 10px;
-        margin-bottom: 25px;
-    }
-     .content-block2 {
-        padding: 3px;
-        margin-bottom: 15px;
-    }
-    .content-block h1 { font-size: 1.2em; }
-    .content-block h2 { font-size: 1.15em; }
-    .content-block2 h1 { font-size: 1.2em; }
-    .content-block2 h2 { font-size: 1.15em; }
-    .content-block {
-        padding: 20;
-        margin-bottom: 20px;
-    }
-}
-
-@media (max-width: 400px) {
-    .sidebar a {
-        font-size: 13px;
-        padding: 6px 4px;
-    }
+        @media (max-width: 900px) {
+            .content-container {
+                width: 96%;
+                margin-left: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .sidebar {
+                width: 100vw;
+                height: auto;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                position: static;
+                box-shadow: none;
+                border-bottom: 1px solid #d1e2f4;
+                padding: 0;
+                background: #fff;
+            }
+            .sidebar a {
+                display: inline-block;
+                border-bottom: none;
+                border-right: 1px solid #d1e2f4;
+                padding: 12px 18px;
+                font-size: 16px;
+            }
+            .sidebar a:last-child {
+                border-right: none;
+            }
             .content-block {
-                             background-image: url('static/img/memo2.png'); 
-    background-size: 100% 100%;  
-    background-repeat: no-repeat;
-    position: relative;
-    z-index: 1;
-        padding: 20px;
-        margin-bottom: 25px;
-    }
-     .content-block2 {
-        padding: 3px;
-        margin-bottom: 15px;
-    }
-}
+                background-image: url('static/img/memo2.png');
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                position: relative;
+                z-index: 1;
+                padding: 10px;
+                margin-bottom: 25px;
+            }
+        }
 
+        @media (max-width: 600px) {
+            body {
+                font-size: 0.98em;
+            }
+            .sidebar a {
+                font-size: 15px;
+                padding: 8px 8px;
+            }
+            .content-container {
+                width: 99%;
+                margin-left: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .content-block {
+                background-image: url('static/img/memo2.png');
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                position: relative;
+                z-index: 1;
+                padding: 10px;
+                margin-bottom: 25px;
+            }
+            .content-block2 {
+                padding: 3px;
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .sidebar a {
+                font-size: 13px;
+                padding: 6px 4px;
+            }
+            .content-block {
+                background-image: url('static/img/memo2.png');
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                position: relative;
+                z-index: 1;
+                padding: 20px;
+                margin-bottom: 25px;
+            }
+            .content-block2 {
+                padding: 3px;
+                margin-bottom: 15px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Sidebar -->
-<div class="sidebar">
-    <a href="index.html"><span class="highlight2">Home</span></a>
-    <a href="cv.html"><span class="highlight2">CV</span></a>
+    <div class="sidebar">
+        <a href="index.html"><span class="highlight2">Home</span></a>
+        <a href="cv.html"><span class="highlight2">CV</span></a>
         <a href="researches.html"><span class="highlight2">Projects</span></a>
-    <a href="contact.html"><span class="highlight2">Contact</span></a>
-</div>
+        <a href="contact.html"><span class="highlight2">Contact</span></a>
+    </div>
 
     <!-- Content Area -->
     <div class="content-container">
@@ -216,23 +194,22 @@
             <div class="text-with-image">
                 <p>
                     <span class="highlight">I am a researcher, designer, and engineer.</span><br><br>
-                    <span class="highlight">My research focuses on wearable haptic gloves and soft actuators for enhancing the use of human hands.</span> <br>
+                    <span class="highlight">My research focuses on wearable haptic gloves and soft actuators for enhancing the use of human hands.</span><br>
                     <span class="highlight">Especially, I want to expand my research toward personalized haptic systems by developing reconfigurable device structures and real-time sensing-based feedback control algorithms for individual adaptation.</span><br><br>
-                    <span class="highlight">I graduated from Seoul National University with a Bachelor of Fine Arts in Industrial Design, and currently am a researcher at HCI Tech Lab, Korea Advanced Institute of Science and Technology (KAIST).</span>.<br>
-                    <span class="highlight">My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.</span>.<br>
+                    <span class="highlight">I graduated from Seoul National University with a Bachelor of Fine Arts in Industrial Design, and currently am a researcher at HCI Tech Lab, Korea Advanced Institute of Science and Technology (KAIST).</span><br>
+                    <span class="highlight">My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.</span><br>
                 </p>
             </div>
         </div>
 
-        
         <div class="content-block">
             <h2>Latest News</h2>
             <h3>2025</h3>
             <p>
                 <strong>Jun</strong>
-                I have successfully defended my master's thesis. I will continue my research as Ph.D Candidate under Professor Sang Ho Yoon in Robotics Program, KAIST <br><hr>
+                I have successfully defended my master's thesis. I will continue my research as Ph.D Candidate under Professor Sang Ho Yoon in Robotics Program, KAIST<br><hr>
                 <strong>Apr</strong>
-                My paper, 3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback, is accepted for IEEE World Haptics Conference 2025 <br><hr>
+                My paper, 3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback, is accepted for IEEE World Haptics Conference 2025<br><hr>
             </p>
             <h3>2024</h3>
             <p>
@@ -247,11 +224,5 @@
                 <strong>Aug</strong>
                 Presented the invited paper at Korea Haptics Conference 2024 in Kyeongju, South Korea<br>
                 <strong>Aug</strong>
-                Presented a paper at IEA 2024 in jeju, South Korea<br><hr>
-                <strong>May</strong>
-                Presented a demo at CHI 2024 in Hawaii, USA<br><hr>
-            </p>
-        </div>
-    </div>
-</body>
-</html>
+                Presented a paper at IEA 2024 in Jeju, South Korea<br><hr>
+                <strong>
