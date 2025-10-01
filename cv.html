@@ -73,6 +73,16 @@ body {
 .content-block strong {
     color: #000000;
 }
+.contact-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;            /* space between the two icons */
+  text-decoration: none; /* kills the underline */
+  line-height: 0;        /* prevents stray underline artifacts */
+}
+.contact-icon img {
+  display: block;        /* no extra baseline gap */       /* your size */
+}
 
 /* Responsive styles */
 @media (max-width: 900px) {
@@ -216,7 +226,7 @@ body {
                 
                 (<Strong>Hojeong Lee</Strong>, Eunho Kim, Sang Ho Yoon)<br>
                 <a href="https://doi.org/10.1109/WHC64065.2025.11123386" target="_blank" class="contact-icon">
-               <img src="static/img/ieee.png" alt="DOI" style="width:30px; height:auto; vertical-align:middle;">
+               <img src="static/img/ieee.png" alt="IEEE" style="width:30px; height:auto; vertical-align:middle;">
 				<img src="static/img/doi.png" alt="DOI" style="width:25px; height:auto; vertical-align:middle;">
 				</a> <br> <hr>
 			
