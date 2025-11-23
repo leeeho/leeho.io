@@ -8,14 +8,14 @@
 
     <style>
 /* ------------------------------------
-   REMOVE CUSTOM CURSOR
+   GLOBAL RESET (remove custom cursor)
 ------------------------------------ */
 * {
     cursor: auto !important;
 }
 
 /* ------------------------------------
-   ORIGINAL WEBSITE STYLES
+   BODY & BACKGROUND
 ------------------------------------ */
 body {
     margin: 0;
@@ -27,11 +27,11 @@ body {
     background-size: cover;
     background-attachment: fixed;
     position: relative;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
 }
 
 /* ------------------------------------
-   SNOW CONTAINER — FIXED & MOBILE SAFE
+   SNOW LAYER (SAFE FOR MOBILE)
 ------------------------------------ */
 #snow-container {
     position: fixed;
@@ -39,12 +39,11 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;  /* prevents layout breaking */
     pointer-events: none;
+    overflow: hidden;
     z-index: 1;
 }
 
-/* Individual snowflake */
 .snowflake {
     position: absolute;
     width: 6px;
@@ -52,10 +51,10 @@ body {
     background-color: white;
     opacity: 0.8;
     border-radius: 50%;
-    animation: fall linear infinite, zigzag ease-in-out infinite;
+    animation: snowFall linear infinite;
+    will-change: transform;
 }
 
-/* Mobile-friendly snow size adjustment */
 @media (max-width: 600px) {
     .snowflake {
         width: 4px;
@@ -63,27 +62,27 @@ body {
     }
 }
 
-/* Snow falling animation */
-@keyframes fall {
-    0% { transform: translateY(-10vh); }
-    100% { transform: translateY(110vh); }
-}
-
-/* Side-to-side movement */
-@keyframes zigzag {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(10px); }
+@keyframes snowFall {
+    0% {
+        transform: translateY(-10vh) translateX(0);
+    }
+    50% {
+        transform: translateY(50vh) translateX(10px);
+    }
+    100% {
+        transform: translateY(110vh) translateX(-10px);
+    }
 }
 
 /* ------------------------------------
-   SIDEBAR STYLES
+   SIDEBAR
 ------------------------------------ */
 .sidebar {
     background: none !important;
     border: none !important;
     box-shadow: none !important;
     position: fixed;
-    z-index: 20; /* Always above snow */
+    z-index: 20; /* always above snow */
 }
 .sidebar a {
     color: #000000 !important;
@@ -98,7 +97,7 @@ body {
     max-width: 1000px;
     padding-top: 30px;
     position: relative;
-    z-index: 10; /* above snow */
+    z-index: 10;  /* above snow */
     margin-left: 120px;
 }
 
@@ -113,8 +112,12 @@ body {
     margin-bottom: 18px;
 }
 
-.highlight { background: yellow; }
-.highlight2 { background: white; }
+.highlight {
+    background: yellow;
+}
+.highlight2 {
+    background: white;
+}
 
     </style>
 </head>
@@ -169,7 +172,7 @@ body {
             <strong>Aug</strong>
             The poster <strong>'Effect of Movement Velocity and Flexion Angle on Realistic Haptic Reproduction'</strong> was accepted to IEEE ISMAR 2025.<br><hr>
             <strong>Jul</strong>
-            Presented the paper <strong>'3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback'</strong> at IEEE World Haptics Conference 2025.<br><hr>
+            Presented the paper <strong>'3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback'</strong> at IEEE WHC 2025.<br><hr>
             <strong>Jun</strong>
             Successfully defended my master's thesis and became a Ph.D candidate at KAIST Robotics.<hr>
         </p>
@@ -179,11 +182,11 @@ body {
             <strong>Dec</strong>
             Won the Dean's Research Award, KAIST.<br>
             <strong>Dec</strong>
-            ThermicVib paper published in IEEE ISMAR.<br><hr>
+            Published ThermicVib in IEEE ISMAR.<br><hr>
             <strong>Oct</strong>
-            Presented IMWUT paper at UbiComp 2024 in Melbourne.<br><hr>
+            Presented at UbiComp 2024 in Melbourne.<br><hr>
             <strong>Sep</strong>
-            IMWUT Vol.8 paper on EStatiG published.<br>
+            Published EStatiG in IMWUT Vol.8.<br>
         </p>
     </div>
 </div>
@@ -192,16 +195,19 @@ body {
 <script>
 function createSnowflakes() {
     const container = document.getElementById("snow-container");
-    const count = 180;  // Mobile safe amount
+    const count = 180;  // mobile-safe
 
     for (let i = 0; i < count; i++) {
         const flake = document.createElement("div");
         flake.classList.add("snowflake");
 
         flake.style.left = Math.random() * 100 + "vw";
-        flake.style.animationDuration = (Math.random() * 4 + 6) + "s";
-        flake.style.animationDelay = Math.random() * 6 + "s";
-        flake.style.opacity = 0.3 + Math.random() * 0.7;
+
+        const duration = Math.random() * 6 + 5;  // 5–11s
+        const delay = Math.random() * 6;         // 0–6s
+
+        flake.style.animationDuration = duration + "s";
+        flake.style.animationDelay = delay + "s";
 
         container.appendChild(flake);
     }
