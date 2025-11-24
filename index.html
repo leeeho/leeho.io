@@ -22,16 +22,14 @@ body {
     font-family: 'Ancizar Serif', serif;
     color: #000000;
     min-height: 100vh;
-    max-width: 100vw;
+    width: 100vw;
+    overflow-x: hidden;
     background: url('static/img/bg_pc2.jpg') no-repeat center center fixed;
     background-size: cover;
-    background-attachment: fixed;
-    position: relative;
-    overflow-x: hidden;
 }
 
 /* ------------------------------------
-   SNOW LAYER (SAFE FOR MOBILE)
+   SNOW LAYER (MOBILE SAFE)
 ------------------------------------ */
 #snow-container {
     position: fixed;
@@ -46,10 +44,11 @@ body {
 
 .snowflake {
     position: absolute;
+    top: -10vh; /* required for mobile Safari */
     width: 6px;
     height: 6px;
     background-color: white;
-    opacity: 0.8;
+    opacity: 0.85;
     border-radius: 50%;
     animation: snowFall linear infinite;
     will-change: transform;
@@ -64,13 +63,13 @@ body {
 
 @keyframes snowFall {
     0% {
-        transform: translateY(-10vh) translateX(0);
+        transform: translateY(0) translateX(0);
     }
     50% {
-        transform: translateY(50vh) translateX(10px);
+        transform: translateY(60vh) translateX(12px);
     }
     100% {
-        transform: translateY(110vh) translateX(-10px);
+        transform: translateY(110vh) translateX(-12px);
     }
 }
 
@@ -82,11 +81,16 @@ body {
     border: none !important;
     box-shadow: none !important;
     position: fixed;
-    z-index: 20; /* always above snow */
+    left: 0;
+    top: 0;
+    z-index: 20;
 }
+
 .sidebar a {
     color: #000000 !important;
     text-decoration: none !important;
+    display: block;
+    padding: 10px 0;
 }
 
 /* ------------------------------------
@@ -96,9 +100,9 @@ body {
     width: 80%;
     max-width: 1000px;
     padding-top: 30px;
-    position: relative;
-    z-index: 10;  /* above snow */
     margin-left: 120px;
+    position: relative;
+    z-index: 10;
 }
 
 .content-block {
@@ -106,6 +110,7 @@ body {
     background-image: url('static/img/memo.png');
     background-size: 100% 100%;
 }
+
 .content-block2 {
     padding: 18px;
     margin-left: 2px;
@@ -119,6 +124,33 @@ body {
     background: white;
 }
 
+/* ------------------------------------
+   MOBILE FIX — CENTER CONTENT
+------------------------------------ */
+@media (max-width: 700px) {
+    .content-container {
+        margin-left: 0 !important;
+        width: 95% !important;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .sidebar {
+        position: static !important;
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        padding: 10px 0;
+        justify-content: center;
+        background: rgba(255,255,255,0.6);
+        backdrop-filter: blur(4px);
+    }
+
+    .sidebar a {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
     </style>
 </head>
 
@@ -135,7 +167,7 @@ body {
     <a href="news.html"><span class="highlight2">News</span></a>
 </div>
 
-<!-- Content -->
+<!-- Content Area -->
 <div class="content-container">
     <div class="content-block2">
         <h2><span class="highlight">Hojeong Lee</span></h2><br>
@@ -145,13 +177,13 @@ body {
         <div class="contact-icons">
             <a href="https://scholar.google.com/citations?hl=en&user=qp40iEEAAAAJ">
                 <img src="static/img/gs-.png" style="width:25px;">
-            </a> &nbsp;
+            </a>&nbsp;
             <a href="https://www.linkedin.com/in/leeho99">
                 <img src="static/img/linkedin-.png" style="width:25px;">
-            </a> &nbsp;
+            </a>&nbsp;
             <a href="https://www.hcitech.org">
                 <img src="static/img/lab-.png" style="width:25px;">
-            </a> &nbsp;
+            </a>&nbsp;
             <a href="https://orcid.org/my-orcid?orcid=0009-0009-6366-6954">
                 <img src="static/img/orcid-.png" style="width:25px;">
             </a>
@@ -169,24 +201,23 @@ body {
         <h2>Latest News</h2>
         <h3>2025</h3>
         <p>
-            <strong>Aug</strong>
-            The poster <strong>'Effect of Movement Velocity and Flexion Angle on Realistic Haptic Reproduction'</strong> was accepted to IEEE ISMAR 2025.<br><hr>
-            <strong>Jul</strong>
-            Presented the paper <strong>'3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback'</strong> at IEEE WHC 2025.<br><hr>
-            <strong>Jun</strong>
-            Successfully defended my master's thesis and became a Ph.D candidate at KAIST Robotics.<hr>
+            <strong>Aug</strong> The poster <strong>'Effect of Movement Velocity and Flexion Angle on Realistic Haptic Reproduction'</strong>
+            was accepted to IEEE ISMAR 2025.<br><hr>
+
+            <strong>Jul</strong> Presented the paper <strong>'3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback'</strong>
+            at IEEE WHC 2025.<br><hr>
+
+            <strong>Jun</strong> Successfully defended my master's thesis and became a Ph.D Candidate at KAIST Robotics.<hr>
         </p>
 
         <h3>2024</h3>
         <p>
-            <strong>Dec</strong>
-            Won the Dean's Research Award, KAIST.<br>
-            <strong>Dec</strong>
-            Published ThermicVib in IEEE ISMAR.<br><hr>
-            <strong>Oct</strong>
-            Presented EStatoG at UbiComp 2024 in Melbourne.<br><hr>
-            <strong>Sep</strong>
-            Published <strong>EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR</strong>in IMWUT Vol.8.<br>
+            <strong>Dec</strong> Won the Dean's Research Award, KAIST.<br>
+            <strong>Dec</strong> Published ThermicVib in IEEE ISMAR.<br><hr>
+
+            <strong>Oct</strong> Presented EStatoG at UbiComp 2024 in Melbourne.<br><hr>
+
+            <strong>Sep</strong> Published <strong>EStatiG</strong> in IMWUT Vol.8.<br>
         </p>
     </div>
 </div>
@@ -195,7 +226,7 @@ body {
 <script>
 function createSnowflakes() {
     const container = document.getElementById("snow-container");
-    const count = 180;  // mobile-safe
+    const count = 180;
 
     for (let i = 0; i < count; i++) {
         const flake = document.createElement("div");
@@ -203,8 +234,8 @@ function createSnowflakes() {
 
         flake.style.left = Math.random() * 100 + "vw";
 
-        const duration = Math.random() * 6 + 5;  // 5–11s
-        const delay = Math.random() * 6;         // 0–6s
+        const duration = Math.random() * 6 + 5;
+        const delay = Math.random() * 6;
 
         flake.style.animationDuration = duration + "s";
         flake.style.animationDelay = delay + "s";
@@ -212,7 +243,6 @@ function createSnowflakes() {
         container.appendChild(flake);
     }
 }
-
 createSnowflakes();
 </script>
 
