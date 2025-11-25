@@ -30,11 +30,18 @@ body {
 .text-gray-200 { color: var(--text-gray-200) !important; }
 
 .sidebar {
-    flex-direction: row !important;
-    justify-content: flex-start !important;
-    align-items: center !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 110px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 25px;
+    background: none !important;
+    z-index: 100;
 }
-
 
 .sidebar a {
     display: block;
@@ -108,9 +115,8 @@ body {
         justify-content: space-around;
         position: static;
         box-shadow: none;
-        border-bottom: 1px solid #d1e2f4;
         padding: 0;
-        background: #fff;
+        background: rgba(0,0,0,0);
     }
     .sidebar a {
         display: inline-block;
