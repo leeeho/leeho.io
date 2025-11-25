@@ -8,14 +8,14 @@
 
     <style>
 /* ------------------------------------
-   GLOBAL RESET (remove custom cursor)
+   GLOBAL RESET
 ------------------------------------ */
 * {
     cursor: auto !important;
 }
 
 /* ------------------------------------
-   BODY & BACKGROUND
+   BODY & DESKTOP BACKGROUND
 ------------------------------------ */
 body {
     margin: 0;
@@ -29,7 +29,7 @@ body {
 }
 
 /* ------------------------------------
-   SNOW LAYER (MOBILE SAFE)
+   SNOW
 ------------------------------------ */
 #snow-container {
     position: fixed;
@@ -44,7 +44,7 @@ body {
 
 .snowflake {
     position: absolute;
-    top: -10vh; /* required for mobile Safari */
+    top: -10vh;
     width: 6px;
     height: 6px;
     background-color: white;
@@ -62,21 +62,14 @@ body {
 }
 
 @keyframes snowFall {
-    0% {
-        transform: translateY(0) translateX(0);
-    }
-    50% {
-        transform: translateY(60vh) translateX(12px);
-    }
-    100% {
-        transform: translateY(110vh) translateX(-12px);
-    }
+    0%   { transform: translateY(0) translateX(0); }
+    50%  { transform: translateY(60vh) translateX(12px); }
+    100% { transform: translateY(110vh) translateX(-12px); }
 }
 
 /* ------------------------------------
-   SIDEBAR
+   SIDEBAR (DESKTOP)
 ------------------------------------ */
-/* --- GLOBAL SIDEBAR STYLE (DESKTOP) --- */
 .sidebar {
     position: fixed;
     top: 0;
@@ -89,7 +82,6 @@ body {
     padding-top: 25px;
     background: none !important;
     z-index: 100;
-    font-family: 'Ancizar Serif', serif;
 }
 
 .sidebar a {
@@ -107,41 +99,14 @@ body {
     opacity: 0.6;
 }
 
-/* highlight wrapper */
 .highlight2 {
     background: rgba(255,255,255,0.8);
     padding: 0 4px;
     border-radius: 2px;
 }
 
-/* --- MOBILE RESPONSIVE SIDEBAR --- */
-@media (max-width: 900px) {
-    .sidebar {
-        position: static !important;
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        justify-content: center;
-        gap: 12px;
-        padding: 10px 0;
-        background: rgba(255,255,255,0);
-        border-bottom: 1px solid #d1e2f4;
-        backdrop-filter: blur(4px);
-    }
-
-    .sidebar a {
-        font-size: 15px;
-        padding: 8px 12px;
-        border-right: 1px solid #d1e2f4;
-    }
-
-    .sidebar a:last-child {
-        border-right: none;
-    }
-}
-
 /* ------------------------------------
-   CONTENT AREA
+   CONTENT AREA DESKTOP
 ------------------------------------ */
 .content-container {
     width: 80%;
@@ -168,17 +133,13 @@ body {
     background: #30513e;
     color: white;
 }
-.highlight2 {
-    background: white;
-}
 
 /* ------------------------------------
-   MOBILE FIX — CENTER CONTENT
+   MOBILE OVERRIDES
 ------------------------------------ */
-/* ---------------- MOBILE FIX ---------------- */
 @media (max-width: 900px) {
 
-    /* 1. REMOVE DESKTOP SIDEBAR SPACE */
+    /* ---- FIX CONTENT AREA ---- */
     .content-container {
         margin-left: 0 !important;
         width: 100% !important;
@@ -186,14 +147,16 @@ body {
         padding-right: 12px;
         box-sizing: border-box;
     }
-    
+
+    /* ---- MEMO2_2 MOBILE BACKGROUND FIX ---- */
     .content-block {
-    padding: 3px;
-    background-image: url('static/img/memo2_2.png');
-    background-size: 100% 100%;
+        background: url('static/img/memo2_2.png') no-repeat center top !important;
+        background-size: 100% 100% !important;
+        padding: 18px !important;
+        min-height: 280px; /* ensures memo is visible */
     }
 
-    /* 2. FIX SIDEBAR */
+    /* ---- SOLID WHITE SIDEBAR (NO TRANSPARENCY) ---- */
     .sidebar {
         position: static !important;
         width: 100% !important;
@@ -203,9 +166,9 @@ body {
         align-items: center !important;
         gap: 10px;
         padding: 10px 0;
-        background: rgba(255,255,255,0.85) !important;
+        background: #ffffff !important; /* ← solid, not transparent */
         border-bottom: 1px solid #d1e2f4;
-        backdrop-filter: blur(5px);
+        backdrop-filter: none !important; /* remove blur */
     }
 
     .sidebar a {
@@ -217,16 +180,16 @@ body {
         border-right: none;
     }
 
-    /* 3. MOBILE-ONLY BACKGROUND IMAGE */
+    /* ---- MOBILE BODY BACKGROUND ---- */
     body {
         background: url('static/img/2christmas-01.png') no-repeat center center fixed !important;
         background-size: cover !important;
     }
 }
 
-        
     </style>
 </head>
+
 
 <body>
 
