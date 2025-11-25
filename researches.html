@@ -30,28 +30,33 @@ body {
 .text-black { color: var(--text-black) !important; }
 .text-gray-200 { color: var(--text-gray-200) !important; }
 
-             .sidebar {
-    /* Existing sidebar styles */
-     font-family: 'Ancizar Serif', serif;
-    color: #000000;
-    background: none;
-    border: none;
-    box-shadow: none;
-    /* keep the font-family as you wish (remove if you want default) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 110px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 25px;
+    background: none !important;
+    z-index: 100;
 }
+
 .sidebar a {
-    color: #000000;
-    background: none;
-    border: none;
-    border-bottom: none;
-    text-decoration: none;
-    box-shadow: none;
-    /* remove hover bg */
-    transition: color 0.2s;
+    display: block;
+    padding: 10px 18px;
+    color: #000000 !important;
+    text-decoration: none !important;
+    font-size: 18px;
+    background: none !important;
+    border: none !important;
+    transition: opacity 0.2s;
 }
+
 .sidebar a:hover {
-    background: none;
-    color: #000000;/* or pick any color for hover */
+    opacity: 0.6;
 }
 
         .content-container {
