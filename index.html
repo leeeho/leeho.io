@@ -70,19 +70,17 @@ body {
 /* ------------------------------------
    SIDEBAR (DESKTOP)
 ------------------------------------ */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 110px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 25px;
-    background: none !important;
-    z-index: 100;
-}
+    .sidebar {
+        width: 100vw;
+        height: auto;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        position: static;
+        box-shadow: none;
+        padding: 0;
+        background: rgba(0,0,0,0);
+    }
 
 .sidebar a {
     display: block;
