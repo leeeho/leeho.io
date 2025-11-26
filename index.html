@@ -10,26 +10,20 @@
 /* ------------------------------------
    GLOBAL RESET
 ------------------------------------ */
-* {
-    cursor: auto !important;
-}
+* { cursor: auto !important; }
 
-/* ------------------------------------
-   BODY & DESKTOP BACKGROUND
------------------------------------- */
 body {
     margin: 0;
     font-family: 'Ancizar Serif', serif;
-    color: #000000;
+    color: #000;
     min-height: 100vh;
-    width: 100vw;
     overflow-x: hidden;
     background: url('static/img/2christmas_-01-01.png') no-repeat center center fixed;
     background-size: cover;
 }
 
 /* ------------------------------------
-   SNOW
+   SNOW LAYER (Always behind content)
 ------------------------------------ */
 #snow-container {
     position: fixed;
@@ -54,48 +48,43 @@ body {
     will-change: transform;
 }
 
-@media (max-width: 600px) {
-    .snowflake {
-        width: 4px;
-        height: 4px;
-    }
-}
-
 @keyframes snowFall {
     0%   { transform: translateY(0) translateX(0); }
     50%  { transform: translateY(60vh) translateX(12px); }
     100% { transform: translateY(110vh) translateX(-12px); }
 }
 
+@media (max-width:600px) {
+    .snowflake { width: 4px; height: 4px; }
+}
+
 /* ------------------------------------
-   SIDEBAR (DESKTOP)
+   SIDEBAR — DESKTOP
 ------------------------------------ */
-    .sidebar {
-        width: 100vw;
-        height: auto;
-        flex-direction: row;
-        align-items: left;
-        justify-content: space-around;
-        position: static;
-        box-shadow: none;
-        padding: 0;
-        background: rgba(0,0,0,0);
-    }
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: transparent;
+    padding-top: 20px;
+    z-index: 20;
+}
 
 .sidebar a {
     display: block;
     padding: 10px 18px;
-    color: #000000 !important;
-    text-decoration: none !important;
     font-size: 18px;
-    background: none !important;
-    border: none !important;
+    color: #000 !important;
+    text-decoration: none !important;
     transition: opacity 0.2s;
 }
 
-.sidebar a:hover {
-    opacity: 0.6;
-}
+.sidebar a:hover { opacity: 0.6; }
 
 .highlight2 {
     background: rgba(255,255,255,0.8);
@@ -104,15 +93,15 @@ body {
 }
 
 /* ------------------------------------
-   CONTENT AREA DESKTOP
+   CONTENT AREA — DESKTOP
 ------------------------------------ */
 .content-container {
-    width: 80%;
+    margin-left: 150px; /* ensure content does not overlap sidebar */
+    padding: 30px;
+    width: calc(100% - 150px);
     max-width: 1000px;
-    padding-top: 30px;
-    margin-left: 120px;
-    position: relative;
     z-index: 10;
+    position: relative;
 }
 
 .content-block {
@@ -123,8 +112,6 @@ body {
 
 .content-block2 {
     padding: 18px;
-    margin-top: 0px;
-    margin-left: 2px;
     margin-bottom: 18px;
 }
 
@@ -136,9 +123,28 @@ body {
 /* ------------------------------------
    MOBILE OVERRIDES
 ------------------------------------ */
-@media (max-width: 900px) {
+@media (max-width:900px) {
 
-    /* ---- FIX CONTENT AREA ---- */
+    /* Sidebar becomes top horizontal menu */
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 8px 0;
+        background: transparent;
+    }
+
+    .sidebar a {
+        padding: 8px 10px;
+        font-size: 15px;
+        border-right: 1px solid #d1e2f4;
+    }
+    .sidebar a:last-child { border-right: none; }
+
+    /* Content fills full width */
     .content-container {
         margin-left: 0 !important;
         width: 100% !important;
@@ -147,46 +153,19 @@ body {
         box-sizing: border-box;
     }
 
-    /* ---- MEMO2_2 MOBILE BACKGROUND FIX ---- */
+    /* Mobile memo background */
     .content-block {
         background: url('static/img/memo2_2.png') no-repeat center top !important;
         background-size: 100% 100% !important;
         padding: 18px !important;
-        min-height: 280px; /* ensures memo is visible */
+        min-height: 280px;
     }
 
-    /* ---- SOLID WHITE SIDEBAR (NO TRANSPARENCY) ---- */
-
-    .sidebar {
-        display: flex !important;
-        width: 100vw;
-        height: auto;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        position: static;
-        box-shadow: none;
-        padding: 0;
-        background: rgba(0,0,0,0);
-    }
-
-
-    .sidebar a {
-        padding: 8px 10px;
-        font-size: 15px;
-        border-right: 1px solid #d1e2f4;
-    }
-    .sidebar a:last-child {
-        border-right: none;
-    }
-
-    /* ---- MOBILE BODY BACKGROUND ---- */
     body {
         background: url('static/img/2christmas-01.png') no-repeat center center fixed !important;
         background-size: cover !important;
     }
 }
-
 
     </style>
 </head>
@@ -194,10 +173,10 @@ body {
 
 <body>
 
-        <!-- SNOW LAYER -->
+<!-- SNOW LAYER -->
 <div id="snow-container"></div>
 
-<!-- Sidebar -->
+<!-- SIDEBAR -->
 <div class="sidebar">
     <a href="index.html"><span class="highlight2">Home</span></a>
     <a href="cv.html"><span class="highlight2">About</span></a>
@@ -205,48 +184,53 @@ body {
     <a href="news.html"><span class="highlight2">News</span></a>
 </div>
 
-<!-- Content Area -->
+<!-- CONTENT -->
 <div class="content-container">
+
     <div class="content-block2">
         <h2><span class="highlight">Hojeong Lee</span></h2><br>
-        <span class="highlight"><strong>leeho@kaist.ac.kr</strong></span> <br>
-        <span class="highlight">N5, 291 Daehakro, Yuseong-gu, Daejeon, Republic of Korea</span> <br><br>
+        <span class="highlight"><strong>leeho@kaist.ac.kr</strong></span><br>
+        <span class="highlight">N5, 291 Daehakro, Yuseong-gu, Daejeon, Republic of Korea</span><br><br>
 
         <div class="contact-icons">
             <a href="https://scholar.google.com/citations?hl=en&user=qp40iEEAAAAJ">
-                <img src="static/img/gs-.png" style="width:25px;">
-            </a>&nbsp;
+                <img src="static/img/gs-.png" style="width:25px;"></a>&nbsp;
             <a href="https://www.linkedin.com/in/leeho99">
-                <img src="static/img/linkedin-.png" style="width:25px;">
-            </a>&nbsp;
+                <img src="static/img/linkedin-.png" style="width:25px;"></a>&nbsp;
             <a href="https://www.hcitech.org">
-                <img src="static/img/lab-.png" style="width:25px;">
-            </a>&nbsp;
+                <img src="static/img/lab-.png" style="width:25px;"></a>&nbsp;
             <a href="https://orcid.org/my-orcid?orcid=0009-0009-6366-6954">
-                <img src="static/img/orcid-.png" style="width:25px;">
-            </a>
+                <img src="static/img/orcid-.png" style="width:25px;"></a>
         </div><br>
 
-        <p> <span class="highlight">I am a researcher, designer, and engineer.</span><br><br> 
-            <span class="highlight">My research focuses on <strong>wearable haptic gloves, soft actuators, and HRI</strong>. </span><br> 
-            <span class="highlight">I aim to enhance the use of human hands by designing the auxiliary hardware and its control system, while also creating natural interaction scenarios for the device. </span><br> 
-            <span class="highlight">I graduated from Seoul National University with a Bachelor of Fine Arts in Industrial Design, and currently am a Ph.D candidate at HCI Tech Lab, Korea Advanced Institute of Science and Technology (KAIST).</span><br> 
-            <span class="highlight">My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.</span> </p>
+        <p>
+            <span class="highlight">I am a researcher, designer, and engineer.</span><br><br>
+            <span class="highlight">My research focuses on <strong>wearable haptic gloves, soft actuators, and HRI</strong>.</span><br>
+            <span class="highlight">I aim to enhance the use of human hands by designing auxiliary hardware and natural interaction scenarios for the device.</span><br><br>
+            <span class="highlight">I graduated from Seoul National University with a B.F.A. in Industrial Design, and am currently a Ph.D. candidate at HCI Tech Lab, KAIST.</span><br><br>
+            <span class="highlight">My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.</span>
+        </p>
     </div>
 
- <div class="content-block"> 
-     <h2>Latest News</h2> 
-     <h3>2025</h3> <p> 
-         <strong>Oct</strong> 
-         Presented a poster, <strong>'Effect of Movement Velocity and Flexion Angle on Realistic Haptic Reproduction'</strong> led by Dongkyu Kwak and me, at IEEE ISMAR 2025 in Daejeon, Korea.<br><hr> 
-         <strong>Jul</strong> Presented a paper, <strong>'3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback'</strong>, at IEEE World Haptics Conference 2025 in Suwon, Korea<br><hr> 
-         <strong>Jun</strong> I have successfully defended my master's thesis, <strong>'Wearable Haptic Interface for Shape Perception through Spatiotemporal Vibrotactile Patterns and Kinesthetic Feedback'</strong>. 
-         I will continue my research as Ph.D Candidate under Professor Sang Ho Yoon in Robotics Program, KAIST<br><hr> 
-     </p> <h3>2024</h3> <p> <strong>Dec</strong> Won the Dean's Award : Research Award from LACS, KAIST<br> 
-         <strong>Dec</strong> The paper that I participated in, 'ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction' (led by Hyungil Yi, KAIST), is published in IEEE ISMAR<br><hr> 
-         <strong>Oct</strong> Presented the IMWUT paper at UbiComp 2024 in Melbourne, Australia<br><hr> 
-         <strong>Sep</strong> My paper, <strong> 'EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR'</strong>, is published in IMWUT Vol.8<br> 
-     </p> </div> </div>
+    <div class="content-block">
+        <h2>Latest News</h2>
+        <h3>2025</h3>
+        <p>
+            <strong>Oct</strong> Presented a poster, <strong>'Effect of Movement Velocity and Flexion Angle on Realistic Haptic Reproduction'</strong> led by Dongkyu Kwak and me, at IEEE ISMAR 2025 in Daejeon, Korea.<br><hr>
+            <strong>Jul</strong> Presented a paper, <strong>'3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback'</strong>, at IEEE World Haptics Conference 2025 in Suwon, Korea.<br><hr>
+            <strong>Jun</strong> Successfully defended my master's thesis, <strong>'Wearable Haptic Interface for Shape Perception...'</strong><br><hr>
+        </p>
+
+        <h3>2024</h3>
+        <p>
+            <strong>Dec</strong> Won the Dean's Award from LACS, KAIST.<br>
+            <strong>Dec</strong> Contributed to the ISMAR paper 'ThermicVib'.<br><hr>
+            <strong>Oct</strong> Presented IMWUT paper at UbiComp 2024, Melbourne.<br><hr>
+            <strong>Sep</strong> Published <strong>'EStatiG'</strong> in IMWUT Vol. 8.<br>
+        </p>
+    </div>
+
+</div>
 
 <!-- SNOW SCRIPT -->
 <script>
@@ -259,19 +243,14 @@ function createSnowflakes() {
         flake.classList.add("snowflake");
 
         flake.style.left = Math.random() * 100 + "vw";
-
-        const duration = Math.random() * 6 + 5;
-        const delay = Math.random() * 6;
-
-        flake.style.animationDuration = duration + "s";
-        flake.style.animationDelay = delay + "s";
+        flake.style.animationDuration = (Math.random() * 6 + 5) + "s";
+        flake.style.animationDelay = (Math.random() * 6) + "s";
 
         container.appendChild(flake);
     }
 }
 createSnowflakes();
 </script>
-
 
 </body>
 </html>
