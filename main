@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Two Block Layout</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ===== Page Container ===== */
+    .page {
+      width: 100%;
+      padding: 40px 60px;
+    }
+
+    /* ===== Main Row ===== */
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 3fr; /* narrow / wide */
+      gap: 40px;
+      margin-bottom: 120px;
+      align-items: start;
+    }
+
+    /* ===== Left Block ===== */
+    .left-block {
+      font-size: 14px;
+    }
+
+    .left-block .brand {
+      font-weight: bold;
+      margin-bottom: 24px;
+    }
+
+    .left-block ul {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0 0;
+    }
+
+    .left-block li {
+      margin-bottom: 6px;
+    }
+
+    /* ===== Right Block ===== */
+    .right-block {
+      display: grid;
+      grid-template-columns: 1.2fr 2fr; /* text / image */
+      gap: 40px;
+      align-items: start;
+    }
+
+    .right-text h2 {
+      margin-top: 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .meta {
+      float: right;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .right-image {
+      background: #eee;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 12px;
+    }
+
+    /* ===== Sub Block ===== */
+    .sub-block {
+      grid-column: 1 / -1; /* span full width of right block */
+      display: grid;
+      grid-template-columns: 1.2fr 2fr;
+      gap: 40px;
+      margin-top: 80px;
+    }
+
+    .sub-image {
+      background: #eee;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 12px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .page {
+        padding: 24px;
+      }
+
+      .row {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .right-block,
+      .sub-block {
+        grid-template-columns: 1fr;
+      }
+
+      .meta {
+        float: none;
+        display: block;
+        margin-bottom: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- ===== ROW 1 ===== -->
+    <section class="row">
+      <aside class="left-block">
+        <div class="brand">Test Studio™</div>
+        <p>
+          <p>
+            I am a researcher, designer, and engineer.<br><br>
+            My research focuses on <strong>wearable haptic gloves, soft actuators, and HRI</strong>.<br>
+            I aim to enhance the use of human hands by designing auxiliary hardware and a control system for natural haptic interaction.<br><br>
+            Graduated from Seoul National University with a B.F.A. in Industrial Design, I am currently a Ph.D. candidate at HCI Tech Lab, Robotics Program, KAIST.<br><br>
+            My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.
+        </p>
+        </p>
+        <ul>
+          <li>I.</li>
+          <li>II.</li>
+          <li>III.</li>
+          <li>IV.</li>
+        </ul>
+      </aside>
+
+      <div class="right-block">
+        <div class="right-text">
+          <span class="meta">34/98/5973</span>
+          <h2>I.</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Ut posuere in tortor in cursus. Aliquam iaculis enim sit
+            amet diam pharetra volutpat.
+          </p>
+          <p>
+            Proin rhoncus enim sit amet<br />
+            Morbi cons<br />
+            Aliquam tincidunt dapibus
+          </p>
+        </div>
+
+        <div class="right-image">
+          Large Image Placeholder
+        </div>
+
+        <!-- Sub block -->
+        <div class="sub-block">
+          <div class="right-text">
+            <h2>II.</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Ut posuere in tortor in cursus.
+            </p>
+          </div>
+          <div class="sub-image">
+            Sub Image Placeholder
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
