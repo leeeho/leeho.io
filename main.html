@@ -3,39 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Two Block Layout</title>
+  <title>Sticky Sidebar + Scroll Projects</title>
+
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
+      overflow: hidden; /* prevent body scrolling */
     }
 
-    /* ===== Page Container ===== */
+    /* ===== Page padding ===== */
     .page {
-      width: 100%;
       padding: 40px 60px;
+      height: 100vh;
     }
 
-    /* ===== Main Row ===== */
+    /* ===== Main two-column layout ===== */
     .row {
       display: grid;
-      grid-template-columns: 1fr 3fr; /* narrow / wide */
+      grid-template-columns: 1fr 3fr; /* narrow | wide */
       gap: 40px;
-      height: calc(100vh - 80px); /* full viewport minus padding */
-      align-items: start;
+      height: 100%;
     }
 
-    /* ===== Left Block ===== */
+    /* ===== Left block (STILL) ===== */
     .left-block {
       font-size: 14px;
       position: sticky;
-      top: 40px; /* same as page padding */
+      top: 40px; /* matches page padding */
       align-self: start;
     }
 
-    .left-block .brand {
+    .brand {
       font-weight: bold;
       margin-bottom: 24px;
     }
@@ -43,37 +47,46 @@
     .left-block ul {
       list-style: none;
       padding: 0;
-      margin: 24px 0 0 0;
+      margin-top: 24px;
     }
 
     .left-block li {
       margin-bottom: 6px;
     }
 
-    /* ===== Right Block ===== */
+    /* ===== Right block (SCROLLS) ===== */
     .right-block {
+      height: 100%;
+      overflow-y: auto;
+      padding-right: 16px; /* space for scrollbar */
       display: flex;
       flex-direction: column;
       gap: 120px; /* space between projects */
-      overflow-y: auto;
-      padding-right: 16px; /* space for scrollbar */
     }
 
-    .right-text h2 {
-      margin-top: 0;
+    /* ===== One project = one row ===== */
+    .project {
+      display: grid;
+      grid-template-columns: 1.2fr 2fr; /* text | image */
+      gap: 40px;
+      align-items: start;
+    }
+
+    .project h2 {
+      margin: 0 0 12px 0;
       font-size: 18px;
-      font-weight: bold;
     }
 
     .meta {
-      float: right;
       font-size: 12px;
       font-weight: bold;
+      margin-bottom: 8px;
+      display: block;
     }
 
-    .right-image {
+    .project-image {
       background: #eee;
-      min-height: 280px;
+      min-height: 300px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -81,89 +94,40 @@
       font-size: 12px;
     }
 
-    /* ===== Sub Block ===== */
-    .sub-block {
-      grid-column: 1 / -1; /* span full width of right block */
-      display: grid;
-      grid-template-columns: 1.2fr 2fr;
-      gap: 40px;
-      margin-top: 80px;
-    }
-
-    .sub-image {
-      background: #eee;
-      min-height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #999;
-      font-size: 12px;
-    }
-
-    /* ===== Responsive ===== */
+    /* ===== Responsive (mobile) ===== */
     @media (max-width: 900px) {
+      body {
+        overflow: auto;
+      }
+
       .page {
         padding: 24px;
+        height: auto;
       }
 
       .row {
-        grid-template-columns: 1fr;
-        height: auto;
-        gap: 60px;
-      }
-
-      .project-inner {
         grid-template-columns: 1fr;
       }
 
       .right-block {
         overflow: visible;
+        gap: 80px;
       }
 
-      .meta {
-        float: none;
-        display: block;
-        margin-bottom: 12px;
-      }
-    }
-
-      .row {
-        grid-template-columns: 1fr;
-        gap: 60px;
-      }
-
-      .right-block,
-      .sub-block {
+      .project {
         grid-template-columns: 1fr;
       }
-
-      .meta {
-        float: none;
-        display: block;
-        margin-bottom: 12px;
-      }
     }
-  
-    .project {
-      width: 100%;
-    }
-
-    .project-inner {
-      display: grid;
-      grid-template-columns: 1.2fr 2fr; /* text / image */
-      gap: 40px;
-      align-items: start;
-    }
-
-    </style>
+  </style>
 </head>
 <body>
 
   <div class="page">
-
-    <!-- ===== ROW 1 ===== -->
     <section class="row">
-      <aside class="left-block">Hojeong Lee<div class="brand">divv
+
+      <!-- LEFT (STILL) -->
+      <aside class="left-block">
+        <div class="brand">Hojeong Lee</div>
         <p>
           I am a researcher, designer, and engineer.<br><br>
             My research focuses on <strong>wearable haptic gloves, soft actuators, and HRI</strong>.<br>
@@ -179,89 +143,68 @@
         </ul>
       </aside>
 
+      <!-- RIGHT (SCROLL) -->
       <div class="right-block">
 
-        <!-- PROJECT 1 -->
         <article class="project">
-          <div class="project-inner">
-            <div class="right-text">
-              <span class="meta">34/98/5973</span>
-              <h2>I.</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div class="right-image">Project Image</div>
+          <div>
+            <span class="meta">34/98/5973</span>
+            <h2>I.</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
+          <div class="project-image">Project Image</div>
         </article>
 
-        <!-- PROJECT 2 -->
         <article class="project">
-          <div class="project-inner">
-            <div class="right-text">
-              <h2>II.</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div class="right-image">Project Image</div>
+          <div>
+            <h2>II.</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
+          <div class="project-image">Project Image</div>
         </article>
 
-        <!-- PROJECT 3 -->
         <article class="project">
-          <div class="project-inner">
-            <div class="right-text">
-              <h2>III.</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div class="right-image">Project Image</div>
+          <div>
+            <h2>III.</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
+          <div class="project-image">Project Image</div>
         </article>
 
-        <!-- PROJECT 4 -->
         <article class="project">
-          <div class="project-inner">
-            <div class="right-text">
-              <h2>IV.</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div class="right-image">Project Image</div>
+          <div>
+            <h2>IV.</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
+          <div class="project-image">Project Image</div>
         </article>
 
-        <!-- PROJECT 5 -->
         <article class="project">
-          <div class="project-inner">
-            <div class="right-text">
-              <h2>V.</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div class="right-image">Project Image</div>
+          <div>
+            <h2>V.</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
+          <div class="project-image">Project Image</div>
         </article>
 
-        <!-- PROJECT 6 -->
         <article class="project">
-          <div class="project-inner">
-            <div class="right-text">
-              <h2>VI.</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div class="right-image">Project Image</div>
+          <div>
+            <h2>VI.</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
+          <div class="project-image">Project Image</div>
         </article>
 
-        <!-- PROJECT 7 -->
         <article class="project">
-          <div class="project-inner">
-            <div class="right-text">
-              <h2>VII.</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div class="right-image">Project Image</div>
+          <div>
+            <h2>VII.</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
+          <div class="project-image">Project Image</div>
         </article>
 
       </div>
     </section>
-
   </div>
 
 </body>
