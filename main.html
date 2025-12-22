@@ -23,13 +23,16 @@
       display: grid;
       grid-template-columns: 1fr 3fr; /* narrow / wide */
       gap: 40px;
-      margin-bottom: 120px;
+      height: calc(100vh - 80px); /* full viewport minus padding */
       align-items: start;
     }
 
     /* ===== Left Block ===== */
     .left-block {
       font-size: 14px;
+      position: sticky;
+      top: 40px; /* same as page padding */
+      align-self: start;
     }
 
     .left-block .brand {
@@ -49,10 +52,11 @@
 
     /* ===== Right Block ===== */
     .right-block {
-      display: grid;
-      grid-template-columns: 1.2fr 2fr; /* text / image */
-      gap: 40px;
-      align-items: start;
+      display: flex;
+      flex-direction: column;
+      gap: 120px; /* space between projects */
+      overflow-y: auto;
+      padding-right: 16px; /* space for scrollbar */
     }
 
     .right-text h2 {
@@ -104,6 +108,27 @@
 
       .row {
         grid-template-columns: 1fr;
+        height: auto;
+        gap: 60px;
+      }
+
+      .project-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .right-block {
+        overflow: visible;
+      }
+
+      .meta {
+        float: none;
+        display: block;
+        margin-bottom: 12px;
+      }
+    }
+
+      .row {
+        grid-template-columns: 1fr;
         gap: 60px;
       }
 
@@ -118,7 +143,19 @@
         margin-bottom: 12px;
       }
     }
-  </style>
+  
+    .project {
+      width: 100%;
+    }
+
+    .project-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 2fr; /* text / image */
+      gap: 40px;
+      align-items: start;
+    }
+
+    </style>
 </head>
 <body>
 
@@ -126,16 +163,13 @@
 
     <!-- ===== ROW 1 ===== -->
     <section class="row">
-      <aside class="left-block">
-        <div class="brand">Test Studio™</div>
+      <aside class="left-block">Hojeong Lee<div class="brand">divv
         <p>
-          <p>
-            I am a researcher, designer, and engineer.<br><br>
+          I am a researcher, designer, and engineer.<br><br>
             My research focuses on <strong>wearable haptic gloves, soft actuators, and HRI</strong>.<br>
             I aim to enhance the use of human hands by designing auxiliary hardware and a control system for natural haptic interaction.<br><br>
             Graduated from Seoul National University with a B.F.A. in Industrial Design, I am currently a Ph.D. candidate at HCI Tech Lab, Robotics Program, KAIST.<br><br>
             My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.
-        </p>
         </p>
         <ul>
           <li>I.</li>
@@ -146,38 +180,85 @@
       </aside>
 
       <div class="right-block">
-        <div class="right-text">
-          <span class="meta">34/98/5973</span>
-          <h2>I.</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Ut posuere in tortor in cursus. Aliquam iaculis enim sit
-            amet diam pharetra volutpat.
-          </p>
-          <p>
-            Proin rhoncus enim sit amet<br />
-            Morbi cons<br />
-            Aliquam tincidunt dapibus
-          </p>
-        </div>
 
-        <div class="right-image">
-          Large Image Placeholder
-        </div>
+        <!-- PROJECT 1 -->
+        <article class="project">
+          <div class="project-inner">
+            <div class="right-text">
+              <span class="meta">34/98/5973</span>
+              <h2>I.</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="right-image">Project Image</div>
+          </div>
+        </article>
 
-        <!-- Sub block -->
-        <div class="sub-block">
-          <div class="right-text">
-            <h2>II.</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Ut posuere in tortor in cursus.
-            </p>
+        <!-- PROJECT 2 -->
+        <article class="project">
+          <div class="project-inner">
+            <div class="right-text">
+              <h2>II.</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="right-image">Project Image</div>
           </div>
-          <div class="sub-image">
-            Sub Image Placeholder
+        </article>
+
+        <!-- PROJECT 3 -->
+        <article class="project">
+          <div class="project-inner">
+            <div class="right-text">
+              <h2>III.</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="right-image">Project Image</div>
           </div>
-        </div>
+        </article>
+
+        <!-- PROJECT 4 -->
+        <article class="project">
+          <div class="project-inner">
+            <div class="right-text">
+              <h2>IV.</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="right-image">Project Image</div>
+          </div>
+        </article>
+
+        <!-- PROJECT 5 -->
+        <article class="project">
+          <div class="project-inner">
+            <div class="right-text">
+              <h2>V.</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="right-image">Project Image</div>
+          </div>
+        </article>
+
+        <!-- PROJECT 6 -->
+        <article class="project">
+          <div class="project-inner">
+            <div class="right-text">
+              <h2>VI.</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="right-image">Project Image</div>
+          </div>
+        </article>
+
+        <!-- PROJECT 7 -->
+        <article class="project">
+          <div class="project-inner">
+            <div class="right-text">
+              <h2>VII.</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="right-image">Project Image</div>
+          </div>
+        </article>
+
       </div>
     </section>
 
