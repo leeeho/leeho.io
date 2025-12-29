@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sticky Sidebar + Scroll Projects</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hojeong Lee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:wght@400&display=swap" rel="stylesheet">
+    <style>
 
   <style>
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Noto Sans', sans-serif;      
+      line-height: 1.6;
       line-height: 1.6;
       overflow: hidden; /* prevent body scrolling */
     }
@@ -112,7 +116,7 @@
     .project-image {
       background: rgb(255,255,255);
       
-      width: 70%;
+      width: 100%;
       max-width: 300 px;
       min-width: 0;
 
@@ -121,9 +125,8 @@
       justify-content: flex-end;
     }
 
-    /* ⭐ KEY FIX: ensure image never spills over */
     .project-image img {
-      max-width: 100%;
+      max-width: 70%;
       height: auto;
       display: block;
       object-fit: contain;
@@ -155,7 +158,18 @@
   </style>
 </head>
 
+  
 <body>
+
+      <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="index.html"><span class="highlight2">Home</span></a>
+        <a href="cv.html"><span class="highlight2">About</span></a>
+        <a href="researches.html"><span class="highlight2">Projects</span></a>
+	<a href="news.html"><span class="highlight2">News</span></a>
+    </div>
+
+  
   <div class="page">
     <section class="row">
 
