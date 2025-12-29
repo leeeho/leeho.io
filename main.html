@@ -17,6 +17,18 @@
       overflow: hidden; /* prevent body scrolling */
     }
 
+    .block-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.block-link:hover .project {
+  background: rgba(235, 235, 235, 0.6);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+  transition: all 0.25s ease;
+}
 
     /* ===== Page padding ===== */
     .page {
@@ -86,8 +98,8 @@
     }
 
     .project-image {
-      background: #eee;
-      min-width: 500px;
+      background: rgb(255,255,255);
+      min-width: 400px;
       height: 100%;
       display: flex;
       align-items: center;
@@ -148,7 +160,8 @@
       <!-- RIGHT (SCROLL) -->
       <div class="right-block">
 
-        <article class="project">
+        <a href="" class="block-link" target="_blank">
+          <article class="project">
           <div>
             <span class="meta">Projects</span>
             <h2>Spatiotemporal Vibration Based Multimodal Haptic Rendering with a Lightweight Exo-Glove for 3D Shape Perception (Under Review)</h2>
@@ -158,7 +171,9 @@
           </div>
           <div class="project-image"> <img src="static/img/vibg.jpg" alt="vibgrasp"></div>
         </article>
+        </a>
 
+        <a href="" class="block-link" target="_blank">
         <article class="project">
           <div>
             <h2>Exoskeleton for 2-DoF kinesthetic feedback (Under Review)</h2>
@@ -168,15 +183,21 @@
           </div>
           <div class="project-image"> <img src="static/img/etri.jpg" alt="etri glove"></div>
         </article>
+        </a>
 
+        <a href="https://ieeexplore.ieee.org/document/11236332" class="block-link" target="blank">
         <article class="project">
           <div>
-            <h2>III.</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h2>Effect of Movement Velocity and Flexion Angle on Realistic Haptic Reproduction</h2>
+            <p>Dongkyu Kwak*, <strong>Hojeong Lee*</strong>, Sang Ho Yoon (* Equal Contribution) <br /><br />
+            <span class="text-gray-200"> Research on identifying which kinesthetic parameter matters more for realistic reproduction : Movement Velocity or Flexion Angle.</span><br /><br />
+          <strong>IEEE International Symposium on Mixed and Augmented Reality (ISMAR) 2025 Adjunct </strong></p>
           </div>
-          <div class="project-image">Project Image</div>
+          <div class="project-image"> <img src="static/img/6-1.png" alt="haptic reproduction"></div>
         </article>
+        </a>
 
+        
         <article class="project">
           <div>
             <h2>IV.</h2>
