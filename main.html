@@ -1,214 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hojeong Lee</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:wght@400&display=swap" rel="stylesheet">
-    <style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hojeong Lee</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:wght@400&display=swap" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; }
 
-    body {
+    :root{
+      --text-black: #000000;
+      --text-gray-200: #9ca3af; /* Tailwind's gray-200 */
+    }
+    .text-black { color: var(--text-black) !important; }
+    .text-gray-200 { color: var(--text-gray-200) !important; }
+
+    body{
       margin: 0;
-      font-family: 'Noto Sans', sans-serif;      
-      line-height: 1.6;
+      font-family: 'Noto Sans', sans-serif;
       line-height: 1.6;
       overflow: hidden; /* prevent body scrolling */
     }
-        :root{
-  --text-black: #000000;
-  --text-gray-200: #9ca3af; /* Tailwind's gray-200 */
-}
-.text-black { color: var(--text-black) !important; }
-.text-gray-200 { color: var(--text-gray-200) !important; }
-				
 
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 110px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 25px;
-    background: none !important;
-    z-index: 100;
-}
-
-.sidebar a {
-    display: block;
-    padding: 10px 18px;
-    color: #000000 !important;
-    text-decoration: none !important;
-    font-size: 18px;
-    background: none !important;
-    border: none !important;
-    transition: opacity 0.2s;
-}
-
-.sidebar a:hover {
-    opacity: 0.6;
-}
-
-    /* ===== Link wrapper for whole project row ===== */
-    .block-link {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    /* Make hover transition smooth (put transition on base, not only hover) */
-    .project {
-      transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
-      border-radius: 12px;
-      padding: 8px 12px; /* small padding so hover bg looks nice */
-    }
-
-    .block-link:hover .project {
-      background: rgba(235, 235, 235, 0.6);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-      transform: translateY(-2px);
-    }
-
-    /* ===== Page padding ===== */
-    .page {
-      padding: 40px 60px;
+    /* =========================
+       Fixed left NAV sidebar
+       ========================= */
+    .sidebar{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 110px;
       height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 25px;
+      background: transparent;
+      z-index: 100;
     }
 
-    /* ===== Main two-column layout ===== */
-    .row {
+    .sidebar a{
+      display: block;
+      padding: 10px 18px;
+      color: #000000 !important;
+      text-decoration: none !important;
+      font-size: 18px;
+      background: transparent;
+      border: none;
+      transition: opacity 0.2s;
+    }
+
+    .sidebar a:hover{ opacity: 0.6; }
+
+    /* =========================
+       Page wrapper (shift right so it never overlaps sidebar)
+       ========================= */
+    .page{
+      height: 100vh;
+      /* left padding includes sidebar width + breathing room */
+      padding: 40px 60px 40px 170px; /* ⭐ FIX: avoid overlap with .sidebar */
+    }
+
+    /* =========================
+       Main two-column layout
+       ========================= */
+    .row{
       display: grid;
-      grid-template-columns: 1fr 3fr; /* narrow | wide */
-      gap: 40px;
+      /* ⭐ FIX: lock left column width, prevent squeezing/overlap */
+      grid-template-columns: 340px minmax(0, 1fr);
+      gap: 48px;
       height: 100%;
+      align-items: start;
     }
 
-    /* ===== Left block (STILL) ===== */
-    .left-block {
+    /* =========================
+       Left block (sticky bio)
+       ========================= */
+    .left-block{
       font-size: 14px;
       position: sticky;
-      top: 40px; /* matches page padding */
+      top: 40px; /* matches page padding-top */
       align-self: start;
+      z-index: 2;
+      background: #fff; /* prevents visual overlap */
     }
 
-    .brand {
+    .brand{
       font-weight: bold;
       margin-bottom: 24px;
     }
 
-    .left-block ul {
+    .left-block ul{
       list-style: none;
       padding: 0;
       margin-top: 24px;
     }
 
-    .left-block li {
-      margin-bottom: 6px;
-    }
+    .left-block li{ margin-bottom: 6px; }
 
-    /* ===== Right block (SCROLLS) ===== */
-    .right-block {
+    /* =========================
+       Right block (scroll)
+       ========================= */
+    .right-block{
       height: 100%;
       overflow-y: auto;
       padding-right: 16px; /* space for scrollbar */
       display: flex;
       flex-direction: column;
-      gap: 120px; /* space between projects */
+		  font-size: 13px;
+      gap: 120px;
+
+      /* ⭐ FIX: prevent grid overflow + keep right block from being too wide */
+      min-width: 0;
+      max-width: 980px;
+      width: 100%;
+      justify-self: start;
     }
 
-    /* ===== One project = one row ===== */
-    .project {
+    /* =========================
+       Clickable project row
+       ========================= */
+    .block-link{
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .project{
       display: grid;
-
+      /* ⭐ FIX: allow columns to shrink properly */
       grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr);
-
       gap: 40px;
       align-items: start;
+
+      border-radius: 12px;
+      padding: 8px 12px;
+      transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
     }
 
-    .project > div {
-      min-width: 0;
+    .block-link:hover .project{
+      background: rgba(235, 235, 235, 0.6);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
     }
 
-    .project h2 {
+    .project > div{ min-width: 0; }
+
+    .project h2{
       margin: 0 0 12px 0;
       font-size: 14px;
     }
 
-    .meta {
+    .meta{
       font-size: 14px;
       font-weight: bold;
       margin-bottom: 8px;
       display: block;
     }
 
-    /* ===== Image column ===== */
-    .project-image {
+    /* =========================
+       Image column (smaller, no overflow)
+       ========================= */
+    .project-image{
       background: rgba(255,255,255,0);
-      
-      width: 100%;
-      max-width: 300 px;
       min-width: 0;
-
       display: flex;
       align-items: flex-start;
       justify-content: flex-end;
     }
 
-    .project-image img {
-      max-width: 70%;
+    /* ⭐ FIX: remove '300 px' typo and control image size properly */
+    .project-image img{
+      width: clamp(220px, 28vw, 330px); /* smaller + responsive */
+      max-width: 100%;
       height: auto;
       display: block;
       object-fit: contain;
     }
 
-    /* ===== Responsive (mobile) ===== */
-    @media (max-width: 900px) {
-      body { overflow: auto; }
+    /* =========================
+       Responsive (mobile)
+       ========================= */
+    @media (max-width: 900px){
+      body{ overflow: auto; }
 
-      .page {
-        padding: 24px;
+      .sidebar{
+        position: static;
+        width: auto;
+        height: auto;
+        flex-direction: row;
+        gap: 6px;
+        padding: 12px 12px 0 12px;
+      }
+
+      .sidebar a{
+        padding: 8px 10px;
+        font-size: 16px;
+      }
+
+      .page{
+        padding: 16px 16px 24px 16px; /* no need for left offset on mobile */
         height: auto;
       }
 
-      .row { grid-template-columns: 1fr; }
-
-      .right-block {
-        overflow: visible;
-        gap: 80px;
+      .row{
+        grid-template-columns: 1fr;
+        height: auto;
       }
 
-      .project { grid-template-columns: 1fr; }
+      .left-block{
+        position: static; /* sticky off on mobile */
+        top: auto;
+        background: transparent;
+      }
 
-      .project-image {
-        justify-content: flex-start; /* nicer on mobile */
+      .right-block{
+        overflow: visible;
+        gap: 80px;
+        max-width: 100%;
+        padding-right: 0;
+      }
+
+      .project{
+        grid-template-columns: 1fr;
+      }
+
+      .project-image{
+        justify-content: flex-start;
         margin-top: 12px;
+      }
+
+      .project-image img{
+        width: min(420px, 100%);
       }
     }
   </style>
 </head>
 
-  
 <body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <a href="index.html"><span class="highlight2">Home</span></a>
+    <a href="cv.html"><span class="highlight2">About</span></a>
+    <a href="researches.html"><span class="highlight2">Projects</span></a>
+    <a href="news.html"><span class="highlight2">News</span></a>
+  </div>
 
-      <!-- Sidebar -->
-    <div class="sidebar">
-        <a href="index.html"><span class="highlight2">Home</span></a>
-        <a href="cv.html"><span class="highlight2">About</span></a>
-        <a href="researches.html"><span class="highlight2">Projects</span></a>
-	<a href="news.html"><span class="highlight2">News</span></a>
-    </div>
-
-  
   <div class="page">
     <section class="row">
-
+		
       <!-- LEFT (STILL) -->
       <aside class="left-block">
         <div class="brand">Hojeong Lee</div>
