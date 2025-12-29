@@ -74,11 +74,11 @@
     }
 
     /* ===== Page padding ===== */
-    .page {
-      padding: 40px 60px;
-      height: 100vh;
-    }
-
+.page {
+  height: 100vh;
+  padding: 40px 60px;
+  padding-left: 170px; /* 110px sidebar + 60px spacing */
+}
     /* ===== Main two-column layout ===== */
 .row{
   display: grid;
@@ -146,7 +146,7 @@
     .project-image {
       background: rgba(255,255,255,0);
       width: 100%;
-      max-width: 300 px;
+      max-width: 300px;
       min-width: 0;
       display: flex;
       align-items: flex-start;
