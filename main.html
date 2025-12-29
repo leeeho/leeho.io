@@ -6,9 +6,7 @@
   <title>Sticky Sidebar + Scroll Projects</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -17,18 +15,25 @@
       overflow: hidden; /* prevent body scrolling */
     }
 
+    /* ===== Link wrapper for whole project row ===== */
     .block-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
 
-.block-link:hover .project {
-  background: rgba(235, 235, 235, 0.6);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  transform: translateY(-2px);
-  transition: all 0.25s ease;
-}
+    /* Make hover transition smooth (put transition on base, not only hover) */
+    .project {
+      transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+      border-radius: 12px;
+      padding: 8px 12px; /* small padding so hover bg looks nice */
+    }
+
+    .block-link:hover .project {
+      background: rgba(235, 235, 235, 0.6);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
 
     /* ===== Page padding ===== */
     .page {
@@ -80,9 +85,17 @@
     /* ===== One project = one row ===== */
     .project {
       display: grid;
-      grid-template-columns: 1.2fr 2fr; /* text | image */
+
+      /* ⭐ KEY FIX: allow columns to shrink properly */
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr);
+
       gap: 40px;
       align-items: start;
+    }
+
+    /* ⭐ Optional safety: allow text column to shrink without overflow */
+    .project > div {
+      min-width: 0;
     }
 
     .project h2 {
@@ -97,45 +110,54 @@
       display: block;
     }
 
+    /* ===== Image column ===== */
     .project-image {
       background: rgb(255,255,255);
-      width: 400px;
-      height: 100%;
+
+      /* ⭐ KEY FIX: remove fixed width, prevent overflow */
+      width: 100%;
+      min-width: 0;
+
       display: flex;
-      align-items: right;
-      justify-content: right;
-      color: rgb(255,255,255);
-      font-size: 12px;
+      align-items: flex-start;
+      justify-content: flex-end; /* align image to the right */
+    }
+
+    /* ⭐ KEY FIX: ensure image never spills over */
+    .project-image img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
     }
 
     /* ===== Responsive (mobile) ===== */
     @media (max-width: 900px) {
-      body {
-        overflow: auto;
-      }
+      body { overflow: auto; }
 
       .page {
         padding: 24px;
         height: auto;
       }
 
-      .row {
-        grid-template-columns: 1fr;
-      }
+      .row { grid-template-columns: 1fr; }
 
       .right-block {
         overflow: visible;
         gap: 80px;
       }
 
-      .project {
-        grid-template-columns: 1fr;
+      .project { grid-template-columns: 1fr; }
+
+      .project-image {
+        justify-content: flex-start; /* nicer on mobile */
+        margin-top: 12px;
       }
     }
   </style>
 </head>
-<body>
 
+<body>
   <div class="page">
     <section class="row">
 
@@ -144,10 +166,10 @@
         <div class="brand">Hojeong Lee</div>
         <p>
           I am a researcher, designer, and engineer.<br><br>
-            My research focuses on <strong>wearable haptic gloves, soft actuators, and HRI</strong>.<br>
-            I aim to enhance the use of human hands by designing auxiliary hardware and a control system for natural haptic interaction.<br><br>
-            Graduated from Seoul National University with a B.F.A. in Industrial Design, I am currently a Ph.D. candidate at HCI Tech Lab, Robotics Program, KAIST.<br><br>
-            My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.
+          My research focuses on <strong>wearable haptic gloves, soft actuators, and HRI</strong>.<br>
+          I aim to enhance the use of human hands by designing auxiliary hardware and a control system for natural haptic interaction.<br><br>
+          Graduated from Seoul National University with a B.F.A. in Industrial Design, I am currently a Ph.D. candidate at HCI Tech Lab, Robotics Program, KAIST.<br><br>
+          My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.
         </p>
         <ul>
           <li>I.</li>
@@ -160,44 +182,56 @@
       <!-- RIGHT (SCROLL) -->
       <div class="right-block">
 
-        <a href="" class="block-link" target="_blank">
+        <a href="" class="block-link" target="_blank" rel="noopener">
           <article class="project">
-          <div>
-            <span class="meta">Projects</span>
-            <h2>Spatiotemporal Vibration Based Multimodal Haptic Rendering with a Lightweight Exo-Glove for 3D Shape Perception (Under Review)</h2>
-            <p> <strong>Hojeong Lee</strong>, Eunho Kim, Rachel Kim, Sang Ho Yoon <br /><br />
-         <span class="text-gray-200"> A validation of a novel haptic rendering method with an exoskeleton glove for efficient 3D shape perception. </span><br /><br />
-          <strong>IEEE Transactions on Haptics (ToH) </strong></p>
-          </div>
-          <div class="project-image"> <img src="static/img/vibg.jpg" alt="vibgrasp"></div>
-        </article>
+            <div>
+              <span class="meta">Projects</span>
+              <h2>Spatiotemporal Vibration Based Multimodal Haptic Rendering with a Lightweight Exo-Glove for 3D Shape Perception (Under Review)</h2>
+              <p>
+                <strong>Hojeong Lee</strong>, Eunho Kim, Rachel Kim, Sang Ho Yoon <br /><br />
+                <span class="text-gray-200">A validation of a novel haptic rendering method with an exoskeleton glove for efficient 3D shape perception.</span><br /><br />
+                <strong>IEEE Transactions on Haptics (ToH)</strong>
+              </p>
+            </div>
+            <div class="project-image">
+              <img src="static/img/vibg.jpg" alt="vibgrasp">
+            </div>
+          </article>
         </a>
 
-        <a href="" class="block-link" target="_blank">
-        <article class="project">
-          <div>
-            <h2>Exoskeleton for 2-DoF kinesthetic feedback (Under Review)</h2>
-            <p>Daegeun Park, <strong>Hojeong Lee</strong>, Sang Ho Yoon, Sung-uk Jung <br /><br />
-            <span class="text-gray-200"> Actuator and exoskeleton module for effective 2-DoF finger movement. </span><br /><br />
-          <strong>IEEE Robotics and Automation Letters (RA-L) </strong></p>
-          </div>
-          <div class="project-image"> <img src="static/img/etri.jpg" alt="etri glove"></div>
-        </article>
+        <a href="" class="block-link" target="_blank" rel="noopener">
+          <article class="project">
+            <div>
+              <h2>Exoskeleton for 2-DoF kinesthetic feedback (Under Review)</h2>
+              <p>
+                Daegeun Park, <strong>Hojeong Lee</strong>, Sang Ho Yoon, Sung-uk Jung <br /><br />
+                <span class="text-gray-200">Actuator and exoskeleton module for effective 2-DoF finger movement.</span><br /><br />
+                <strong>IEEE Robotics and Automation Letters (RA-L)</strong>
+              </p>
+            </div>
+            <div class="project-image">
+              <img src="static/img/etri.jpg" alt="etri glove">
+            </div>
+          </article>
         </a>
 
-        <a href="https://ieeexplore.ieee.org/document/11236332" class="block-link" target="blank">
-        <article class="project">
-          <div>
-            <h2>Effect of Movement Velocity and Flexion Angle on Realistic Haptic Reproduction</h2>
-            <p>Dongkyu Kwak*, <strong>Hojeong Lee*</strong>, Sang Ho Yoon (* Equal Contribution) <br /><br />
-            <span class="text-gray-200"> Research on identifying which kinesthetic parameter matters more for realistic reproduction : Movement Velocity or Flexion Angle.</span><br /><br />
-          <strong>IEEE International Symposium on Mixed and Augmented Reality (ISMAR) 2025 Adjunct </strong></p>
-          </div>
-          <div class="project-image"> <img src="static/img/6-1.png" alt="haptic reproduction"></div>
-        </article>
+        <a href="https://ieeexplore.ieee.org/document/11236332" class="block-link" target="_blank" rel="noopener">
+          <article class="project">
+            <div>
+              <h2>Effect of Movement Velocity and Flexion Angle on Realistic Haptic Reproduction</h2>
+              <p>
+                Dongkyu Kwak*, <strong>Hojeong Lee*</strong>, Sang Ho Yoon (* Equal Contribution) <br /><br />
+                <span class="text-gray-200">Research on identifying which kinesthetic parameter matters more for realistic reproduction: Movement Velocity or Flexion Angle.</span><br /><br />
+                <strong>IEEE International Symposium on Mixed and Augmented Reality (ISMAR) 2025 Adjunct</strong>
+              </p>
+            </div>
+            <div class="project-image">
+              <img src="static/img/6-1.png" alt="haptic reproduction">
+            </div>
+          </article>
         </a>
 
-        
+        <!-- Non-linked examples -->
         <article class="project">
           <div>
             <h2>IV.</h2>
@@ -233,6 +267,5 @@
       </div>
     </section>
   </div>
-
 </body>
 </html>
