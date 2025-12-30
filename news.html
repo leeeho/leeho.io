@@ -112,19 +112,6 @@
                 padding-left: 0;
                 padding-right: 0;
             }
-
-               .sidebar {
-        width: 100vw;
-        height: auto;
-		background: #e2ffb8;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        position: static;
-        box-shadow: none;
-        padding: 0;
-        background: rgba(0,0,0,0);
-    }
             .sidebar a {
                 display: inline-block;
                 border-bottom: none;
@@ -135,14 +122,15 @@
             .sidebar a:last-child {
                 border-right: none;
             }
-			}
+		
 
   .sidebar{
-    position: sticky;         /* stays at top while scrolling */
+           /* stays at top while scrolling */
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 60px;
+	  		background: #e2ffb8;
     padding: 0;
     flex-direction: row;
     align-items: center;
@@ -152,10 +140,6 @@
     border-bottom: 2px solid #ffc8ef; /* optional */
   }
 
-  .sidebar a{
-    padding: 10px 12px;
-    font-size: 13px;
-  }
             .content-block {
                 background-image: url('static/img/memo2.png');
                 background-size: 100% 100%;
@@ -167,80 +151,6 @@
             }
         }
 
-        @media (max-width: 600px) {
-            body {
-                font-size: 0.98em;
-            }
-
-			    .sidebar {
-        width: 100vw;
-        height: auto;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        position: static;
-        box-shadow: none;
-        padding: 0;
-        background: rgba(0,0,0,0);
-    }
-			
-            .sidebar a {
-                font-size: 15px;
-                padding: 8px 8px;
-            }
-            .content-container {
-                width: 99%;
-                margin-left: 0;
-                padding-left: 0;
-                padding-right: 0;
-            }
-            .content-block {
-                background-image: url('static/img/memo2.png');
-                background-size: 100% 100%;
-                background-repeat: no-repeat;
-                position: relative;
-                z-index: 1;
-                padding: 10px;
-                margin-bottom: 25px;
-            }
-            .content-block2 {
-                padding: 3px;
-                margin-bottom: 15px;
-            }
-        }
-
-        @media (max-width: 400px) {
-
-			    .sidebar {
-        width: 100vw;
-        height: auto;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        position: static;
-        box-shadow: none;
-        padding: 0;
-        background: rgba(0,0,0,0);
-    }
-			
-            .sidebar a {
-                font-size: 13px;
-                padding: 6px 4px;
-            }
-            .content-block {
-                background-image: url('static/img/memo2.png');
-                background-size: 100% 100%;
-                background-repeat: no-repeat;
-                position: relative;
-                z-index: 1;
-                padding: 20px;
-                margin-bottom: 25px;
-            }
-            .content-block2 {
-                padding: 3px;
-                margin-bottom: 15px;
-            }
-        }
     </style>
 </head>
 <body>
