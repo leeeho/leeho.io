@@ -5,206 +5,194 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hojeong Lee</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Cardo:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Cardo:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     * { box-sizing: border-box; }
 
-    body {
+    body{
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       line-height: 1.6;
-      overflow: hidden; /* prevent body scrolling */
+      overflow: hidden;
     }
 
-    :root {
-      --text-black: #000000;
-      --text-gray-200: #5d6066; /* Tailwind's gray-200 */
+    :root{
+      --left-bg: #000000;
+      --right-bg: #00639c;
+      --sidebar-bg: #ff4e00;
+      --text-gray: #ffffff;
     }
 
-    .text-black { color: var(--text-black) !important; }
-    .text-gray-200 { color: var(--text-gray-200) !important; }
-
-    .sidebar {
+    /* ===== Sidebar ===== */
+    .sidebar{
       position: fixed;
       top: 0;
       left: 0;
       width: 100px;
       height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
       padding-top: 25px;
-      background: #ff4e00;
-      z-index: 100;
-    }
-
-    .sidebar a {
-      display: block;
-      padding: 10px 18px;
-      color: rgb(0,0,0);
-      text-decoration: none !important;
-      font-size: 14px;
-      background: none !important;
-      border: none !important;
-      transition: opacity 0.2s;
-    }
-
-    .sidebar a:hover { opacity: 0.6; }
-
-    /* ===== Link wrapper for whole project row ===== */
-    .block-link {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    /* Make hover transition smooth (put transition on base, not only hover) */
-    .project {
-      background: #fffcb6;
-      transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
-      padding: 8px 12px; /* small padding so hover bg looks nice */
-    }
-
-    .block-link:hover .project {
-      background: #fffcb6;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-      transform: translateY(-2px);
-    }
-
-    /* ===== Page padding ===== */
-.page {
-  height: 100vh;
-padding-top:    40px;
-padding-bottom: 40px;
-padding-left:   60px;
-padding-right:  0px;
-  padding-left: 160px; /* 110px sidebar + 60px spacing */
-
-  /* left side pink, right side white */
-  background: linear-gradient(
-    to right,
-    #dedede 0,
-    #dedede calc(160px + 450px + 60px), /* sidebar+leftcol+gap */
-    #fffcb6 calc(160px + 450px + 60px),
-    #fffcb6 100%
-  );
-}
-    /* ===== Main two-column layout ===== */
-.row{
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.8fr); /* fixed left | flexible right */
-  gap: 60px;
-  height: 100%;
-  align-items: start;
-}
-
-    /* ===== Left block (STILL) ===== */
-    .left-block {
-      font-size: 14px;
-      position: sticky;
-      top: 40px; /* matches page padding */
-      align-self: start;
-    }
-
-    .brand {
-      font-family: 'Cardo', serif;
-      font-weight: bold;
-      font-size: 24px;
-      margin-bottom: 24px;
-    }
-
-        .contact {
-      font-size: 12px;
-      margin-bottom: 20px;
-    }
-
-
-    .left-block ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 24px;
-    }
-
-    .left-block li { margin-bottom: 6px; }
-
-    /* ===== Right block (SCROLLS) ===== */
-    .right-block {
-      height: 100%;
-      overflow-y: auto;
-      font-size: 13px;
-      padding-right: 8px; /* space for scrollbar */
+      background: var(--sidebar-bg);
+      z-index: 10;
       display: flex;
       flex-direction: column;
-        justify-self: start;  /* keep it aligned left inside the column */
-  margin-left: auto;    /* optional: center within available space */
-  margin-right: auto;   /* optional: center within available space */
-      gap: 30px; /* space between projects */
     }
-    /* ===== One project = one row ===== */
-    .project {
+
+    .sidebar a{
+      padding: 10px 18px;
+      font-size: 14px;
+      color: #000;
+      text-decoration: none;
+    }
+
+    /* ===== Page wrapper ===== */
+    .page{
+      position: relative;
+      height: 100vh;
+      padding: 40px 0 40px 160px; /* sidebar offset only */
+    }
+
+    /* ===== Background grid (ratio-locked) ===== */
+    .bg-grid{
+      position: absolute;
+      inset: 0;
+      padding-left: 160px; /* same as page */
       display: grid;
-      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
-      gap: 30px;
+      grid-template-columns: 1.2fr 1.8fr;
+      gap: 60px;
+      z-index: 0;
+    }
+
+    .bg-grid::before{
+      content: "";
+      background: var(--left-bg);
+    }
+
+    .bg-grid::after{
+      content: "";
+      background: var(--right-bg);
+    }
+
+    /* ===== Foreground grid ===== */
+    .row{
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1.2fr 1.8fr;
+      gap: 60px;
       align-items: start;
     }
 
-    .project > div { min-width: 0; }
-
-    .project h2 {
-      margin: 0 0 12px 0;
+    /* ===== Left block ===== */
+    .left-block{
+      position: sticky;
+      top: 40px;
       font-size: 14px;
+       color: var(--text-gray);
     }
 
-    .meta {
-      font-size: 14px;
-      font-weight: bold;
-      margin-bottom: 8px;
-      display: block;
+    .brand{
+      font-family: 'Cardo', serif;
+      font-size: 24px;
+       color: var(--text-gray);
+      font-weight: 700;
+      margin-bottom: 20px;
     }
 
-    /* ===== Image column ===== */
-    .project-image {
-      background: rgba(255,255,255,0);
-      width: 100%;
-      max-width: 300px;
-      min-width: 0;
+    .contact-icons{
       display: flex;
-      align-items: flex-start;
-      justify-content: flex-end;
+      gap: 12px;
+      margin-bottom: 20px;
     }
 
-    .project-image img {
-      max-width: 100%;
+    .contact-icons img{
+      width: 18px;
       height: auto;
       display: block;
-      object-fit: contain;
     }
 
-    /* ===== Responsive (mobile) ===== */
-    @media (max-width: 900px) {
-      body { overflow: auto; }
+    .contact{
+      font-size: 12px;
+      margin-bottom: 20px;
+      color: var(--text-gray);
+    }
 
-      .page {
+    /* ===== Right block ===== */
+    .right-block{
+      height: 100%;
+      overflow-y: auto;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+       color: var(--text-gray);
+      padding-right: 8px;
+    }
+
+    /* ===== Project ===== */
+    .block-link{
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project{
+      display: grid;
+      grid-template-columns: 1.8fr 1fr;
+      gap: 30px;
+      padding: 8px 12px;
+      background: var(--right-bg);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .block-link:hover .project{
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    }
+
+    .project h2{
+      font-size: 14px;
+       color: var(--text-gray);
+      margin: 0 0 10px;
+    }
+
+    .project-image{
+      max-width: 300px;
+      justify-self: end;
+    }
+
+    .project-image img{
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* ===== Mobile ===== */
+    @media (max-width: 900px){
+      body{ overflow: auto; }
+
+      .page{
         padding: 24px;
-        height: auto;
       }
 
-      .row { grid-template-columns: 1fr; }
+      .bg-grid{
+        display: none;
+      }
 
-      .right-block {
+      .row{
+        grid-template-columns: 1fr;
+      }
+
+      .right-block{
         overflow: visible;
-        gap: 80px;
       }
 
-      .project { grid-template-columns: 1fr; }
-
-      .project-image {
-        justify-content: flex-start; /* nicer on mobile */
-        margin-top: 12px;
+      .project{
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -225,7 +213,6 @@ padding-right:  0px;
       <!-- LEFT (STILL) -->
 
         <aside class="left-block">
-        <div class="brand">Hojeong Lee</div>
           <div class="brand">Hojeong Lee</div>
 
   <div class="contact-icons">
