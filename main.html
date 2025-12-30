@@ -38,7 +38,7 @@
       flex-direction: column;
       align-items: flex-start;
       padding-top: 25px;
-      background: rgb(253,255,77);
+      background: #ffc364;
       z-index: 100;
     }
 
@@ -83,6 +83,16 @@ padding-bottom: 40px;
 padding-left:   60px;
 padding-right:  0px;
   padding-left: 160px; /* 110px sidebar + 60px spacing */
+
+  /* left side pink, right side white */
+  background: linear-gradient(
+    to right,
+    #dedede 0,
+    #dedede calc(160px + 450px + 60px), /* sidebar+leftcol+gap */
+    #ffffff calc(160px + 450px + 60px),
+    #ffffff 100%
+  );
+}
 }
     /* ===== Main two-column layout ===== */
 .row{
@@ -93,15 +103,9 @@ padding-right:  0px;
   align-items: start;
 }
 
-.left-col{
-  background: #ff9fcc;
-  height: 100%;
-  padding: 0; /* keep it flush */
-}
     /* ===== Left block (STILL) ===== */
     .left-block {
       font-size: 14px;
-      background: #ff9fcc;
       position: sticky;
       top: 40px; /* matches page padding */
       align-self: start;
@@ -220,7 +224,7 @@ padding-right:  0px;
     <section class="row">
 
       <!-- LEFT (STILL) -->
-      <div class="left-col">
+
         <aside class="left-block">
         <div class="brand">Hojeong Lee</div>
         <div class="contact">leeho@kaist.ac.kr <br>
@@ -233,7 +237,7 @@ padding-right:  0px;
           My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.
         </p>
       </aside>
-      </div>
+
 
       <!-- RIGHT (SCROLL) -->
       <div class="right-block">
