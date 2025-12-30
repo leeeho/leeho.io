@@ -25,7 +25,7 @@
       --text-light: #ffffff;
       --gap-size: 60px;
       --sidebar-width: 100px;
-        --page-offset: calc(var(--sidebar-width) + var(--gap-size));
+      --page-offset: 100px; /* sidebar + spacing */
     }
 
     /* ================= Sidebar ================= */
@@ -64,11 +64,11 @@
   left: var(--page-offset);  /* start AFTER sidebar offset */
   right: 0;
   display: grid;
-  grid-template-columns: var(--gap-size) 1.2fr var(--gap-size) 1.8fr;
+  grid-template-columns: 1.2fr var(--gap-size) 1.8fr;
   z-index: 0;
   pointer-events: none;
 }
-    .bg-gap-left { background: var(--left-bg); }
+
     .bg-left  { background: var(--left-bg); }
     .bg-gap   { background: var(--left-bg); } /* keep gap same as left */
     .bg-right { background: var(--right-bg); }
@@ -204,7 +204,6 @@
 
   <div class="page">
     <div class="bg-grid" aria-hidden="true">
-        <div class="bg-gap-left"></div>
   <div class="bg-left"></div>
   <div class="bg-gap"></div>
   <div class="bg-right"></div>
