@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,185 +11,181 @@
   <style>
     * { box-sizing: border-box; }
 
-    body{
+    body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       line-height: 1.6;
       overflow: hidden;
     }
 
-    :root{
+    :root {
+      --sidebar-bg: #ff4e00;
       --left-bg: #000000;
       --right-bg: #00639c;
-      --sidebar-bg: #ff4e00;
-      --text-gray: #ffffff;
+      --text-light: #ffffff;
+      --gap-size: 60px;
+      --sidebar-width: 100px;
+      --page-offset: 160px; /* sidebar + spacing */
     }
 
-    /* ===== Sidebar ===== */
-    .sidebar{
+    /* ================= Sidebar ================= */
+    .sidebar {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100px;
+      width: var(--sidebar-width);
       height: 100vh;
-      padding-top: 25px;
       background: var(--sidebar-bg);
-      z-index: 10;
+      padding-top: 25px;
+      z-index: 20;
       display: flex;
       flex-direction: column;
     }
 
-    .sidebar a{
+    .sidebar a {
       padding: 10px 18px;
       font-size: 14px;
       color: #000;
       text-decoration: none;
     }
 
-    /* ===== Page wrapper ===== */
-    .page{
+    /* ================= Page Wrapper ================= */
+    .page {
       position: relative;
       height: 100vh;
-      padding: 40px 0 40px 160px; /* sidebar offset only */
+      padding: 40px 0 40px var(--page-offset);
     }
 
-    /* ===== Background grid (ratio-locked) ===== */
-    .bg-grid{
+    /* ================= Background Grid (REAL FIX) ================= */
+    .bg-grid {
       position: absolute;
       inset: 0;
-      padding-left: 160px; /* same as page */
+      padding-left: var(--page-offset);
       display: grid;
-      grid-template-columns: 1.2fr 1.8fr;
-      gap: 60px;
+      grid-template-columns: 1.2fr var(--gap-size) 1.8fr;
+      height: 100%;
       z-index: 0;
+      pointer-events: none;
     }
 
-    .bg-grid::before{
-      content: "";
-      background: var(--left-bg);
-    }
+    .bg-left  { background: var(--left-bg); }
+    .bg-gap   { background: var(--left-bg); } /* keep gap same as left */
+    .bg-right { background: var(--right-bg); }
 
-    .bg-grid::after{
-      content: "";
-      background: var(--right-bg);
-    }
-
-    /* ===== Foreground grid ===== */
-    .row{
+    /* ================= Foreground Grid ================= */
+    .row {
       position: relative;
       z-index: 1;
       height: 100%;
       display: grid;
       grid-template-columns: 1.2fr 1.8fr;
-      gap: 60px;
+      gap: var(--gap-size);
       align-items: start;
     }
 
-    /* ===== Left block ===== */
-    .left-block{
+    /* ================= Left Block ================= */
+    .left-block {
       position: sticky;
       top: 40px;
       font-size: 14px;
-       color: var(--text-gray);
+      color: var(--text-light);
     }
 
-    .brand{
+    .brand {
       font-family: 'Cardo', serif;
       font-size: 24px;
-       color: var(--text-gray);
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    .contact-icons{
+    .contact-icons {
       display: flex;
       gap: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    .contact-icons img{
-      width: 18px;
+    .contact-icons img {
+      width: 16px;
       height: auto;
       display: block;
     }
 
-    .contact{
+    .contact {
       font-size: 12px;
       margin-bottom: 20px;
-      color: var(--text-gray);
+      color: var(--text-light);
     }
 
-    /* ===== Right block ===== */
-    .right-block{
+    /* ================= Right Block ================= */
+    .right-block {
       height: 100%;
       overflow-y: auto;
       font-size: 13px;
+      color: var(--text-light);
       display: flex;
       flex-direction: column;
       gap: 30px;
-       color: var(--text-gray);
       padding-right: 8px;
     }
 
-    /* ===== Project ===== */
-    .block-link{
+    /* ================= Projects ================= */
+    .block-link {
       text-decoration: none;
       color: inherit;
     }
 
-    .project{
+    .project {
       display: grid;
       grid-template-columns: 1.8fr 1fr;
       gap: 30px;
-      padding: 8px 12px;
+      padding: 10px 14px;
       background: var(--right-bg);
       transition: transform .25s ease, box-shadow .25s ease;
     }
 
-    .block-link:hover .project{
+    .block-link:hover .project {
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(0,0,0,.12);
     }
 
-    .project h2{
+    .project h2 {
       font-size: 14px;
-       color: var(--text-gray);
       margin: 0 0 10px;
+      color: var(--text-light);
     }
 
-    .project-image{
+    .project-image {
       max-width: 300px;
       justify-self: end;
     }
 
-    .project-image img{
+    .project-image img {
       width: 100%;
       height: auto;
       object-fit: contain;
       display: block;
     }
 
-    /* ===== Mobile ===== */
-    @media (max-width: 900px){
-      body{ overflow: auto; }
+    /* ================= Mobile ================= */
+    @media (max-width: 900px) {
+      body { overflow: auto; }
 
-      .page{
+      .bg-grid { display: none; }
+
+      .page {
         padding: 24px;
+        height: auto;
       }
 
-      .bg-grid{
-        display: none;
-      }
-
-      .row{
+      .row {
         grid-template-columns: 1fr;
       }
 
-      .right-block{
+      .right-block {
         overflow: visible;
       }
 
-      .project{
+      .project {
         grid-template-columns: 1fr;
       }
     }
