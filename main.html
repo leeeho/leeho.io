@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hojeong Lee</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:wght@400&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
   <style>
     * { box-sizing: border-box; }
 
@@ -85,7 +86,7 @@
     /* ===== Main two-column layout ===== */
 .row{
   display: grid;
-  grid-template-columns: 400px minmax(0, 1fr); /* fixed left | flexible right */
+  grid-template-columns: 450px minmax(0, 1fr); /* fixed left | flexible right */
   gap: 48px;
   height: 100%;
   align-items: start;
@@ -101,10 +102,17 @@
     }
 
     .brand {
+      font-family: 'Ancizar Serif', serif;
       font-weight: bold;
       font-size: 18px;
       margin-bottom: 24px;
     }
+
+        .contact {
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
 
     .left-block ul {
       list-style: none;
@@ -150,11 +158,11 @@
 
     .project h2 {
       margin: 0 0 12px 0;
-      font-size: 14px;
+      font-size: 15px;
     }
 
     .meta {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: bold;
       margin-bottom: 8px;
       display: block;
@@ -207,7 +215,7 @@
 <body>
   <!-- Sidebar -->
   <div class="sidebar">
-    <a href="index.html"><span class="highlight2">Home</span></a>
+    <a href="main.html"><span class="highlight2">Home</span></a>
     <a href="cv.html"><span class="highlight2">About</span></a>
     <a href="researches.html"><span class="highlight2">Projects</span></a>
     <a href="news.html"><span class="highlight2">News</span></a>
@@ -219,19 +227,15 @@
       <!-- LEFT (STILL) -->
       <aside class="left-block">
         <div class="brand">Hojeong Lee</div>
+        <div class="contact">leeho@kaist.ac.kr <br>
+        N5, 291 Daehakro, Yuseong-gu, Daejeon, Republic of Korea</div>
         <p>
           I am a researcher, designer, and engineer.<br><br>
           My research focuses on <strong>wearable haptic gloves, soft actuators, and HRI</strong>.<br>
           I aim to enhance the use of human hands by designing auxiliary hardware and a control system for natural haptic interaction.<br><br>
-          Graduated from Seoul National University with a B.F.A. in Industrial Design, I am currently a Ph.D. candidate at HCI Tech Lab, Robotics Program, KAIST.<br><br>
+          Graduated from Seoul National University with a B.F.A. in Industrial Design and KAIST CT with a Master of Science, I am currently a Ph.D. candidate at HCI Tech Lab, Robotics Program, KAIST.<br><br>
           My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.
         </p>
-        <ul>
-          <li>I.</li>
-          <li>II.</li>
-          <li>III.</li>
-          <li>IV.</li>
-        </ul>
       </aside>
 
       <!-- RIGHT (SCROLL) -->
