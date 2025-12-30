@@ -57,16 +57,17 @@
     }
 
     /* ================= Background Grid (REAL FIX) ================= */
-    .bg-grid {
-      position: absolute;
-      inset: 0;
-      padding-left: var(--page-offset);
-      display: grid;
-      grid-template-columns: 1.2fr var(--gap-size) 1.8fr;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
+.bg-grid{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--page-offset);  /* start AFTER sidebar offset */
+  right: 0;
+  display: grid;
+  grid-template-columns: 1.2fr var(--gap-size) 1.8fr;
+  z-index: 0;
+  pointer-events: none;
+}
 
     .bg-left  { background: var(--left-bg); }
     .bg-gap   { background: var(--left-bg); } /* keep gap same as left */
@@ -202,6 +203,12 @@
   </div>
 
   <div class="page">
+    <div class="bg-grid" aria-hidden="true">
+  <div class="bg-left"></div>
+  <div class="bg-gap"></div>
+  <div class="bg-right"></div>
+</div>
+
     <section class="row">
 
       <!-- LEFT (STILL) -->
