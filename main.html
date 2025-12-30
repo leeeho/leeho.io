@@ -89,14 +89,14 @@ padding-right:  0px;
     to right,
     #dedede 0,
     #dedede calc(160px + 450px + 60px), /* sidebar+leftcol+gap */
-    #ff4e00 calc(160px + 450px + 60px),
-    #ff4e00 100%
+    #fffcb6 calc(160px + 450px + 60px),
+    #fffcb6 100%
   );
 }
     /* ===== Main two-column layout ===== */
 .row{
   display: grid;
-  grid-template-columns: 450px minmax(0, 1fr); /* fixed left | flexible right */
+  grid-template-columns: minmax(0, 1.2fr); minmax(0, 1.8fr); /* fixed left | flexible right */
   gap: 60px;
   height: 100%;
   align-items: start;
