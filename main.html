@@ -80,10 +80,11 @@
   padding-left: 170px; /* 110px sidebar + 60px spacing */
 }
     /* ===== Main two-column layout ===== */
-
+.row{
+  display: grid;
   .row{
-      display: grid;
-    grid-template-columns: 340px minmax(2.5fr);
+  grid-template-columns: 1.5fr 2.5fr;   /* 25% | 75% */
+  gap: 48px;
   height: 100%;
   align-items: start;
 }
