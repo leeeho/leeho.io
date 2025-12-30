@@ -139,11 +139,25 @@
       display: grid;
       grid-template-columns: 1.8fr 1fr;
       gap: 30px;
-      padding: 10px 14px;
+      padding-top: 10px 14px;
       background: var(--right-bg);
       transition: transform .25s ease, box-shadow .25s ease;
+        position: relative;
     }
-
+    .left-inner {
+  padding-left: 16px;   /* ← your desired left padding */
+  padding-right: 16px;  /* optional */
+}
+    
+.project::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -15px;          /* controls vertical spacing */
+  height: 1px;
+  background: #000000;
+}
     .block-link:hover .project {
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(0,0,0,.12);
@@ -214,6 +228,7 @@
       <!-- LEFT (STILL) -->
 
         <aside class="left-block">
+          <div class="left-inner">
           <div class="brand">Hojeong Lee</div>
 
   <div class="contact-icons">
@@ -240,6 +255,7 @@
           Graduated from Seoul National University with a B.F.A. in Industrial Design and KAIST CT with a Master of Science, I am currently a Ph.D. candidate at HCI Tech Lab, Robotics Program, KAIST.<br><br>
           My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.
         </p>
+          </div>
       </aside>
 
 
