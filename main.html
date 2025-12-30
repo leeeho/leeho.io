@@ -134,30 +134,30 @@
       text-decoration: none;
       color: inherit;
     }
+.project{
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 30px;
 
-    .project {
-      display: grid;
-      grid-template-columns: 1.8fr 1fr;
-      gap: 30px;
-      padding: 10px 14px;
-      background: var(--right-bg);
-      transition: transform .25s ease, box-shadow .25s ease;
-        position: relative;
-    }
+  padding: 10px 14px;          /* ✅ FIXED */
+  background: var(--right-bg);
+
+  border-bottom: 1px solid #000;  /* ✅ LINE */
+  padding-bottom: 18px;           /* spacing above line */
+  margin-bottom: 18px;            /* spacing below line */
+}
+
+.right-block a:last-child .project{
+  border-bottom: none;            /* no line after last one */
+  margin-bottom: 0;
+  padding-bottom: 10px;
+}
+
     .left-inner {
   padding-left: 16px;   /* ← your desired left padding */
   padding-right: 16px;  /* optional */
 }
-    
-.project::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -15px;          /* controls vertical spacing */
-  height: 1px;
-  background: #000000;
-}
+
     .block-link:hover .project {
       transform: translateY(-2px);    }
 
