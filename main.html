@@ -32,7 +32,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 80px;
+      width: 100px;
       height: 100vh;
       display: flex;
       flex-direction: column;
@@ -82,7 +82,7 @@ padding-top:    40px;
 padding-bottom: 40px;
 padding-left:   60px;
 padding-right:  0px;
-  padding-left: 140px; /* 110px sidebar + 60px spacing */
+  padding-left: 160px; /* 110px sidebar + 60px spacing */
 }
     /* ===== Main two-column layout ===== */
 .row{
@@ -93,7 +93,11 @@ padding-right:  0px;
   align-items: start;
 }
 
-
+.left-col{
+  background: #ff9fcc;
+  height: 100%;
+  padding: 0; /* keep it flush */
+}
     /* ===== Left block (STILL) ===== */
     .left-block {
       font-size: 14px;
@@ -137,17 +141,6 @@ padding-right:  0px;
   margin-right: auto;   /* optional: center within available space */
       gap: 30px; /* space between projects */
     }
-/* 
-    .right-block{
-  max-width: 980px;     /* controls overall width of right block 
-  width: 100%;
-  justify-self: start;  /* keep it aligned left inside the column 
-  margin-left: auto;    /* optional: center within available space 
-  margin-right: auto;   /* optional: center within available space 
-  min-width: 0;
-} */
-
-
     /* ===== One project = one row ===== */
     .project {
       display: grid;
@@ -227,7 +220,8 @@ padding-right:  0px;
     <section class="row">
 
       <!-- LEFT (STILL) -->
-      <aside class="left-block">
+      <div class="left-col">
+        <aside class="left-block">
         <div class="brand">Hojeong Lee</div>
         <div class="contact">leeho@kaist.ac.kr <br>
         N5, 291 Daehakro, Yuseong-gu, Daejeon, Republic of Korea</div>
@@ -239,6 +233,7 @@ padding-right:  0px;
           My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.
         </p>
       </aside>
+      </div>
 
       <!-- RIGHT (SCROLL) -->
       <div class="right-block">
