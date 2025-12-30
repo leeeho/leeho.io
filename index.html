@@ -49,6 +49,8 @@
     }
 
         .sidebar a:hover {
+            display: block;
+  white-space: nowrap;
       background: #ff4d13; }
 
     .highlight {
@@ -195,28 +197,100 @@
     }
 
     /* ================= Mobile ================= */
-    @media (max-width: 900px) {
-      body { overflow: auto; }
+  @media (max-width: 900px) {
+  body { 
+    overflow: auto; 
+  }
 
-      .bg-grid { display: none; }
+  /* ===== Top bar instead of left sidebar ===== */
+  :root{
+    --sidebar-width: 0px;     /* no left sidebar space on mobile */
+    --page-offset: 0px;       /* remove left offset */
+    --topbar-height: 60px;    /* controls how much content is pushed down */
+  }
 
-      .page {
-        padding: 24px;
-        height: auto;
-      }
+  .sidebar{
+    position: sticky;         /* stays at top while scrolling */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--topbar-height);
+    padding: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;  /* or space-between */
+    gap: 8px;
+    z-index: 50;
+    border-bottom: 2px solid #ffc8ef; /* optional */
+  }
 
-      .row {
-        grid-template-columns: 1fr;
-      }
+  .sidebar a{
+    padding: 10px 12px;
+    font-size: 13px;
+  }
 
-      .right-block {
-        overflow: visible;
-      }
+  /* ===== Page becomes normal flow ===== */
+  .page{
+    padding: 16px;
+    height: auto;
+    /* push content below top bar */
+    padding-top: calc(16px + var(--topbar-height));
+  }
 
-      .project {
-        grid-template-columns: 1fr;
-      }
-    }
+  /* ===== Background becomes vertical split (top/bottom) ===== */
+  .bg-grid{
+    display: grid;
+    position: fixed;               /* keep background fixed like your desktop */
+    top: var(--topbar-height);     /* start BELOW the top bar */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    grid-template-columns: 1fr;    /* single column */
+    grid-template-rows: 1fr 1fr;   /* two rows */
+    z-index: 0;
+  }
+
+  .bg-left{
+    background: var(--left-bg);    /* black */
+  }
+
+  .bg-gap{
+    display: none;                 /* no middle gap on mobile */
+  }
+
+  .bg-right{
+    background: var(--right-bg);   /* blue */
+  }
+
+  /* ===== Foreground becomes 1 column ===== */
+  .row{
+    grid-template-columns: 1fr;
+    gap: 18px;
+    height: auto;
+  }
+
+  .left-block{
+    position: relative;            /* disable sticky on mobile */
+    top: auto;
+  }
+
+  .right-block{
+    overflow: visible;             /* let page scroll */
+    height: auto;
+    padding-right: 0;
+  }
+
+  .project{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .project-image{
+    justify-self: start;
+    max-width: 100%;
+  }
+}
+
   </style>
 </head>
 
@@ -277,7 +351,7 @@
         <a href="" class="block-link" target="_blank" rel="noopener">
           <article class="project">
             <div>
-              <span class="meta"><span class="highlight">Click on each projects to read more<br></span></span>
+              <span class="meta"><span class="highlight">Click on each project to read more<br></span></span>
               <h2>Spatiotemporal Vibration Based Multimodal Haptic Rendering with a Lightweight Exo-Glove for 3D Shape Perception (Under Review)</h2>
               <p>
                 <strong>Hojeong Lee</strong>, Eunho Kim, Rachel Kim, Sang Ho Yoon <br /><br />
