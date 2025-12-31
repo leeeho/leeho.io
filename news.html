@@ -29,27 +29,23 @@
     }
 
     :root{
-      /* ===== Sidebar + layout ===== */
-      --sidebar-bg: #000000;
+      /* ===== Layout ===== */
+      --sidebar-bg: #000;
       --sidebar-width: 90px;
       --page-offset: 90px;
 
-      /* ===== Background ===== */
-      --left-bg:  #ffffff;
-      --right-bg: #ffffff;
+      /* ===== Colors ===== */
+      --left-bg: #fff;
+      --right-bg: #fff;
 
-      /* ===== LEFT stacked colors ===== */
       --left-top: #fff200;
       --left-mid: #ffffff;
       --left-bot: #76cfe6;
 
-      /* ===== Text ===== */
       --text-gray-200: #9ca3af;
-      --text-black: #000000;
     }
 
     .text-gray-200{ color: var(--text-gray-200) !important; }
-    .text-black{ color: var(--text-black) !important; }
 
     /* ================= Sidebar ================= */
     .sidebar{
@@ -66,7 +62,7 @@
     .sidebar a{
       padding: 10px 18px;
       font-size: 17px;
-      color: #ffffff;
+      color: #fff;
       text-decoration: none;
     }
 
@@ -74,7 +70,7 @@
     .page{
       position: relative;
       height: 100vh;
-      padding-left: var(--page-offset); /* NO top/bottom padding */
+      padding-left: var(--page-offset);
     }
 
     /* ================= Background Grid ================= */
@@ -83,7 +79,7 @@
       inset: 0;
       left: var(--page-offset);
       display: grid;
-      grid-template-columns: 1fr 1.9fr; /* NO GAP COLUMN */
+      grid-template-columns: 1fr 1.9fr;
       z-index: 0;
       pointer-events: none;
     }
@@ -98,7 +94,7 @@
       height: 100%;
       display: grid;
       grid-template-columns: 1fr 1.9fr;
-      gap: 0;                     /* NO GAP */
+      gap: 0;
       align-items: stretch;
     }
 
@@ -120,7 +116,7 @@
 
     .left-panel{
       width: 100%;
-      padding: 0 22px; /* no vertical padding */
+      padding: 0 22px;
     }
 
     .left-panel.top{
@@ -182,16 +178,16 @@
     .right-block{
       height: 100%;
       overflow-y: auto;
-      font-size: 15px;
       display: flex;
       flex-direction: column;
       border: 1px solid #000;
-      border-left: 0; /* single divider line */
+      border-left: 0; /* single divider */
       background: var(--right-bg);
     }
 
     .left-inner{
       padding-left: 20px;
+      padding-right: 0;
     }
 
     /* ================= Projects ================= */
@@ -201,14 +197,26 @@
     }
 
     .project{
+      position: relative;
       display: grid;
       grid-template-columns: 1.7fr 1fr;
-      padding: 10px 14px 5px;
-      border-bottom: 1px solid #000;
+      padding: 10px 14px 14px;
     }
 
-    .right-block a:last-child .project{
-      border-bottom: none;
+    /* FULL-WIDTH SEPARATOR LINE */
+    .project::after{
+      content: "";
+      position: absolute;
+      left: -20px;   /* cancel left-inner padding */
+      right: 0;      /* extend to page right */
+      bottom: 0;
+      height: 1px;
+      background: #000;
+    }
+
+    /* remove line on last project */
+    .right-block a:last-child .project::after{
+      display: none;
     }
 
     .project h2{
@@ -289,6 +297,10 @@
         gap: 12px;
       }
 
+      .project::after{
+        left: 0;   /* no inner padding on mobile */
+      }
+
       .project-image{
         justify-self: start;
         max-width: 100%;
@@ -296,7 +308,6 @@
     }
   </style>
 </head>
-
 
 
 <body>
