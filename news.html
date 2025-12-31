@@ -121,7 +121,7 @@
 
     .left-panel.top{
       background: var(--left-top);
-      flex: 0 0 22%;
+      flex: 0 0 18%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -130,7 +130,7 @@
 
     .left-panel.mid{
       background: var(--left-mid);
-      flex: 0 0 16%;
+      flex: 0 0 12%;
       display: flex;
       align-items: center;
       border-bottom: 1px solid #000;
@@ -175,16 +175,18 @@
     }
 
     /* ================= Right Block ================= */
-    .right-block{
-      height: 100%;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      background: var(--right-bg);
+.right-block{
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--right-bg);
 
-      border: 1px solid #000;
-      border-left: 0;   /* single divider line (from left-stack border) */
-    }
+  border: 1px solid #000;
+  border-left: 0;
+  border-top: 0;   /* ✅ prevents double line, keeps first separator */
+}
+
 
     .left-inner{
       padding-left: 20px;
@@ -216,9 +218,9 @@
     }
 
    /* prevent double-thick line under first item (top border already exists) */
-    .right-block a:first-child .project::after{
+ /*   .right-block a:first-child .project::after{
       display: none;
-    }
+    }*/
 
     /* remove line on last item */
     .right-block a:last-child .project::after{
