@@ -95,12 +95,14 @@
     }
 
     /* ================= Left Block ================= */
-    .left-block {
-      position: sticky;
-      top: 40px;
-      font-size: 16px;
-      color: var(--text-light);
-    }
+
+  .left-block{
+  position: sticky;
+  top: 40px;
+  max-height: calc(100vh - 80px); /* 40px top + 40px page padding */
+  overflow-y: auto;
+  padding-right: 10px; /* optional: space for scrollbar */
+}
 
     .brand {
       font-family: 'Montserrat', san-serif;
