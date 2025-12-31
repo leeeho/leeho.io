@@ -1,400 +1,548 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hojeong Lee</title>
-<link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Cardo:ital,wght@0,400;0,700;1,400&family=Doto:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Petit+Formal+Script&display=swap" rel="stylesheet">
-    <style>
-* {
-    cursor: url(https://cur.cursors-4u.net/mechanics/mec-4/mec320.cur), auto !important;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hojeong Lee</title>
 
-        body {
-            margin: 0;
-            font-family: 'Ancizar Serif', serif;
-            color: #000000;
-            min-height: 100vh;
-            max-width: 100vw;
-            background: url('static/img/bg_pc2.jpg') no-repeat center center fixed;
-            background-size: cover;
-            background-attachment: fixed;
-        }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Cardo:ital,wght@0,400;0,700;1,400&family=Doto:wght@100..900&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Petit+Formal+Script&display=swap"
+    rel="stylesheet"
+  />
 
-		
-    :root {
-      --sidebar-bg: #e2ffb8;
-      --left-bg: #000000;
-      --right-bg: #8cace4;
-      --text-light: #ffffff;
-      --gap-size: 60px;
-      --sidebar-width: 90px;
-      --page-offset: 90px; /* sidebar + spacing */
+  <style>
+    * { box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      font-family: 'Manrope', sans-serif;
+      line-height: 1.6;
+      font-weight: 700;
+      overflow: hidden;
+      color: #000;
     }
 
-		
- .sidebar {
-	 font-family: 'Montserrat', san-serif;
+    :root{
+      /* ===== Sidebar + layout ===== */
+      --sidebar-bg: #000000;
+      --gap-size: 5px;
+      --sidebar-width: 90px;
+      --page-offset: 90px; /* sidebar + spacing */
+
+      /* ===== Background (right side) ===== */
+      --left-bg:  #ffffff;   /* bg-grid left panel (behind left block) */
+      --right-bg: #ffffff;   /* bg-grid right panel (behind right block) */
+
+      /* ===== LEFT 3-panel colors (fixed ratio) ===== */
+      --left-top: #fff200;   /* yellow */
+      --left-mid: #ffffff;   /* white */
+      --left-bot: #76cfe6;   /* cyan */
+
+      /* ===== Text utils ===== */
+      --text-gray-200: #9ca3af;
+      --text-black: #000000;
+    }
+
+    .text-gray-200{ color: var(--text-gray-200) !important; }
+    .text-black{ color: var(--text-black) !important; }
+
+    /* ================= Sidebar ================= */
+    .sidebar{
       position: fixed;
       top: 0;
       left: 0;
       width: var(--sidebar-width);
       height: 100vh;
       background: var(--sidebar-bg);
-      padding-top: 25px;
+      padding-top: 35px;
       z-index: 20;
       display: flex;
       flex-direction: column;
     }
 
-    .sidebar a {
+    .sidebar a{
       padding: 10px 18px;
-      font-size: 14px;
-      color: #000;
+      font-size: 17px;
+      color: #ffffff;
       text-decoration: none;
     }
 
-        .sidebar a:hover {
-            display: block;
-  white-space: nowrap;
-      background: #ff4d13; }
+    .sidebar a:hover{
+      display: block;
+      white-space: nowrap;
+    }
 
-        .content-container {
-            width: 80%;
-            max-width: 1000px;
-            padding-top: 30px;
-            position: relative;
-            margin-left: 120px;
-        }
-        .content-block {
-            padding: 30px;
-            background-image: url('static/img/memo.png');
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            position: relative;
-            z-index: 1;
-        }
-        .content-block2 {
-            padding: 18px;
-            margin-left: 2px;
-            margin-bottom: 18px;
-            position: relative;
-            z-index: 1;
-        }
-        .text-with-image {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-        }
-        .content-image {
-            width: 400px;
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-        .highlight {
-            background: rgb(255, 251, 0);
-            padding: 0.08em 0.22em;
-            border-radius: 0em;
-            box-decoration-break: clone;
-        }
-        .highlight2 {
-            background: rgb(255, 255, 255);
-            padding: 0.08em 0.22em;
-            border-radius: 0em;
-            box-decoration-break: clone;
-        }
+    /* ================= Page Wrapper ================= */
+    .page{
+      position: relative;
+      height: 100vh;
+      padding: 40px 0 40px var(--page-offset);
+    }
 
-        @media (max-width: 900px) {
-            .content-container {
-                width: 96%;
-                margin-left: 0;
-                padding-left: 0;
-                padding-right: 0;
-            }
-            .sidebar a {
-                display: inline-block;
-                border-bottom: none;
-                border-right: 1px solid #d1e2f4;
-                padding: 12px 18px;
-                font-size: 16px;
-            }
-            .sidebar a:last-child {
-                border-right: none;
-            }
-		
+    /* ================= Background Grid ================= */
+    .bg-grid{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--page-offset);
+      right: 0;
+      display: grid;
+      grid-template-columns: 1fr var(--gap-size) 1.9fr;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-  .sidebar{
-           /* stays at top while scrolling */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 60px;
-	  		background: #e2ffb8;
-    padding: 0;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;  /* or space-between */
-    gap: 8px;
-    z-index: 50;
-    border-bottom: 2px solid #ffc8ef; /* optional */
-  }
+    .bg-left  { background: var(--left-bg); }
+    .bg-gap   { background: var(--left-bg); }
+    .bg-right { background: var(--right-bg); }
 
-            .content-block {
-                background-image: url('static/img/memo2.png');
-                background-size: 100% 100%;
-                background-repeat: no-repeat;
-                position: relative;
-                z-index: 1;
-                padding: 10px;
-                margin-bottom: 25px;
-            }
-        }
+    /* ================= Foreground Grid ================= */
+    .row{
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1.9fr;
+      gap: var(--gap-size);
+      align-items: start;
+    }
 
-    </style>
+    /* ================= Left Block ================= */
+    .left-block{
+      position: sticky;
+      top: 40px;
+      height: calc(100vh - 80px); /* exactly visible left column height */
+      overflow: hidden;           /* the bottom panel controls scrolling */
+      padding-right: 0;
+    }
+
+    .left-stack{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #000;
+    }
+
+    .left-panel{
+      padding: 22px 22px;
+    }
+
+    /* fixed ratios */
+    .left-panel.top{
+      background: var(--left-top);
+      flex: 0 0 22%;              /* yellow ratio */
+    }
+
+    .left-panel.mid{
+      background: var(--left-mid);
+      flex: 0 0 16%;              /* white ratio */
+      border-top: 1px solid #000;
+    }
+
+    .left-panel.bot{
+      background: var(--left-bot);
+      flex: 1 1 auto;             /* cyan fills remaining */
+      border-top: 1px solid #000;
+      overflow: auto;             /* scroll here if text is long */
+    }
+
+    .brand{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    /* optional: make the name look like a colored label (like your screenshot) */
+    .brand .highlight{
+      background: #ff3b00;
+      padding: 4px 10px;
+      display: inline-block;
+      color: #000;
+    }
+
+    .contact-icons{
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .contact-icons img{
+      width: 16px;
+      height: auto;
+      display: block;
+    }
+
+    .contact{
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    /* ================= Right Block ================= */
+    .right-block{
+      height: 100%;
+      overflow-y: auto;
+      font-size: 15px;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .left-inner{
+      padding-left: 20px;
+    }
+
+    /* ================= Projects ================= */
+    .block-link{
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project{
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      padding: 10px 14px;
+      background: var(--right-bg);
+      border-bottom: 1px solid #000000;
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+    }
+
+    .right-block a:last-child .project{
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .block-link:hover .project{
+      transform: translateY(-5px);
+    }
+
+    .project h2{
+      font-size: 16px;
+      margin: 0 0 8px 0;
+    }
+
+    .project-image{
+      max-width: 400px;
+      justify-self: end;
+      align-items: center;
+    }
+
+    .project-image img{
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .custom-link{
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .custom-link:hover{
+      color: #949494;
+      text-decoration: underline;
+    }
+
+    /* ================= Mobile ================= */
+    @media (max-width: 900px){
+      body{
+        overflow: auto;
+        color: #000000;
+      }
+
+      :root{
+        --sidebar-width: 0px;
+        --page-offset: 0px;
+        --topbar-height: 60px;
+      }
+
+      .sidebar{
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--topbar-height);
+        padding: 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        z-index: 50;
+      }
+
+      .sidebar a{
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+
+      .page{
+        padding: 16px;
+        height: auto;
+        padding-top: calc(16px + var(--topbar-height));
+      }
+
+      .bg-grid{
+        display: grid;
+        position: fixed;
+        top: var(--topbar-height);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        z-index: 0;
+      }
+
+      .bg-left{ background: var(--right-bg); }
+      .bg-gap{ display: none; }
+      .bg-right{ background: var(--right-bg); }
+
+      .row{
+        grid-template-columns: 1fr;
+        gap: 18px;
+        height: auto;
+      }
+
+      .left-block{
+        position: relative;
+        top: auto;
+        height: auto;
+        overflow: visible;
+      }
+
+      .left-stack{
+        height: auto;
+      }
+
+      /* on mobile, let panels be natural height instead of fixed % */
+      .left-panel.top,
+      .left-panel.mid,
+      .left-panel.bot{
+        flex: 0 0 auto;
+      }
+
+      .left-panel.bot{
+        overflow: visible;
+      }
+
+      .right-block{
+        overflow: visible;
+        height: auto;
+        padding-right: 0;
+      }
+
+      .project{
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .project-image{
+        justify-self: start;
+        max-width: 100%;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <!-- Sidebar -->
   <div class="sidebar">
     <a href="index.html">Home</span></a>
+    <a href="cv.html">About</span></a>
     <a href="static/pdf/2025_CV_HojeongLee3.pdf">CV</span></a>
-    <a href="news.html">News</span></a>
+    <!-- <a href="news.html">News</span></a> -->
   </div>
 
+  <div class="page">
+    <div class="bg-grid" aria-hidden="true">
+  <div class="bg-left"></div>
+  <div class="bg-gap"></div>
+  <div class="bg-right"></div>
+</div>
 
-    <!-- Content Area -->
-<div class="content-container">
-        <div class="content-block"><br>
-            <h2>News</h2>
-            <h3>2025</h3>
-            <p>
-				<strong>Aug</strong>
-				The poster 'Effect of Movement Velocity and Flexion Angle on Realistic Haptic Reproduction' led by Dongkyu Kwak and me was accepted to IEEE ISMAR 2025.<br><hr>
-            		<strong>Jul</strong>
-                Presented a paper, '3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback', at IEEE World Haptics Conference 2025 in Suwon, Korea<br><hr>
-                <strong>Jun</strong>
-                I have successfully defended my master's thesis, 'Wearable Haptic Interface for Shape Perception through Spatiotemporal Vibrotactile Patterns and Kinesthetic Feedback'. I will continue my research as Ph.D Candidate under Professor Sang Ho Yoon in Robotics Program, KAIST<br><hr>
-            </p>
-            <h3>2024</h3>
-            <p>
-                <strong>Dec</strong>
-                Won the Dean's Award : Research Award from LACS, KAIST<br>
-                <strong>Dec</strong>
-                The paper that I participated in, 'ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction' (led by Hyungil Yi), is published in IEEE ISMAR<br><hr>
-                <strong>Oct</strong>
-                Presented a paper at UbiComp 2024 in Melbourne, Australia<br><hr>
-                <strong>Sep</strong>
-                My paper, 'EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR', is published in IMWUT Vol.8. It will be presented at Ubicomp 24'<br><hr>
-                <strong>Aug</strong>
-                Presented the invited paper at Korea Haptics Conference 2024 in Kyeongju, South Korea<br>
-                <strong>Aug</strong>
-                Presented a paper, 'Optimizing Button Size to Enhance User Experience for Augmented Reality Interactions in Mobile Scenarios', at IEA 2024 in Jeju, South Korea<br><hr>
-                <strong>May</strong>
-                Demo at CHI 24' Interactivity in Hawaii, USA<br><hr>
-                <strong>Feb</strong>
-                Attended HCI Korea 2024 in Hongcheon, Korea<br><hr>
+    <section class="row">
 
-             </p>
-        </div>
-    </div>
+      <!-- LEFT (STILL) -->
 
-    <script type="text/javascript">
-// <![CDATA[
-var colours=new Array("#fff", "#fff", "#fff", "#fff", "#fff");
-var bubbles=66; // maximum number of bubbles on screen
-var over_or_under="over"; // set to "over" for bubbles to always be on top, or "under" to allow them to float behind other objects
+        <aside class="left-block">
+          <div class="left-inner">
+          <div class="brand"><span class="highlight">Hojeong Lee</span></div>
 
-/****************************
-* JavaScript Bubble Cursor  *
-*(c)2010-13 mf2fm web-design*
-*  http://www.mf2fm.com/rv  *
-* DON'T EDIT BELOW THIS BOX *
-****************************/
-var x=ox=400;
-var y=oy=300;
-var swide=800;
-var shigh=600;
-var sleft=sdown=0;
-var bubb=new Array();
-var bubbx=new Array();
-var bubby=new Array();
-var bubbs=new Array();
-var sploosh=false;
+  <div class="contact-icons">
+  <a href="https://scholar.google.com/citations?hl=en&user=qp40iEEAAAAJ" target="_blank" rel="noopener">
+    <img src="static/img/gs_b.png" alt="Google Scholar">
+  </a>
+  <a href="https://www.linkedin.com/in/leeho99" target="_blank" rel="noopener">
+    <img src="static/img/linkedin_b.png" alt="LinkedIn">
+  </a>
+  <a href="https://www.hcitech.org" target="_blank" rel="noopener">
+    <img src="static/img/lab_b.png" alt="Lab">
+  </a>
+  <a href="https://orcid.org/0009-0009-6366-6954" target="_blank" rel="noopener">
+    <img src="static/img/orcid_b.png" alt="ORCID">
+  </a>
+  </div>
 
-function addLoadEvent(funky) {
-  var oldonload=window.onload;
-  if (typeof(oldonload)!='function') window.onload=funky;
-  else window.onload=function() {
-    if (oldonload) oldonload();
-    funky();
-  }
-}
+        <div class="contact">leeho@kaist.ac.kr <br>
+        N5, 291 Daehakro, Yuseong-gu, Daejeon, Republic of Korea</div>
+        <p>
+          <br><br> I am a researcher, designer, and engineer.<br><br>
+          My research focuses on wearable haptic gloves, soft actuators, and HRI.<br>
+          I aim to enhance the use of human hands by designing auxiliary hardware and a control system for natural haptic interaction.<br><br>
+          Graduated from Seoul National University with a B.F.A. in Industrial Design and KAIST CT with a Master of Science, 
+			I am currently a Ph.D. candidate at  <a href="https://hcitech.org/" class="custom-link">HCI Tech Lab</a>, Robotics Program, KAIST.<br><br>
+          My works have been published in IEEE WHC, IMWUT, IEEE ISMAR, demo at CHI, and exhibited at DDP Seoul.
+        </p>
+          </div>
+      </aside>
 
-addLoadEvent(buble);
 
-function buble() { if (document.getElementById) {
-  var i, rats, div;
-  for (i=0; i<bubbles; i++) {
-    rats=createDiv("3px", "3px");
-    rats.style.visibility="hidden";
-	rats.style.zIndex=(over_or_under=="over")?"1001":"0";
+      <!-- RIGHT (SCROLL) -->
+      <div class="right-block">
+          <div class="left-inner">
+        <a href="" class="block-link" target="_blank" rel="noopener">
+          <article class="project">
+            <div>
+          
+              <h2>Journal</h2>
+              <h2><strong>Spatiotemporal Vibration Based Multimodal Haptic Rendering with a Lightweight Exo-Glove for 3D Shape Perception (Under Review)</strong></h2>
+              <p>
+                Hojeong Lee, Eunho Kim, Rachel Kim, Sang Ho Yoon <br /><br />
+                <span class="text-gray-200">A validation of a novel haptic rendering method with an exoskeleton glove for efficient 3D shape perception.</span><br /><br />
+              </p>
+            </div>
+            <div class="project-image">
+              <img src="static/img/vibg.jpg" alt="vibgrasp">
+            </div>
+          </article>
+        </a>
 
-    div=createDiv("auto", "auto");
-    rats.appendChild(div);
-    div=div.style;
-    div.top="1px";
-    div.left="0px";
-    div.bottom="1px";
-    div.right="0px";
-    div.borderLeft="1px solid "+colours[3];
-    div.borderRight="1px solid "+colours[1];
+        <a href="" class="block-link" target="_blank" rel="noopener">
+          <article class="project">
+            <div>
+              <h2>Letter</h2>
+              <h2><strong>Exoskeleton for 2-DoF kinesthetic feedback (Under Review)</strong></h2>
+              <p>
+                Daegeun Park, Hojeong Lee, Sang Ho Yoon, Sung-Uk Jung <br /><br />
+                <span class="text-gray-200">Actuator and exoskeleton module for effective 2-DoF finger movement.</span><br /><br />
+              </p>
+            </div>
+            <div class="project-image">
+              <img src="static/img/etri.jpg" alt="etri glove">
+            </div>
+          </article>
+        </a>
 
-    div=createDiv("auto", "auto");
-    rats.appendChild(div);
-    div=div.style;
-    div.top="0px";
-    div.left="1px";
-    div.right="1px";
-    div.bottom="0px"
-    div.borderTop="1px solid "+colours[0];
-    div.borderBottom="1px solid "+colours[2];
+        <a href="https://ieeexplore.ieee.org/document/11236332" class="block-link" target="_blank" rel="noopener">
+          <article class="project">
+            <div>
+              <h2>Poster</h2>
+              <h2><strong>Effect of Movement Velocity and Flexion Angle on Realistic Haptic Reproduction</strong></h2>
+              <p>
+                Dongkyu Kwak*, Hojeong Lee*, Sang Ho Yoon (* Equal Contribution) <br /><br />
+                <span class="text-gray-200">Research on identifying which kinesthetic parameter matters more for realistic reproduction: Movement Velocity or Flexion Angle.</span><br /><br />
+                IEEE International Symposium on Mixed and Augmented Reality (ISMAR) 2025 Adjunct
+              </p>
+            </div>
+            <div class="project-image">
+              <img src="static/img/6-1.png" alt="haptic reproduction">
+            </div>
+          </article>
+        </a>
 
-    div=createDiv("auto", "auto");
-    rats.appendChild(div);
-    div=div.style;
-    div.left="1px";
-    div.right="1px";
-    div.bottom="1px";
-    div.top="1px";
-    div.backgroundColor=colours[4];
-    if (navigator.appName=="Microsoft Internet Explorer") div.filter="alpha(opacity=50)";
-    else div.opacity=0.5;
-    document.body.appendChild(rats);
-    bubb[i]=rats.style;
-  }
-  set_scroll();
-  set_width();
-  bubble();
-}}
+        <a href="https://doi.org/10.1109/WHC64065.2025.11123386" class="block-link" target="_blank" rel="noopener">
+          <article class="project">
+            <div>
+              <h2>Conference Paper</h2>
+              <h2><strong>3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback</strong></h2>
+              <p>
+               Hojeong Lee, Eunho Kim, Sang Ho Yoon<br /><br />
+                <span class="text-gray-200"> A novel haptic shape rendering method synchronizing spatiotemporal vibrotactile feedback across multiple phalanges with low degrees of freedom kinesthetic feedback.</span><br /><br />
+                IEEE World Haptics Conference (WHC) 2025
+              </p>
+            </div>
+            <div class="project-image">
+              <img src="static/img/3.png" alt="3D Shape Perception">
+            </div>
+          </article>
+        </a>
 
-function bubble() {
-  var c;
-  if (Math.abs(x-ox)>1 || Math.abs(y-oy)>1) {
-    ox=x;
-    oy=y;
-    for (c=0; c<bubbles; c++) if (!bubby[c]) {
-      bubb[c].left=(bubbx[c]=x)+"px";
-      bubb[c].top=(bubby[c]=y-3)+"px";
-      bubb[c].width="3px";
-      bubb[c].height="3px"
-      bubb[c].visibility="visible";
-      bubbs[c]=3;
-      break;
-    }
-  }
-  for (c=0; c<bubbles; c++) if (bubby[c]) update_bubb(c);
-  setTimeout("bubble()", 40);
-}
+        <a href="https://estatig.hcitech.org/" class="block-link" target="_blank" rel="noopener">
+          <article class="project">
+            <div>
+              <h2>Journal</h2>
+              <h2><strong>EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR</strong></h2>
+              <p>
+                Nicha Vanichvoranun*,Hojeong Lee*, Seoyeon Kim, Sang Ho Yoon (* Equal contribution)<br /><br />
+                <span class="text-gray-200">A haptic glove with the double layer and multi-stacked electrostatic clutches, forming an electrostatic brake for each phalanx.</span><br /><br />
+                Proc. ACM Interactive Mobile Wearable Ubiquitous Technology (IMWUT). 2024, 8, 1.
+              </p>
+            </div>
+            <div class="project-image">
+              <img src="static/img/1.png" alt="estatig">
+            </div>
+          </article>
+        </a>
 
-document.onmousedown=splash;
-document.onmouseup=function(){clearTimeout(sploosh);};
+        <a href="https://ieeexplore.ieee.org/abstract/document/10765498" class="block-link" target="_blank" rel="noopener">
+          <article class="project">
+            <div>
+              <h2>Conference Paper</h2>
+              <h2><strong>ThermicVib: Enabling Dynamic Thermal Sensation with Multimodal Haptic Glove for Thermal-Responsive Interaction</strong></h2>
+              <p>
+                Hyungil Yi, Hojeong Lee, Sang Ho Yoon<br /><br />
+                <span class="text-gray-200">A haptic glove that enhances the active perception of thermo-tactile interactions by integrating thermal referrals and vibrotactile phantom sensations.</span><br /><br />
+                IEEE International Symposium on Mixed and Augmented Reality (ISMAR) 2024
+              </p>
+            </div>
+            <div class="project-image">
+              <img src="static/img/2.png" alt="ThermicVib">
+            </div>
+          </article>
+        </a>
 
-function splash() {
-  ox=-1;
-  oy=-1;
-  sploosh=setTimeout('splash()', 100);
-}
+        <a href="https://doi.org/10.1007/978-981-95-0289-9_69" class="block-link" target="_blank" rel="noopener">
+          <article class="project">
+            <div>
+              <h2>Conference Paper</h2>
+              <h2><strong>Optimizing Button Size to Enhance User Experience for Augmented Reality Interactions in Mobile Scenarios</strong></h2>
+              <p>
+                Hojeong Lee, Yeahyoung Jeon, Keisuke Kudo, Paul Ssemakula, Seonghyeok Park, Shuping Xiong<br /><br />
+                <span class="text-gray-200">This study investigates optimal button size that maximizes task performance accuracy while minimizing visual obstruction in AR user interfaces specifically for walking conditions.</span><br /><br>
+                22nd Triennial Congress of the International Ergonomics Association (IEA 2024)
+              </p>
+            </div>
+            <div class="project-image">
+              <img src="static/img/4.png" alt="ButtonSize">
+            </div>
+          </article>
+        </a>
 
-function update_bubb(i) {
-  if (bubby[i]) {
-    bubby[i]-=bubbs[i]/2+i%2;
-    bubbx[i]+=(i%5-2)/5;
-    if (bubby[i]>sdown && bubbx[i]>sleft && bubbx[i]<sleft+swide+bubbs[i]) {
-	  if (Math.random()<bubbs[i]/shigh*2 && bubbs[i]++<8) {
-		bubb[i].width=bubbs[i]+"px";
-		bubb[i].height=bubbs[i]+"px";
-	  }
-      bubb[i].top=bubby[i]+"px";
-      bubb[i].left=bubbx[i]+"px";
-    }
-    else {
-      bubb[i].visibility="hidden";
-      bubby[i]=0;
-      return;
-    }
-  }
-}
-
-document.onmousemove=mouse;
-function mouse(e) {
-  if (e) {
-    y=e.pageY;
-    x=e.pageX;
-  }
-  else {
-    set_scroll();
-    y=event.y+sdown;
-    x=event.x+sleft;
-  }
-}
-
-window.onresize=set_width;
-function set_width() {
-  var sw_min=999999;
-  var sh_min=999999;
-  if (document.documentElement && document.documentElement.clientWidth) {
-    if (document.documentElement.clientWidth>0) sw_min=document.documentElement.clientWidth;
-    if (document.documentElement.clientHeight>0) sh_min=document.documentElement.clientHeight;
-  }
-  if (typeof(self.innerWidth)=='number' && self.innerWidth) {
-    if (self.innerWidth>0 && self.innerWidth<sw_min) sw_min=self.innerWidth;
-    if (self.innerHeight>0 && self.innerHeight<sh_min) sh_min=self.innerHeight;
-  }
-  if (document.body.clientWidth) {
-    if (document.body.clientWidth>0 && document.body.clientWidth<sw_min) sw_min=document.body.clientWidth;
-    if (document.body.clientHeight>0 && document.body.clientHeight<sh_min) sh_min=document.body.clientHeight;
-  }
-  if (sw_min==999999 || sh_min==999999) {
-    sw_min=800;
-    sh_min=600;
-  }
-  swide=sw_min;
-  shigh=sh_min;
-}
-
-window.onscroll=set_scroll;
-function set_scroll() {
-  if (typeof(self.pageYOffset)=='number') {
-    sdown=self.pageYOffset;
-    sleft=self.pageXOffset;
-  }
-  else if (document.body && (document.body.scrollTop || document.body.scrollLeft)) {
-    sdown=document.body.scrollTop;
-    sleft=document.body.scrollLeft;
-  }
-  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
-    sleft=document.documentElement.scrollLeft;
-    sdown=document.documentElement.scrollTop;
-  }
-  else {
-    sdown=0;
-    sleft=0;
-  }
-}
-
-function createDiv(height, width) {
-  var div=document.createElement("div");
-  div.style.position="absolute";
-  div.style.height=height;
-  div.style.width=width;
-  div.style.overflow="hidden";
-  div.style.backgroundColor="transparent";
-  return (div);
-}
-// ]]>
-    
-</script>
+        <a href="https://kimkeunwook.com/headspace" class="block-link" target="_blank" rel="noopener">
+          <article class="project">
+            <div>
+              <h2>Design Project</h2>
+              <h2><strong>headspace</strong></h2>
+              <p>
+                Keunwook Kim (Participated as a Design Assistant)<br><br>
+                <span class="text-gray-200">Industrial design, Interaction design, Mechanical design, HCI research, Creative direction</span><br />
+                Project funded by ZER01NE (Hyundai Motor Group), 2021
+              </p>
+            </div>
+            <div class="project-image">
+              <img src="static/img/hdspc.jpg" alt="headspace">
+            </div>
+          </article>
+        </a>
+          </div>
+      </div>
+    </section>
+  </div>
 </body>
 </html>
-
