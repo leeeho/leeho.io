@@ -250,6 +250,7 @@
       background: #ffcb87;
       padding-left: 2px;
       padding-right: 2px;
+      margin: 0 0 0 0;
       border: 1.5px solid #000;
       display: inline-block;
     }
@@ -277,78 +278,126 @@
     }
 
     /* ================= Mobile ================= */
-    @media (max-width: 900px){
-      body{ overflow: auto; }
+/* ================= Mobile ================= */
+@media (max-width: 900px){
 
-      :root{
-        --sidebar-width: 0px;
-        --page-offset: 0px;
-        --topbar-height: 60px;
-      }
+  /* allow page scrolling normally on mobile */
+  body{
+    overflow: auto;
+  }
 
-      .sidebar{
-        position: sticky;
-        height: var(--topbar-height);
-        flex-direction: row;
-        justify-content: center;
-        padding: 0;
-      }
+  :root{
+    --sidebar-width: 0px;   /* sidebar becomes topbar, so width is irrelevant */
+    --page-offset: 0px;
+    --topbar-height: 60px;
+  }
 
-      .page{
-        height: auto;
-        padding-top: var(--topbar-height);
-      }
+  /* TOP BAR (visible) */
+  .sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--topbar-height);
+    width: 100%;
+    padding: 0;
+    background: var(--sidebar-bg);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    z-index: 999;
+  }
 
-      .bg-grid{ display: none; }
+  .sidebar a{
+    padding: 10px 12px;
+    font-size: 13px;
+  }
 
-      .row{
-        grid-template-columns: 1fr;
-        height: auto;
-        align-items: start;
-      }
+  /* page starts below topbar */
+  .page{
+    height: auto;
+    padding-left: 0;
+    padding-top: var(--topbar-height);
+  }
 
-      .left-block{
-        position: relative;
-        height: auto;
-      }
+  /* hide background split panels on mobile */
+  .bg-grid{
+    display: none;
+  }
 
-      .left-panel{
-        padding: 14px 18px;
-      }
+  /* single column */
+  .row{
+    grid-template-columns: 1fr;
+    height: auto;
+    align-items: stretch;
+  }
 
-      .left-panel.top,
-      .left-panel.mid,
-      .left-panel.bot{
-        flex: 0 0 auto;
-      }
+  /* left block becomes normal (not sticky) */
+  .left-block{
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
 
-      .right-block{
-        height: auto;
-        overflow: visible;
-        border-left: 1px solid #000; /* restore border on mobile (no left column) */
-        padding-top: 0;              /* no top rule offset needed */
-      }
+  .left-stack{
+    border: 1px solid #000;
+  }
 
-      .right-block::before{
-        display: none; /* avoid weirdness when not scrolling */
-      }
-      
+  /* left panels become natural heights */
+  .left-panel{
+    padding: 14px 18px;
+  }
 
-      
-      .project{
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
+  .left-panel.top,
+  .left-panel.mid,
+  .left-panel.bot{
+    flex: 0 0 auto;
+  }
 
-      .block-link + .block-link::before{
-        left: 0; /* no left-inner cancellation needed on mobile */
-      }
+  .left-panel.bot{
+    overflow: visible;
+  }
 
-      .project-image{
-        justify-self: start;
-        max-width: 100%;
-      }
-    }
+  /* right block looks like desktop box */
+  .right-block{
+    height: auto;
+    overflow: visible;
+    border: 1px solid #000;
+    border-top: 0;      /* share border with left-stack bottom edge visually */
+    border-left: 1px solid #000;
+    padding-top: 0;     /* remove the top-rule offset */
+    position: relative;
+  }
+
+  /* remove the absolute top rule (desktop only) */
+  .right-block::before{
+    display: none;
+  }
+
+  /* keep the same inner padding feel */
+  .left-inner{
+    padding-left: 18px;
+    padding-right: 0;
+  }
+
+  /* project becomes single column like desktop mobile intent */
+  .project{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .project-image{
+    justify-self: start;
+    max-width: 100%;
+  }
+
+  /* FULL-WIDTH separators between items */
+  .block-link + .block-link::before{
+    left: -18px;  /* cancel left-inner padding (mobile version) */
+    right: 0;
+  }
+
   </style>
 </head>
 
