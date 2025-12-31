@@ -182,10 +182,10 @@
       flex-direction: column;
       border-left: 0; /* single divider */
       background: var(--right-bg);
+        border: 1px solid #000;
+  border-left: 0;
     }
-.right-block a:first-child .project::after{
-  display: none;
-}
+
     .left-inner{
       padding-left: 20px;
       padding-right: 0;
@@ -214,11 +214,9 @@
       height: 1px;
       background: #000;
     }
-
-    /* remove line on last project */
-    .right-block a:last-child .project::after{
-      display: none;
-    }
+.right-block a:first-child .project::after{
+  display: none;
+}
 
     .project h2{
       font-size: 16px;
