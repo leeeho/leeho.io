@@ -1,234 +1,304 @@
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hojeong Lee</title>
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Cardo:ital,wght@0,400;0,700;1,400&family=Doto:wght@100..900&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Petit+Formal+Script&display=swap" rel="stylesheet">  <style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Cardo:ital,wght@0,400;0,700;1,400&family=Doto:wght@100..900&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Petit+Formal+Script&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
     * { box-sizing: border-box; }
 
-    body {
+    html, body{
       margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body{
       font-family: 'Manrope', sans-serif;
       line-height: 1.6;
       font-weight: 700;
       overflow: hidden;
+      color: #000;
     }
 
-    :root {
-      --sidebar-bg: #ffffff;
-      --left-bg: #ffffff;
-      --right-bg: #ffffff;
-      --text-light: #000000;
-      --gap-size: 5px;
+    :root{
+      /* ===== Layout ===== */
+      --sidebar-bg: #fff;
       --sidebar-width: 90px;
-      --page-offset: 90px; /* sidebar + spacing */
-		  --text-gray-200: #9ca3af; /* Tailwind's gray-200 */
-		  --text-black: #000000; /* Tailwind's gray-200 */
+      --page-offset: 90px;
+
+      /* ===== Background panels ===== */
+      --left-bg: #fff;
+      --right-bg: #fff;
+
+      /* ===== Left column colors ===== */
+      --left-top: #fff
+      --left-mid: #fff;
+      --left-bot-a: #fff;
+      --left-bot-b: #fff;
+
+      --text-gray-200: #9ca3af;
     }
 
-	.text-gray-200 { color: var(--text-gray-200); !important; }
-	.text-black { color: var(--text-black); !important; }
+    .text-gray-200{ color: var(--text-gray-200) !important; }
 
     /* ================= Sidebar ================= */
-    .sidebar {
+    .sidebar{
       position: fixed;
-      top: 0;
-      left: 0;
+      inset: 0 auto 0 0;
       width: var(--sidebar-width);
-      height: 100vh;
       background: var(--sidebar-bg);
-      padding-top: 35px;
+      padding-top: 20px;
       z-index: 20;
       display: flex;
       flex-direction: column;
     }
 
-    .sidebar a {
+    .sidebar a{
       padding: 10px 18px;
       font-size: 17px;
-      color: #000;
+      color: #fff;
       text-decoration: none;
     }
 
-        .sidebar a:hover {
-            display: block;
-  white-space: nowrap;}
-
-    .highlight {
-    background: #ffffff;
-    color: black;
-}
-
     /* ================= Page Wrapper ================= */
-    .page {
+    .page{
       position: relative;
       height: 100vh;
-      padding: 40px 0 40px var(--page-offset);
+      padding-left: var(--page-offset);
     }
 
-    /* ================= Background Grid (REAL FIX) ================= */
-.bg-grid{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: var(--page-offset);  /* start AFTER sidebar offset */
-  right: 0;
-  display: grid;
-  grid-template-columns: 1fr var(--gap-size) 1.9fr;
-  z-index: 0;
-  pointer-events: none;
-}
+    /* ================= Background Grid ================= */
+    .bg-grid{
+      position: absolute;
+      inset: 0;
+      left: var(--page-offset);
+      display: grid;
+      grid-template-columns: 1fr 1.9fr; /* no gap column */
+      z-index: 0;
+      pointer-events: none;
+    }
 
-    .bg-left  { background: var(--left-bg); }
-    .bg-gap   { background: var(--left-bg); } /* keep gap same as left */
-    .bg-right { background: var(--right-bg); }
+    .bg-left{ background: var(--left-bg); }
+    .bg-right{ background: var(--right-bg); }
 
     /* ================= Foreground Grid ================= */
-    .row {
+    .row{
       position: relative;
       z-index: 1;
       height: 100%;
       display: grid;
       grid-template-columns: 1fr 1.9fr;
-      gap: var(--gap-size);
-      align-items: start;
+      gap: 0;                 /* NO GAP between left/right blocks */
+      align-items: stretch;
     }
 
     /* ================= Left Block ================= */
-    .left-block {
+    .left-block{
       position: sticky;
-      top: 40px;
-      font-size: 16px;
-      color: var(--text-light);
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
     }
 
-    .brand {
-      font-family: 'Montserrat', san-serif;
+    .left-stack{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #000;
+    }
+
+    .left-panel{
+      width: 100%;
+      padding: 0 22px; /* no vertical padding */
+    }
+
+    .left-panel.top{
+      background: var(--left-top);
+      flex: 0 0 16%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 1px solid #000;
+    }
+
+    .left-panel.mid{
+      background: var(--left-mid);
+      flex: 0 0 12%;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #000;
+    }
+
+    .left-panel.bot{
+      background: linear-gradient(to bottom, var(--left-bot-a), var(--left-bot-b));
+      flex: 1 1 auto;
+      overflow-y: auto;
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
+
+    .brand{
+      font-family: 'Montserrat', sans-serif;
       font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
-    .meta {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 18px;
+      font-weight: 800;
+      margin-bottom: 12px;
     }
 
-    .contact-icons {
+    .brand .highlight{
+      font-family: Montserrat;
+      padding: 2px 2px;
+      display: inline-block;
+    }
+
+    .contact-icons{
       display: flex;
       gap: 12px;
-      margin-bottom: 18px;
+      margin-top: 10px;
     }
 
-    .contact-icons img {
+    .contact-icons img{
       width: 16px;
       height: auto;
       display: block;
     }
 
-    .contact {
+    .contact{
       font-size: 15px;
-      margin-bottom: 20px;
       font-weight: 700;
     }
 
-    /* ================= Right Block ================= */
-    .right-block {
+    /* ================= Right Block (FIXED LINES) ================= */
+    .right-block{
       height: 100%;
       overflow-y: auto;
-      font-size: 15px;
-      color: #000000;
       display: flex;
       flex-direction: column;
-   /*   gap: 30px;*/
+      background: var(--right-bg);
+
+      border: 1px solid #000;
+      border-left: 0;
+      position: relative;
+
+      padding-top: 1px; /* room for top rule */
     }
 
-    /* ================= Projects ================= */
-    .block-link {
+    /* top rule (always visible, no sticky bugs) */
+    .right-block::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #000;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .left-inner{
+      padding-left: 20px;
+      padding-right: 0;
+    }
+
+    .block-link{
       text-decoration: none;
       color: inherit;
+      display: block;
+      position: relative; /* anchor for separator */
     }
-.project{
-  display: flex;
-  padding: 10px 14px;          /* ✅ FIXED */
-  background: var(--right-bg);
 
-  border-bottom: 1px solid #000000;  /* ✅ LINE */
-  padding-bottom: 5px;           /* spacing above line */
-  margin-bottom: 5px;            /* spacing below line */
-}
+    /* single separator between items (full width to the page right) */
+    .block-link + .block-link::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -20px;   /* cancel left-inner padding */
+      right: 0;
+      height: 1px;
+      background: #000;
+      pointer-events: none;
+    }
 
-.right-block a:last-child .project{
-  border-bottom: none;            /* no line after last one */
-  margin-bottom: 0;
-    padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-    .left-inner {
-  padding-left: 20px;   /* ← your desired left padding */ /* optional */
-}
-
+    .project{
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      padding: 10px 14px 14px;
+      position: relative;
+    }
     .block-link:hover .project {
       transform: translateY(-5px);    }
-
-    .project h2 {
+    /* IMPORTANT: disable old separator system completely */
+    .project::after{
+      content: none !important;
+    }
+.right-block a:first-child .project::before{
+  display: none;
+}
+    .project h2{
       font-size: 16px;
+      background: #fff;
+      padding-left: 2px;
+      padding-right: 2px;
+      margin: 1px 0 0 0;
+      display: inline-block;
     }
 
-    .project-image {
+    .project-image{
       max-width: 400px;
       justify-self: end;
-        align-items: center;    /* vertical center */
     }
 
-    .project-image img {
+    .project-image img{
       width: 100%;
       height: auto;
       object-fit: contain;
       display: block;
     }
 
-.custom-link {
-  color: #000000;
-  text-decoration: underline;
-}
-.custom-link:hover {
-	  color: #949494;
-  text-decoration: underline;
-}
+    .custom-link{
+      color: #000;
+      text-decoration: underline;
+    }
 
     /* ================= Mobile ================= */
-  @media (max-width: 900px) {
-  body { 
-    overflow: auto; 
-    color: #000000;
+/* ================= Mobile ================= */
+@media (max-width: 900px){
+
+  /* allow page scrolling normally on mobile */
+  body{
+    overflow: auto;
   }
 
-  /* ===== Top bar instead of left sidebar ===== */
   :root{
-    --sidebar-width: 0px;     /* no left sidebar space on mobile */
-    --page-offset: 0px;       /* remove left offset */
-    --topbar-height: 60px;    /* controls how much content is pushed down */
+    --sidebar-width: 0px;   /* sidebar becomes topbar, so width is irrelevant */
+    --page-offset: 0px;
+    --topbar-height: 60px;
   }
 
+  /* TOP BAR (visible) */
   .sidebar{
-    position: sticky;         /* stays at top while scrolling */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    right: 0;
     height: var(--topbar-height);
+    width: 100%;
     padding: 0;
+    background: var(--sidebar-bg);
     flex-direction: row;
     align-items: center;
-    justify-content: center;  /* or space-between */
-    gap: 8px;
-    z-index: 50;
+    justify-content: center;
+    gap: 10px;
+    z-index: 999;
   }
 
   .sidebar a{
@@ -236,60 +306,74 @@
     font-size: 13px;
   }
 
-  /* ===== Page becomes normal flow ===== */
+  /* page starts below topbar */
   .page{
-    padding: 16px;
     height: auto;
-    /* push content below top bar */
-    color: #ffffff;
-    padding-top: calc(16px + var(--topbar-height));
+    padding-left: 0;
+    padding-top: var(--topbar-height);
   }
 
-  /* ===== Background becomes vertical split (top/bottom) ===== */
+  /* hide background split panels on mobile */
   .bg-grid{
-    display: grid;
-    position: fixed;               /* keep background fixed like your desktop */
-    top: var(--topbar-height);     /* start BELOW the top bar */
-    left: 0;
-    right: 0;
-    bottom: 0;
-    grid-template-columns: 1fr;    /* single column */
-    grid-template-rows: 1fr 1fr;   /* two rows */
-    z-index: 0;
+    display: none;
   }
 
-  .bg-left{
-    color: #ffffff;
-    background: var(--right-bg);    /* black */
-  }
-
-  .bg-gap{
-    display: none;                 /* no middle gap on mobile */
-  }
-
-  .bg-right{
-    background: var(--right-bg);   /* blue */
-  }
-
-  /* ===== Foreground becomes 1 column ===== */
+  /* single column */
   .row{
     grid-template-columns: 1fr;
-    gap: 18px;
     height: auto;
+    align-items: stretch;
   }
 
+  /* left block becomes normal (not sticky) */
   .left-block{
-    position: relative;            /* disable sticky on mobile */
-    top: auto;
-    color: #000000;
+    position: relative;
+    height: auto;
+    overflow: visible;
   }
 
+  .left-stack{
+    border: 1px solid #000;
+  }
+
+  /* left panels become natural heights */
+  .left-panel{
+    padding: 14px 18px;
+  }
+
+  .left-panel.top,
+  .left-panel.mid,
+  .left-panel.bot{
+    flex: 0 0 auto;
+  }
+
+  .left-panel.bot{
+    overflow: visible;
+  }
+
+  /* right block looks like desktop box */
   .right-block{
-    overflow: visible;             /* let page scroll */
     height: auto;
+    overflow: visible;
+    border: 1px solid #000;
+    border-top: 0;      /* share border with left-stack bottom edge visually */
+    border-left: 1px solid #000;
+    padding-top: 0;     /* remove the top-rule offset */
+    position: relative;
+  }
+
+  /* remove the absolute top rule (desktop only) */
+  .right-block::before{
+    display: none;
+  }
+
+  /* keep the same inner padding feel */
+  .left-inner{
+    padding-left: 18px;
     padding-right: 0;
   }
 
+  /* project becomes single column like desktop mobile intent */
   .project{
     grid-template-columns: 1fr;
     gap: 12px;
@@ -299,10 +383,17 @@
     justify-self: start;
     max-width: 100%;
   }
-}
+
+  /* FULL-WIDTH separators between items */
+  .block-link + .block-link::before{
+    left: -18px;  /* cancel left-inner padding (mobile version) */
+    right: 0;
+  }
 
   </style>
 </head>
+
+
 
 <body>
   <!-- Sidebar -->
@@ -310,13 +401,12 @@
     <a href="index.html">Home</span></a>
     <a href="cv.html">About</span></a>
     <a href="static/pdf/2025_CV_HojeongLee3.pdf">CV</span></a>
-  <!-- <a href="news.html">News</span></a>  -->
+    <!-- <a href="news.html">News</span></a> -->
   </div>
 
   <div class="page">
     <div class="bg-grid" aria-hidden="true">
   <div class="bg-left"></div>
-  <div class="bg-gap"></div>
   <div class="bg-right"></div>
 </div>
 
@@ -324,28 +414,40 @@
 
       <!-- LEFT (STILL) -->
 
-        <aside class="left-block">
-          <div class="left-inner">
-          <div class="brand"><span class="highlight">Hojeong Lee</span></div>
+<aside class="left-block">
+  <div class="left-stack">
 
-  <div class="contact-icons">
-  <a href="https://scholar.google.com/citations?hl=en&user=qp40iEEAAAAJ" target="_blank" rel="noopener">
-    <img src="static/img/gs_b.png" alt="Google Scholar">
-  </a>
-  <a href="https://www.linkedin.com/in/leeho99" target="_blank" rel="noopener">
-    <img src="static/img/linkedin_b.png" alt="LinkedIn">
-  </a>
-  <a href="https://www.hcitech.org" target="_blank" rel="noopener">
-    <img src="static/img/lab_b.png" alt="Lab">
-  </a>
-  <a href="https://orcid.org/0009-0009-6366-6954" target="_blank" rel="noopener">
-    <img src="static/img/orcid_b.png" alt="ORCID">
-  </a>
-  </div>
+    <!-- YELLOW -->
+    <div class="left-panel top">
+      <div class="brand"><span class="highlight">Hojeong Lee</span></div>
 
-        <div class="contact">leeho@kaist.ac.kr <br>
-        N5, 291 Daehakro, Yuseong-gu, Daejeon, Republic of Korea</div>
-        <p>
+      <div class="contact-icons">
+        <a href="https://scholar.google.com/citations?hl=en&user=qp40iEEAAAAJ" target="_blank" rel="noopener">
+          <img src="static/img/gs_b.png" alt="Google Scholar">
+        </a>
+        <a href="https://www.linkedin.com/in/leeho99" target="_blank" rel="noopener">
+          <img src="static/img/linkedin_b.png" alt="LinkedIn">
+        </a>
+        <a href="https://www.hcitech.org" target="_blank" rel="noopener">
+          <img src="static/img/lab_b.png" alt="Lab">
+        </a>
+        <a href="https://orcid.org/0009-0009-6366-6954" target="_blank" rel="noopener">
+          <img src="static/img/orcid_b.png" alt="ORCID">
+        </a>
+      </div>
+    </div>
+
+    <!-- WHITE -->
+    <div class="left-panel mid">
+      <div class="contact">
+        leeho@kaist.ac.kr <br>
+        N5, 291 Daehakro, Yuseong-gu, Daejeon, Republic of Korea
+      </div>
+    </div>
+
+    <!-- CYAN -->
+    <div class="left-panel bot">
+    <p>
           <br><br> Currently, I am working on the projects of the soft actuator (especially the electrostatic actuator) and the affective HRI.<br>
           I am open to collaborations with other researchers who are also interested in soft actuator (haptics), HCI/ HRI, and telepresence!<br>
 		  Please get in touch with me via <a href="mailto:leeho@kaist.ac.kr" class="custom-link">email</a> or <a href="https://www.linkedin.com/in/leeho99" class="custom-link">LinkedIn message</a>.<br><br>
@@ -365,8 +467,10 @@
             CV
         </a>
     </div>
-          </div>
-      </aside>
+
+  </div>
+</aside>
+
 
 
       <!-- RIGHT (SCROLL) -->
@@ -374,7 +478,7 @@
           <div class="left-inner">
           <article class="project">
             <div>
-          
+         
               <h2>Education</h2>
                 <a class="contact-icon">
 				 <img src="static/img/kaist.png" alt="DOI" style="width:50px; height:auto; vertical-align:middle;"></a>
