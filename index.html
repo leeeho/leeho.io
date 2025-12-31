@@ -24,7 +24,7 @@
       --left-bg: #ffffff;
       --right-bg: #ffffff;
       --text-light: #000000;
-      --gap-size: 60px;
+      --gap-size: 40px;
       --sidebar-width: 90px;
       --page-offset: 90px; /* sidebar + spacing */
     }
@@ -151,14 +151,12 @@
 .project{
   display: grid;
   grid-template-columns: 1.7fr 1fr;
-  gap: 30px;
-
   padding: 10px 14px;          /* ✅ FIXED */
   background: var(--right-bg);
 
   border-bottom: 1px solid #000000;  /* ✅ LINE */
-  padding-bottom: 18px;           /* spacing above line */
-  margin-bottom: 18px;            /* spacing below line */
+  padding-bottom: 5px;           /* spacing above line */
+  margin-bottom: 5px;            /* spacing below line */
 }
 
 .right-block a:last-child .project{
@@ -177,7 +175,7 @@
 
     .project h2 {
       font-size: 16px;
-      font-weight: 800;
+      font-weight: 900;
       margin-top: 10px;
       padding-top: 10px;
     }
