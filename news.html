@@ -154,7 +154,9 @@
     }
 
     .brand .highlight{
-      background: #ff3b00;
+      background: #ff57ca;
+      color: white;
+      font-family: Cardo;
       padding: 4px 10px;
       display: inline-block;
     }
@@ -234,7 +236,8 @@
       padding: 10px 14px 14px;
       position: relative;
     }
-
+    .block-link:hover .project {
+      transform: translateY(-5px);    }
     /* IMPORTANT: disable old separator system completely */
     .project::after{
       content: none !important;
@@ -319,8 +322,7 @@
         display: none; /* avoid weirdness when not scrolling */
       }
       
-    .block-link:hover .project {
-      transform: translateY(-5px);    }
+
       
       .project{
         grid-template-columns: 1fr;
