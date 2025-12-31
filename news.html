@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,8 +14,13 @@
   <style>
     * { box-sizing: border-box; }
 
-    body{
+    html, body{
       margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body{
       font-family: 'Manrope', sans-serif;
       line-height: 1.6;
       font-weight: 700;
@@ -28,20 +31,19 @@
     :root{
       /* ===== Sidebar + layout ===== */
       --sidebar-bg: #000000;
-      --gap-size: 5px;
       --sidebar-width: 90px;
-      --page-offset: 90px; /* sidebar + spacing */
+      --page-offset: 90px;
 
-      /* ===== Background (right side) ===== */
-      --left-bg:  #ffffff;   /* bg-grid left panel (behind left block) */
-      --right-bg: #ffffff;   /* bg-grid right panel (behind right block) */
+      /* ===== Background ===== */
+      --left-bg:  #ffffff;
+      --right-bg: #ffffff;
 
-      /* ===== LEFT 3-panel colors (fixed ratio) ===== */
-      --left-top: #fff200;   /* yellow */
-      --left-mid: #ffffff;   /* white */
-      --left-bot: #76cfe6;   /* cyan */
+      /* ===== LEFT stacked colors ===== */
+      --left-top: #fff200;
+      --left-mid: #ffffff;
+      --left-bot: #76cfe6;
 
-      /* ===== Text utils ===== */
+      /* ===== Text ===== */
       --text-gray-200: #9ca3af;
       --text-black: #000000;
     }
@@ -52,10 +54,8 @@
     /* ================= Sidebar ================= */
     .sidebar{
       position: fixed;
-      top: 0;
-      left: 0;
+      inset: 0 auto 0 0;
       width: var(--sidebar-width);
-      height: 100vh;
       background: var(--sidebar-bg);
       padding-top: 35px;
       z-index: 20;
@@ -70,34 +70,26 @@
       text-decoration: none;
     }
 
-    .sidebar a:hover{
-      display: block;
-      white-space: nowrap;
-    }
-
     /* ================= Page Wrapper ================= */
     .page{
       position: relative;
       height: 100vh;
-      padding: 40px 0 40px var(--page-offset);
+      padding-left: var(--page-offset); /* NO top/bottom padding */
     }
 
     /* ================= Background Grid ================= */
     .bg-grid{
       position: absolute;
-      top: 0;
-      bottom: 0;
+      inset: 0;
       left: var(--page-offset);
-      right: 0;
       display: grid;
-      grid-template-columns: 1fr var(--gap-size) 1.9fr;
+      grid-template-columns: 1fr 1.9fr; /* NO GAP COLUMN */
       z-index: 0;
       pointer-events: none;
     }
 
-    .bg-left  { background: var(--left-bg); }
-    .bg-gap   { background: var(--left-bg); }
-    .bg-right { background: var(--right-bg); }
+    .bg-left{ background: var(--left-bg); }
+    .bg-right{ background: var(--right-bg); }
 
     /* ================= Foreground Grid ================= */
     .row{
@@ -106,17 +98,16 @@
       height: 100%;
       display: grid;
       grid-template-columns: 1fr 1.9fr;
-      gap: var(--gap-size);
-      align-items: stretch; /* <-- make left/right boxes same height */
+      gap: 0;                     /* NO GAP */
+      align-items: stretch;
     }
 
     /* ================= Left Block ================= */
     .left-block{
       position: sticky;
-      top: 40px;
-      height: calc(100vh - 80px); /* exactly visible left column height */
-      overflow: hidden;           /* the bottom panel controls scrolling */
-      padding-right: 0;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
     }
 
     .left-stack{
@@ -127,52 +118,47 @@
       border: 1px solid #000;
     }
 
-    /* NO top/bottom padding (only left/right) */
     .left-panel{
       width: 100%;
-      padding: 0 22px;
+      padding: 0 22px; /* no vertical padding */
     }
 
-    /* fixed ratios */
     .left-panel.top{
       background: var(--left-top);
-      flex: 0 0 22%;              /* yellow ratio */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;    /* center content vertically since no padding */
-      border-bottom: 1px solid #000;
-    }
-
-    .left-panel.mid{
-      background: var(--left-mid);
-      flex: 0 0 16%;              /* white ratio */
+      flex: 0 0 22%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       border-bottom: 1px solid #000;
     }
 
+    .left-panel.mid{
+      background: var(--left-mid);
+      flex: 0 0 16%;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #000;
+    }
+
     .left-panel.bot{
       background: var(--left-bot);
-      flex: 1 1 auto;             /* cyan fills remaining */
-      overflow: auto;             /* scroll here if text is long */
-      padding-top: 18px;          /* optional: tiny top space for readability */
-      padding-bottom: 18px;       /* optional: tiny bottom space */
+      flex: 1 1 auto;
+      overflow-y: auto;
+      padding-top: 18px;
+      padding-bottom: 18px;
     }
 
     .brand{
       font-family: 'Montserrat', sans-serif;
       font-size: 24px;
       font-weight: 800;
-      margin: 0 0 12px 0;
+      margin-bottom: 12px;
     }
 
-    /* name label */
     .brand .highlight{
       background: #ff3b00;
       padding: 4px 10px;
       display: inline-block;
-      color: #000;
     }
 
     .contact-icons{
@@ -190,7 +176,6 @@
     .contact{
       font-size: 15px;
       font-weight: 700;
-      margin: 0;
     }
 
     /* ================= Right Block ================= */
@@ -198,10 +183,10 @@
       height: 100%;
       overflow-y: auto;
       font-size: 15px;
-      color: #000;
       display: flex;
       flex-direction: column;
-      border: 1px solid #000;     /* <-- OUTER BOX LINE */
+      border: 1px solid #000;
+      border-left: 0; /* single divider line */
       background: var(--right-bg);
     }
 
@@ -218,22 +203,12 @@
     .project{
       display: grid;
       grid-template-columns: 1.7fr 1fr;
-      padding: 10px 14px;
-      background: var(--right-bg);
-      border-bottom: 1px solid #000000;
-      padding-bottom: 5px;
-      margin-bottom: 5px;
+      padding: 10px 14px 5px;
+      border-bottom: 1px solid #000;
     }
 
     .right-block a:last-child .project{
       border-bottom: none;
-      margin-bottom: 0;
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
-
-    .block-link:hover .project{
-      transform: translateY(-5px);
     }
 
     .project h2{
@@ -244,7 +219,6 @@
     .project-image{
       max-width: 400px;
       justify-self: end;
-      align-items: center;
     }
 
     .project-image img{
@@ -255,21 +229,13 @@
     }
 
     .custom-link{
-      color: #000000;
-      text-decoration: underline;
-    }
-
-    .custom-link:hover{
-      color: #949494;
+      color: #000;
       text-decoration: underline;
     }
 
     /* ================= Mobile ================= */
     @media (max-width: 900px){
-      body{
-        overflow: auto;
-        color: #000000;
-      }
+      body{ overflow: auto; }
 
       :root{
         --sidebar-width: 0px;
@@ -279,83 +245,43 @@
 
       .sidebar{
         position: sticky;
-        top: 0;
-        left: 0;
-        width: 100%;
         height: var(--topbar-height);
-        padding: 0;
         flex-direction: row;
-        align-items: center;
         justify-content: center;
-        gap: 8px;
-        z-index: 50;
-      }
-
-      .sidebar a{
-        padding: 10px 12px;
-        font-size: 13px;
+        padding: 0;
       }
 
       .page{
-        padding: 16px;
         height: auto;
-        padding-top: calc(16px + var(--topbar-height));
+        padding-top: var(--topbar-height);
       }
 
-      .bg-grid{
-        display: grid;
-        position: fixed;
-        top: var(--topbar-height);
-        left: 0;
-        right: 0;
-        bottom: 0;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-        z-index: 0;
-      }
-
-      .bg-left{ background: var(--right-bg); }
-      .bg-gap{ display: none; }
-      .bg-right{ background: var(--right-bg); }
+      .bg-grid{ display: none; }
 
       .row{
         grid-template-columns: 1fr;
-        gap: 18px;
         height: auto;
-        align-items: start;
       }
 
       .left-block{
         position: relative;
-        top: auto;
-        height: auto;
-        overflow: visible;
-      }
-
-      .left-stack{
         height: auto;
       }
 
-      /* on mobile, let panels be natural height instead of fixed % */
+      .left-panel{
+        padding: 14px 18px;
+      }
+
       .left-panel.top,
       .left-panel.mid,
       .left-panel.bot{
         flex: 0 0 auto;
-        justify-content: flex-start;
-      }
-
-      .left-panel{
-        padding: 14px 18px; /* mobile-friendly padding */
-      }
-
-      .left-panel.bot{
-        overflow: visible;
       }
 
       .right-block{
-        overflow: visible;
         height: auto;
-        padding-right: 0;
+        overflow: visible;
+        border-left: 1px solid #000;
       }
 
       .project{
@@ -370,6 +296,7 @@
     }
   </style>
 </head>
+
 
 
 <body>
