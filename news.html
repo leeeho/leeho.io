@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -105,7 +107,7 @@
       display: grid;
       grid-template-columns: 1fr 1.9fr;
       gap: var(--gap-size);
-      align-items: start;
+      align-items: stretch; /* <-- make left/right boxes same height */
     }
 
     /* ================= Left Block ================= */
@@ -119,42 +121,53 @@
 
     .left-stack{
       height: 100%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       border: 1px solid #000;
     }
 
+    /* NO top/bottom padding (only left/right) */
     .left-panel{
-      padding: 22px 22px;
+      width: 100%;
+      padding: 0 22px;
     }
 
     /* fixed ratios */
     .left-panel.top{
       background: var(--left-top);
       flex: 0 0 22%;              /* yellow ratio */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;    /* center content vertically since no padding */
+      border-bottom: 1px solid #000;
     }
 
     .left-panel.mid{
       background: var(--left-mid);
       flex: 0 0 16%;              /* white ratio */
-      border-top: 1px solid #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 1px solid #000;
     }
 
     .left-panel.bot{
       background: var(--left-bot);
       flex: 1 1 auto;             /* cyan fills remaining */
-      border-top: 1px solid #000;
       overflow: auto;             /* scroll here if text is long */
+      padding-top: 18px;          /* optional: tiny top space for readability */
+      padding-bottom: 18px;       /* optional: tiny bottom space */
     }
 
     .brand{
       font-family: 'Montserrat', sans-serif;
       font-size: 24px;
       font-weight: 800;
-      margin-bottom: 12px;
+      margin: 0 0 12px 0;
     }
 
-    /* optional: make the name look like a colored label (like your screenshot) */
+    /* name label */
     .brand .highlight{
       background: #ff3b00;
       padding: 4px 10px;
@@ -188,6 +201,8 @@
       color: #000;
       display: flex;
       flex-direction: column;
+      border: 1px solid #000;     /* <-- OUTER BOX LINE */
+      background: var(--right-bg);
     }
 
     .left-inner{
@@ -307,6 +322,7 @@
         grid-template-columns: 1fr;
         gap: 18px;
         height: auto;
+        align-items: start;
       }
 
       .left-block{
@@ -325,6 +341,11 @@
       .left-panel.mid,
       .left-panel.bot{
         flex: 0 0 auto;
+        justify-content: flex-start;
+      }
+
+      .left-panel{
+        padding: 14px 18px; /* mobile-friendly padding */
       }
 
       .left-panel.bot{
@@ -349,6 +370,7 @@
     }
   </style>
 </head>
+
 
 <body>
   <!-- Sidebar -->
