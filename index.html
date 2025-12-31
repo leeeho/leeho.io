@@ -139,7 +139,7 @@
       height: 100%;
       overflow-y: auto;
       font-size: 15px;
-      color: #000000;
+      color: var(--left-bg);
       display: flex;
       flex-direction: column;
    /*   gap: 30px;*/
@@ -230,7 +230,6 @@
     padding: 16px;
     height: auto;
     /* push content below top bar */
-    color: #ffffff;
     padding-top: calc(16px + var(--topbar-height));
   }
 
@@ -248,7 +247,6 @@
   }
 
   .bg-left{
-    color: #ffffff;
     background: var(--right-bg);    /* black */
   }
 
@@ -270,7 +268,6 @@
   .left-block{
     position: relative;            /* disable sticky on mobile */
     top: auto;
-    color: #000000;
   }
 
   .right-block{
