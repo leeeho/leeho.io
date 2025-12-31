@@ -79,7 +79,7 @@
       inset: 0;
       left: var(--page-offset);
       display: grid;
-      grid-template-columns: 1fr 1.9fr;
+      grid-template-columns: 1fr 1.9fr; /* no gap column */
       z-index: 0;
       pointer-events: none;
     }
@@ -94,7 +94,7 @@
       height: 100%;
       display: grid;
       grid-template-columns: 1fr 1.9fr;
-      gap: 0;
+      gap: 0;                 /* NO GAP between left/right blocks */
       align-items: stretch;
     }
 
@@ -116,7 +116,7 @@
 
     .left-panel{
       width: 100%;
-      padding: 0 22px;
+      padding: 0 22px; /* no vertical padding */
     }
 
     .left-panel.top{
@@ -180,10 +180,10 @@
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      border-left: 0; /* single divider */
       background: var(--right-bg);
-        border: 1px solid #000;
-  border-left: 0;
+
+      border: 1px solid #000;
+      border-left: 0;   /* single divider line (from left-stack border) */
     }
 
     .left-inner{
@@ -204,19 +204,26 @@
       padding: 10px 14px 14px;
     }
 
-    /* FULL-WIDTH SEPARATOR LINE */
+    /* FULL-WIDTH separator (from right-block left edge to page right) */
     .project::after{
       content: "";
       position: absolute;
       left: -20px;   /* cancel left-inner padding */
-      right: 0;      /* extend to page right */
+      right: 0;      /* extend to right edge */
       bottom: 0;
       height: 1px;
       background: #000;
     }
-.right-block a:first-child .project::after{
-  display: none;
-}
+
+    /* prevent double-thick line under first item (top border already exists) */
+    .right-block a:first-child .project::after{
+      display: none;
+    }
+
+    /* remove line on last item */
+    .right-block a:last-child .project::after{
+      display: none;
+    }
 
     .project h2{
       font-size: 16px;
@@ -268,6 +275,7 @@
       .row{
         grid-template-columns: 1fr;
         height: auto;
+        align-items: start;
       }
 
       .left-block{
@@ -288,7 +296,7 @@
       .right-block{
         height: auto;
         overflow: visible;
-        border-left: 1px solid #000;
+        border-left: 1px solid #000; /* restore border on mobile (no left column) */
       }
 
       .project{
@@ -297,12 +305,7 @@
       }
 
       .project::after{
-        left: 0;   /* no inner padding on mobile */
-      }
-
-      .project-image{
-        justify-self: start;
-        max-width: 100%;
+        left: 0; /* no left-inner cancellation needed on mobile */
       }
     }
   </style>
