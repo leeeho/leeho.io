@@ -413,8 +413,6 @@
     right: 0;
   }
 
-  /* ===== Profile image (centered) ===== */
-
 .profile-image{
   width: 100%;
   display: flex;
@@ -422,10 +420,12 @@
   margin-bottom: 18px;
 }
 
+/* actual image */
 .profile-image img{
-  width: 100%;
-  max-width: 100%;   /* adjust size here */
+  width: 280px;      /* 고정 크기 */
+  max-width: 90%;    /* 작은 화면 대응 */
   height: auto;
+  object-fit: cover;
   display: block;
 }
 
