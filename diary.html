@@ -39,24 +39,17 @@
       --right-bg: #fff;
 
       /* ===== Left column colors ===== */
-      /* --left-top: #156dff;
-      --left-mid: #e8e8e8;
-      --left-bot-a: #f6d5c3;
-      --left-bot-b: #6ccef3;
-
-      --text-gray-200: #6b7078;
-    } */
-
-          /* ===== Left column colors ===== */
-      --left-top: #fff;
+      --left-top: #fff
       --left-mid: #fff;
       --left-bot-a: #fff;
       --left-bot-b: #fff;
 
       --text-gray-200: #6b7078;
+		
     }
 
     .text-gray-200{ color: var(--text-gray-200) !important; }
+.text-black{ color: black !important; }
 
     /* ================= Sidebar ================= */
     .sidebar{
@@ -163,8 +156,6 @@
     }
 
     .brand .highlight{
-      background: white;
-      color: black;
       font-family: Montserrat;
       padding: 2px 2px;
       display: inline-block;
@@ -241,7 +232,6 @@
 
     .project{
       display: grid;
-      grid-template-columns: 1.7fr 1fr;
       padding: 10px 14px 14px;
       position: relative;
     }
@@ -256,54 +246,41 @@
 }
     .project h2{
       font-size: 16px;
-      background: #ffcb87;
+      background: #000;
+		color: fff;
       padding-left: 2px;
       padding-right: 2px;
+		     border: 1.5px solid #000;
+		            display: inline-block;
       margin: 1px 0 0 0;
-      border: 1.5px solid #000;
-      display: inline-block;
     }
-
-    .project h1{
-      font-size: 16px;
-      margin: 0 0 0 0;
-            padding-left: 2px;
-      padding-right: 2px;
-      background: #000;
-      color: #fff;
-     border: 1.5px solid #000;
-            display: inline-block;
-    }
-
-    .project-image{
-      max-width: 400px;
-      justify-self: end;
-    }
-
-    .project-image img{
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      display: block;
-    }
-
-          .profile-image{
-      max-width: 350px;
-      justify-self: center;
-    }
-
-    .profile-image img{
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      display: block;
-    }
-
     .custom-link{
       color: #000;
       text-decoration: underline;
     }
+/* separator between plain articles (your current structure) */
+.left-inner > .project + .project{
+  border-top: 1px solid #000;
+}
 
+/* make it full-width by canceling left-inner padding */
+.left-inner > .project + .project{
+  position: relative;
+}
+.left-inner > .project + .project::before{
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -20px;   /* same as .left-inner padding-left */
+  right: 0;
+  height: 1px;
+  background: #000;
+  pointer-events: none;
+}
+
+	  .text-thin{
+		  font-weight: 400;}
+  /* page starts below topbar */
     /* ================= Mobile ================= */
 /* ================= Mobile ================= */
 @media (max-width: 900px){
@@ -341,7 +318,6 @@
     font-size: 13px;
   }
 
-  /* page starts below topbar */
   .page{
     height: auto;
     padding-left: 0;
@@ -386,38 +362,25 @@
     overflow: visible;
   }
 
-    /* ================= Right Block (FIXED LINES) ================= */
-    .right-block{
-      height: 100%;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      background: var(--right-bg);
+  /* right block looks like desktop box */
+  .right-block{
+    height: auto;
+    overflow: visible;
+    border: 1px solid #000;
+    border-top: 0;      /* share border with left-stack bottom edge visually */
+    border-left: 1px solid #000;
+    padding-top: 0;     /* remove the top-rule offset */
+    position: relative;
+  }
 
-      border: 1px solid #000;
-      border-left: 0;
-      position: relative;
-
-      padding-top: 1px; /* room for top rule */
-    }
-
-    /* top rule (always visible, no sticky bugs) */
-    .right-block::before{
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: #000;
-      z-index: 3;
-      pointer-events: none;
-    }
-
+  /* remove the absolute top rule (desktop only) */
+  .right-block::before{
+    display: none;
+  }
 
   /* keep the same inner padding feel */
   .left-inner{
-    padding-left: 20px;
+    padding-left: 18px;
     padding-right: 0;
   }
 
@@ -437,20 +400,7 @@
     left: -18px;  /* cancel left-inner padding (mobile version) */
     right: 0;
   }
-
-      .profile-image{
-      max-width: 400px;
-      justify-self: center;
-    }
-
-    .profile-image img{
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      display: block;
-    }
-
-
+}
   </style>
 </head>
 
@@ -503,8 +453,8 @@
       <div class="contact">
         leeho@kaist.ac.kr <br>
         N5, 291 Daehakro, Yuseong-gu, Daejeon, Republic of Korea <br>
-		  <div style="margin-top:10px;">
-  <a href="static/pdf/2026_CV_HojeongLee.pdf" target="_blank"
+   <div style="margin-top:10px;">
+  <a href="static/pdf/2026cv_04.pdf" target="_blank"
      style="
        background:#000;
        color:#fff;
@@ -529,19 +479,17 @@
     CV (한국어)
   </a>
 </div>
-      </div>
+	  
+	  </div>
     </div>
 
-  <!-- CYAN -->
-<div class="left-panel bot">
-  <p>
-   <br><br> Currently, I am working on the projects of the soft actuator (especially the electrostatic actuator) and the affective HRI.<br>
-   I am open to collaborations with other researchers who are also interested in soft actuator (haptics), HCI/ HRI, and telepresence!<br>
-   Please get in touch with me via <a href="mailto:leeho@kaist.ac.kr" class="custom-link">email</a> or <a href="https://www.linkedin.com/in/leeho99" class="custom-link">LinkedIn message</a>.<br><br>
-  </p>
-</div>
-
-    </div>
+    <!-- CYAN -->
+    <div class="left-panel bot">
+    <p>
+          <br><br> Currently, I am working on the projects of the soft actuator (especially the electrostatic actuator) and the affective HRI.<br>
+          I am open to collaborations with other researchers who are also interested in soft actuator (haptics), HCI/ HRI, and telepresence!<br>
+		  Please get in touch with me via <a href="mailto:leeho@kaist.ac.kr" class="custom-link">email</a> or <a href="https://www.linkedin.com/in/leeho99" class="">LinkedIn message</a>.<br><br>
+        </p>
 
   </div>
 </aside>
@@ -550,8 +498,8 @@
 
       <!-- RIGHT (SCROLL) -->
       <div class="right-block">
-			         <div class="left-inner">
-          <article class="project">
+          <div class="left-inner">
+   <article class="project">
             <div>
               <h1>Publication</h1>
               <p>
@@ -696,8 +644,7 @@
    
 
 
-
-          </div>   
+          </div>
       </div>
     </section>
   </div>
