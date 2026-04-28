@@ -386,25 +386,38 @@
     overflow: visible;
   }
 
-  /* right block looks like desktop box */
-  .right-block{
-    height: auto;
-    overflow: visible;
-    border: 1px solid #000;
-    border-top: 0;      /* share border with left-stack bottom edge visually */
-    border-left: 1px solid #000;
-    padding-top: 0;     /* remove the top-rule offset */
-    position: relative;
-  }
+    /* ================= Right Block (FIXED LINES) ================= */
+    .right-block{
+      height: 100%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      background: var(--right-bg);
 
-  /* remove the absolute top rule (desktop only) */
-  .right-block::before{
-    display: none;
-  }
+      border: 1px solid #000;
+      border-left: 0;
+      position: relative;
+
+      padding-top: 1px; /* room for top rule */
+    }
+
+    /* top rule (always visible, no sticky bugs) */
+    .right-block::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #000;
+      z-index: 3;
+      pointer-events: none;
+    }
+
 
   /* keep the same inner padding feel */
   .left-inner{
-    padding-left: 18px;
+    padding-left: 20px;
     padding-right: 0;
   }
 
@@ -536,7 +549,7 @@
 
       <!-- RIGHT (SCROLL) -->
       <div class="right-block">
-			  
+			         <div class="left-inner">
           <article class="project">
             <div>
               <h1>Publication</h1>
@@ -683,7 +696,7 @@
 
 
 
-            
+          </div>   
       </div>
     </section>
   </div>
