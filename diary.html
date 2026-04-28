@@ -1,1 +1,673 @@
-Too Lazy to Update
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hojeong Lee</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Cardo:ital,wght@0,400;0,700;1,400&family=Doto:wght@100..900&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Petit+Formal+Script&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body{
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body{
+      font-family: 'Manrope', sans-serif;
+      line-height: 1.6;
+      font-weight: 700;
+      overflow: hidden;
+      color: #000;
+    }
+
+    :root{
+      /* ===== Layout ===== */
+      --sidebar-bg: #fff;
+      --sidebar-width: 95px;
+      --page-offset: 95px;
+
+      /* ===== Background panels ===== */
+      --left-bg: #fff;
+      --right-bg: #fff;
+
+      /* ===== Left column colors ===== */
+      /* --left-top: #156dff;
+      --left-mid: #e8e8e8;
+      --left-bot-a: #f6d5c3;
+      --left-bot-b: #6ccef3;
+
+      --text-gray-200: #6b7078;
+    } */
+
+          /* ===== Left column colors ===== */
+      --left-top: #fff;
+      --left-mid: #fff;
+      --left-bot-a: #fff;
+      --left-bot-b: #fff;
+
+      --text-gray-200: #6b7078;
+    }
+
+    .text-gray-200{ color: var(--text-gray-200) !important; }
+
+    /* ================= Sidebar ================= */
+    .sidebar{
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: var(--sidebar-width);
+      background: var(--sidebar-bg);
+      padding-top: 20px;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar a{
+      padding: 10px 18px;
+      font-size: 17px;
+      color: #000;
+      text-decoration: none;
+    }
+
+    /* ================= Page Wrapper ================= */
+    .page{
+      position: relative;
+      height: 100vh;
+      padding-left: var(--page-offset);
+    }
+
+    /* ================= Background Grid ================= */
+    .bg-grid{
+      position: absolute;
+      inset: 0;
+      left: var(--page-offset);
+      display: grid;
+      grid-template-columns: 1fr 1.9fr; /* no gap column */
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .bg-left{ background: var(--left-bg); }
+    .bg-right{ background: var(--right-bg); }
+
+    /* ================= Foreground Grid ================= */
+    .row{
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1.9fr;
+      gap: 0;                 /* NO GAP between left/right blocks */
+      align-items: stretch;
+    }
+
+    /* ================= Left Block ================= */
+    .left-block{
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .left-stack{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #000;
+    }
+
+    .left-panel{
+      width: 100%;
+      padding: 0 22px; /* no vertical padding */
+    }
+
+    .left-panel.top{
+      background: var(--left-top);
+      flex: 0 0 16%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 1px solid #000;
+    }
+
+    .left-panel.mid{
+      background: var(--left-mid);
+      flex: 0 0 12%;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #000;
+    }
+
+    .left-panel.bot{
+      background: linear-gradient(to bottom, var(--left-bot-a), var(--left-bot-b));
+      flex: 1 1 auto;
+      overflow-y: auto;
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
+
+    .brand{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .brand .highlight{
+      background: white;
+      color: black;
+      font-family: Montserrat;
+      padding: 2px 2px;
+      display: inline-block;
+    }
+
+    .contact-icons{
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .contact-icons img{
+      width: 23px;
+      height: auto;
+      display: block;
+    }
+
+    .contact{
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    /* ================= Right Block (FIXED LINES) ================= */
+    .right-block{
+      height: 100%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      background: var(--right-bg);
+
+      border: 1px solid #000;
+      border-left: 0;
+      position: relative;
+
+      padding-top: 1px; /* room for top rule */
+    }
+
+    /* top rule (always visible, no sticky bugs) */
+    .right-block::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #000;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .left-inner{
+      padding-left: 20px;
+      padding-right: 0;
+    }
+
+    .block-link{
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      position: relative; /* anchor for separator */
+    }
+
+    /* single separator between items (full width to the page right) */
+    .block-link + .block-link::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -20px;   /* cancel left-inner padding */
+      right: 0;
+      height: 1px;
+      background: #000;
+      pointer-events: none;
+    }
+
+    .project{
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      padding: 10px 14px 14px;
+      position: relative;
+    }
+    .block-link:hover .project {
+      transform: translateY(-5px);    }
+    /* IMPORTANT: disable old separator system completely */
+    .project::after{
+      content: none !important;
+    }
+.right-block a:first-child .project::before{
+  display: none;
+}
+    .project h2{
+      font-size: 16px;
+      background: #ffcb87;
+      padding-left: 2px;
+      padding-right: 2px;
+      margin: 1px 0 0 0;
+      border: 1.5px solid #000;
+      display: inline-block;
+    }
+
+    .project h1{
+      font-size: 16px;
+      margin: 0 0 0 0;
+            padding-left: 2px;
+      padding-right: 2px;
+      background: #000;
+      color: #fff;
+     border: 1.5px solid #000;
+            display: inline-block;
+    }
+
+    .project-image{
+      max-width: 400px;
+      justify-self: end;
+    }
+
+    .project-image img{
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+          .profile-image{
+      max-width: 350px;
+      justify-self: center;
+    }
+
+    .profile-image img{
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .custom-link{
+      color: #000;
+      text-decoration: underline;
+    }
+
+    /* ================= Mobile ================= */
+/* ================= Mobile ================= */
+@media (max-width: 900px){
+
+  /* allow page scrolling normally on mobile */
+  body{
+    overflow: auto;
+  }
+
+  :root{
+    --sidebar-width: 0px;   /* sidebar becomes topbar, so width is irrelevant */
+    --page-offset: 0px;
+    --topbar-height: 60px;
+  }
+
+  /* TOP BAR (visible) */
+  .sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--topbar-height);
+    width: 100%;
+    padding: 0;
+    background: var(--sidebar-bg);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    z-index: 999;
+  }
+
+  .sidebar a{
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  /* page starts below topbar */
+  .page{
+    height: auto;
+    padding-left: 0;
+    padding-top: var(--topbar-height);
+  }
+
+  /* hide background split panels on mobile */
+  .bg-grid{
+    display: none;
+  }
+
+  /* single column */
+  .row{
+    grid-template-columns: 1fr;
+    height: auto;
+    align-items: stretch;
+  }
+
+  /* left block becomes normal (not sticky) */
+  .left-block{
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  .left-stack{
+    border: 1px solid #000;
+  }
+
+  /* left panels become natural heights */
+  .left-panel{
+    padding: 14px 18px;
+  }
+
+  .left-panel.top,
+  .left-panel.mid,
+  .left-panel.bot{
+    flex: 0 0 auto;
+  }
+
+  .left-panel.bot{
+    overflow: visible;
+  }
+
+  /* right block looks like desktop box */
+  .right-block{
+    height: auto;
+    overflow: visible;
+    border: 1px solid #000;
+    border-top: 0;      /* share border with left-stack bottom edge visually */
+    border-left: 1px solid #000;
+    padding-top: 0;     /* remove the top-rule offset */
+    position: relative;
+  }
+
+  /* remove the absolute top rule (desktop only) */
+  .right-block::before{
+    display: none;
+  }
+
+  /* keep the same inner padding feel */
+  .left-inner{
+    padding-left: 18px;
+    padding-right: 0;
+  }
+
+  /* project becomes single column like desktop mobile intent */
+  .project{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .project-image{
+    justify-self: start;
+    max-width: 100%;
+  }
+
+  /* FULL-WIDTH separators between items */
+  .block-link + .block-link::before{
+    left: -18px;  /* cancel left-inner padding (mobile version) */
+    right: 0;
+  }
+
+      .profile-image{
+      max-width: 400px;
+      justify-self: center;
+    }
+
+    .profile-image img{
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+
+  </style>
+</head>
+
+
+
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <a href="index.html">Home</span></a>
+    <a href="cv.html">About</span></a>
+	  <a href="diary.html">News</span></a>
+    <!-- <a href="news.html">News</span></a> -->
+  </div>
+
+  <div class="page">
+    <div class="bg-grid" aria-hidden="true">
+  <div class="bg-left"></div>
+  <div class="bg-right"></div>
+</div>
+
+    <section class="row">
+
+      <!-- LEFT (STILL) -->
+
+<aside class="left-block">
+  <div class="left-stack">
+
+    <!-- YELLOW -->
+    <div class="left-panel top">
+      <div class="brand"><span class="highlight">Hojeong Lee</span></div>
+
+      <div class="contact-icons">
+        <a href="https://scholar.google.com/citations?hl=en&user=qp40iEEAAAAJ" target="_blank" rel="noopener">
+          <img src="static/img/gs_b.png" alt="Google Scholar">
+        </a>
+        <a href="https://www.linkedin.com/in/leeho99" target="_blank" rel="noopener">
+          <img src="static/img/linkedin_b.png" alt="LinkedIn">
+        </a>
+        <a href="https://www.hcitech.org" target="_blank" rel="noopener">
+          <img src="static/img/lab_b.png" alt="Lab">
+        </a>
+        <a href="https://orcid.org/0009-0009-6366-6954" target="_blank" rel="noopener">
+          <img src="static/img/orcid_b.png" alt="ORCID">
+        </a>
+      </div>
+    </div>
+
+    <!-- WHITE -->
+    <div class="left-panel mid">
+      <div class="contact">
+        leeho@kaist.ac.kr <br>
+        N5, 291 Daehakro, Yuseong-gu, Daejeon, Republic of Korea
+		<a href="https://leeeho.github.io/leeho.io/static/pdf/2026_CV_HojeongLee.pdf" class="custom-link">CV</a>.<br> , <a href="https://leeeho.github.io/leeho.io/static/pdf/cv_kor2.pdf.pdf" class="custom-link">CV (KOR)</a>.<br>
+      </div>
+    </div>
+
+    <!-- CYAN -->
+    <div class="left-panel bot">
+             <div class="profile-image">
+            <img src="static/img/profile.jpg" alt="profile">
+            </div>
+      
+      <p>
+       <br><br> Currently, I am working on the projects of the soft actuator (especially the electrostatic actuator) and the affective HRI.<br>
+          I am open to collaborations with other researchers who are also interested in soft actuator (haptics), HCI/ HRI, and telepresence!<br>
+		  Please get in touch with me via <a href="mailto:leeho@kaist.ac.kr" class="custom-link">email</a> or <a href="https://www.linkedin.com/in/leeho99" class="custom-link">LinkedIn message</a>.<br><br>
+        </p>
+
+
+    </div>
+
+  </div>
+</aside>
+
+
+
+      <!-- RIGHT (SCROLL) -->
+      <div class="right-block">
+          <div class="left-inner">
+        <a href="https://vibgrasp.hcitech.org/" class="block-link" target="_blank" rel="noopener">
+          <article class="project">
+            <div>
+              <h1>Publication</h1>
+              <p>
+              My Paper, "<a href="https://ieeexplore.ieee.org/document/11488477" class="custom-link">VibGrasp: Spatiotemporal Vibration Based Multimodal Haptic Rendering with a Lightweight Exo-Glove for 3D Shape Perception</a>" has been accepted to IEEE Transactions on Haptics.<br>
+               <span class="text-gray-200">2026.04.16</span><br />
+              </p>
+            </div>
+          </article>
+        </a>
+                        
+          <article class="project">
+            <div>
+              <h1>Invited Talk</h1> <br>
+              <p>
+                I was invited to give a talk at the SNU Design Week 2025 as an HCI researcher. Huge appreciation to Professor Jang-sub Lee and the SNUD Program team for providing me with invaluable experience. <br>
+                <span class="text-gray-200">12.2025</span><br />
+              </p>
+            </div>
+          </article>
+        </a>
+
+            <article class="project">
+            <div>
+              <h1>Conference Attendance</h1> <br>
+              <p>
+                I am attending the IEEE International Symposium on Mixed and Augmented Reality (ISMAR) held in Daejeon, South Korea! I will present my work at the poster session.<br>
+                <span class="text-gray-200">10.2025</span><br />
+              </p>
+            </div>
+          </article>
+        </a>
+
+          <article class="project">
+            <div>
+              <h1>Publication</h1> <br>
+              <p>
+                The poster 'Effect of Movement Velocity and Flexion Angle on Realistic Haptic Reproduction' led by Dongkyu Kwak and me was accepted to IEEE ISMAR 2025.<br>
+                <span class="text-gray-200">08.2025</span><br />
+              </p>
+            </div>
+          </article>
+        </a>
+
+          <article class="project">
+            <div>
+              <h1>Conference Attendance</h1>
+              <p>
+                 I am going to present a paper, '3D Shape Perception through Spatiotemporal Vibrotactile Patterns with Kinesthetic Feedback', at the IEEE World Haptics Conference 2025 in Suwon, Korea.<br>
+                <span class="text-gray-200">07.2025</span><br />
+              </p>
+            </div>
+          </article>
+        </a>
+
+          <article class="project">
+            <div>
+              <h1>Graduation</h1>
+              <p>
+              I have successfully defended my master's thesis, 'Wearable Haptic Interface for Shape Perception through Spatiotemporal Vibrotactile Patterns and Kinesthetic Feedback'. <br>
+              I will continue my research as Ph.D Candidate under Professor Sang Ho Yoon in the Robotics Program, KAIST.
+               <span class="text-gray-200">02.06.2025</span><br />
+              </p>
+            </div>
+          </article>
+        </a>
+
+            <article class="project">
+            <div>
+              <h1>Honors and Awards</h1> <br>
+              <p>
+                I won the Research Award (Dean's award) from LACS, KAIST.<br>
+                <span class="text-gray-200">12.2024</span><br />
+              </p>
+            </div>
+          </article>
+        </a>
+
+          <article class="project">
+            <div>
+              <h1>Conference Attendance</h1> <br>
+              <p>
+                I am attending the UbiComp / ISWC 2024 to present my paper "EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR" in Melbourne, Australia.<br>
+                <span class="text-gray-200">10.2024</span><br />
+              </p>
+            </div>
+          </article>
+        </a>
+            
+          <article class="project">
+            <div>
+              <h1>Publication</h1>
+              <p>
+                 My paper, "EStatiG: Wearable Haptic Feedback with Multi-Phalanx Electrostatic Brake for Enhanced Object Perception in VR", is published in IMWUT Vol.8.<br>
+                <span class="text-gray-200">09.2024</span><br />
+              </p>
+            </div>
+          </article>
+        </a>
+
+          <article class="project">
+            <div>
+              <h1>Conference Attendance</h1>
+              <p>
+              I attended the Korea Haptics Conference 2024 in Kyeongju, South Korea, and presented the invited paper.
+               <span class="text-gray-200">08.2024</span><br />
+              </p>
+            </div>
+          </article>
+        </a>
+
+            <article class="project">
+            <div>
+              <h1>Conference Attendance</h1> <br>
+              <p>
+               I presented my paper, "Optimizing Button Size to Enhance User Experience for Augmented Reality Interactions in Mobile Scenarios", at the Triennale Congress of the International Ergonomics Association (IEA) 2024 in Jeju, South Korea<br>
+                <span class="text-gray-200">08.2024</span><br />
+              </p>
+            </div>
+          </article>
+        </a>
+
+          <article class="project">
+            <div>
+              <h1>Conference Attendance</h1> <br>
+              <p>
+                I am going to present the lab Demo at CHI 24' Interactivity in Hawaii, USA. <br>
+                <span class="text-gray-200">05.2024</span><br />
+              </p>
+            </div>
+          </article>
+        </a>
+            
+          <article class="project">
+            <div>
+              <h1>Conference Attendance</h1> <br>
+              <p>
+                I am going to attend HCI Korea 2024 in Hongcheon, Korea. <br>
+                <span class="text-gray-200">02.2024</span><br />
+              </p>
+            </div>
+          </article>
+        </a>
+
+
+
+            
+          </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
