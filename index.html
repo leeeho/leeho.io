@@ -38,15 +38,6 @@
       --left-bg: #FFF;
       --right-bg: #FFF;
 
-      /* ===== Left column colors ===== */
-      /* --left-top: #156dff;
-      --left-mid: #e8e8e8;
-      --left-bot-a: #f6d5c3;
-      --left-bot-b: #6ccef3;
-
-      --text-gray-200: #6b7078;
-    } */
-
           /* ===== Left column colors ===== */
       --left-top: #FFF; /*#fff;*/
       --left-mid: #FFF; /*#fff;*/
@@ -54,6 +45,7 @@
       --left-bot-b: #FFF; /*#fff;*/
 
       --text-gray-200: #6b7078;
+		  --main-color: #b7c7bb;
     }
 
     .text-gray-200{ color: var(--text-gray-200) !important; }
@@ -256,7 +248,7 @@
 }
     .project h2{
       font-size: 16px;
-      background: #FF8F78;
+      background: var(--main-color);
       padding-left: 2px;
       padding-right: 2px;
       margin: 1px 0 0 0;
@@ -275,11 +267,12 @@
             display: inline-block;
     }
 
-    .project-image{
-      max-width: 400px;
-      justify-self: end;
-		padding-left: 10px;
-    }
+.project-image{
+  max-width: 400px;
+  justify-self: end; 
+  align-self: center; 
+  padding-left: 10px;
+}
 
     .project-image img{
       width: 100%;
@@ -404,11 +397,13 @@
     grid-template-columns: 1fr;
     gap: 12px;
   }
-
-  .project-image{
-    justify-self: start;
-    max-width: 100%;
-  }
+	
+.project-image{
+  max-width: 400px;
+  justify-self: end;  
+  align-self: center; 
+  padding-left: 10px;
+}
 
   /* FULL-WIDTH separators between items */
   .block-link + .block-link::before{
