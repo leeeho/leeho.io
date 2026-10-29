@@ -30,26 +30,25 @@
 
     :root{
       /* ===== Layout ===== */
-      --sidebar-bg: #fff;
+      --sidebar-bg: #FFF;
       --sidebar-width: 95px;
       --page-offset: 95px;
 
       /* ===== Background panels ===== */
-      --left-bg: #fff;
-      --right-bg: #fff;
+      --left-bg: #FFF;
+      --right-bg: #FFF;
 
-      /* ===== Left column colors ===== */
-      --left-top: #fff
-      --left-mid: #fff;
-      --left-bot-a: #fff;
-      --left-bot-b: #fff;
+          /* ===== Left column colors ===== */
+      --left-top: #FFF; /*#fff;*/
+      --left-mid: #FFF; /*#fff;*/
+      --left-bot-a:#FFF; /* #fff;*/
+      --left-bot-b: #FFF; /*#fff;*/
 
       --text-gray-200: #6b7078;
-		
+		  --main-color: #a9c1c9;
     }
 
     .text-gray-200{ color: var(--text-gray-200) !important; }
-.text-black{ color: black !important; }
 
     /* ================= Sidebar ================= */
     .sidebar{
@@ -149,14 +148,16 @@
     }
 
     .brand{
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Manrope', sans-serif;
       font-size: 24px;
       font-weight: 800;
       margin-bottom: 12px;
     }
 
     .brand .highlight{
-      font-family: Montserrat;
+      background: #FFF;
+      color: black;
+      font-family: Manrope;
       padding: 2px 2px;
       display: inline-block;
     }
@@ -176,18 +177,6 @@
     .contact{
       font-size: 15px;
       font-weight: 700;
-    }
-
-	            .profile-image{
-      max-width: 350px;
-      justify-self: center;
-    }
-
-    .profile-image img{
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      display: block;
     }
 
     /* ================= Right Block (FIXED LINES) ================= */
@@ -244,11 +233,10 @@
 
     .project{
       display: grid;
+      grid-template-columns: 1.7fr 1fr;
       padding: 10px 14px 14px;
       position: relative;
     }
-
-	  
     .block-link:hover .project {
       transform: translateY(-5px);    }
     /* IMPORTANT: disable old separator system completely */
@@ -258,44 +246,48 @@
 .right-block a:first-child .project::before{
   display: none;
 }
+    .project h2{
+      font-size: 16px;
+      background: var(--main-color);
+      padding-left: 2px;
+      padding-right: 2px;
+      margin: 1px 0 0 0;
+      border: 1.5px solid #000;
+      display: inline-block;
+    }
+
     .project h1{
       font-size: 16px;
       margin: 0 0 0 0;
             padding-left: 2px;
       padding-right: 2px;
       background: #000;
-      color: #fff;
+      color: #FFF;
      border: 1.5px solid #000;
             display: inline-block;
     }
+
+.project-image{
+  max-width: 400px;
+  justify-self: end; 
+  align-self: center; 
+  padding-left: 10px;
+}
+
+    .project-image img{
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+
 
     .custom-link{
       color: #000;
       text-decoration: underline;
     }
-/* separator between plain articles (your current structure) */
-.left-inner > .project + .project{
-  border-top: 1px solid #000;
-}
 
-/* make it full-width by canceling left-inner padding */
-.left-inner > .project + .project{
-  position: relative;
-}
-.left-inner > .project + .project::before{
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: -20px;   /* same as .left-inner padding-left */
-  right: 0;
-  height: 1px;
-  background: #000;
-  pointer-events: none;
-}
-
-	  .text-thin{
-		  font-weight: 400;}
-  /* page starts below topbar */
     /* ================= Mobile ================= */
 /* ================= Mobile ================= */
 @media (max-width: 900px){
@@ -333,6 +325,7 @@
     font-size: 13px;
   }
 
+  /* page starts below topbar */
   .page{
     height: auto;
     padding-left: 0;
@@ -404,18 +397,33 @@
     grid-template-columns: 1fr;
     gap: 12px;
   }
-
-  .project-image{
-    justify-self: start;
-    max-width: 100%;
-  }
+	
+.project-image{
+  max-width: 400px;
+  justify-self: end;  
+  align-self: center; 
+  padding-left: 10px;
+}
 
   /* FULL-WIDTH separators between items */
   .block-link + .block-link::before{
     left: -18px;  /* cancel left-inner padding (mobile version) */
     right: 0;
   }
-}
+
+      .profile-image{
+      max-width: 400px;
+      justify-self: center;
+    }
+
+    .profile-image img{
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+
   </style>
 </head>
 
@@ -450,7 +458,7 @@
   <a href="static/pdf/2026cv_04.pdf" target="_blank"
      style="
        background:#000;
-       color:#fff;
+       color: #fff ;
        padding:4px 8px;
        text-decoration:none;
        font-size:14px;
@@ -460,7 +468,7 @@
     CV
   </a>
 
-  <a href="static/pdf/cv_kor2.pdf" target="_blank"
+  <a href="static/pdf/cv_kor3.pdf" target="_blank"
      style="
        background:#000;
        color:#fff;
