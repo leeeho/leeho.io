@@ -116,7 +116,7 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      border: 1px solid #000;
+      border: none;
     }
 
     .left-panel{
@@ -130,7 +130,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      border-bottom: 1px solid #000;
+      border-bottom: none;
     }
 
     .left-panel.mid{
@@ -138,7 +138,7 @@
       flex: 0 0 12%;
       display: flex;
       align-items: center;
-      border-bottom: 1px solid #000;
+      border-bottom: none;
     }
 
     .left-panel.bot{
@@ -199,8 +199,7 @@
       flex-direction: column;
       background: var(--right-bg);
 
-      border: 1px solid #000;
-      border-left: 0;
+      border: none;
       position: relative;
 
       padding-top: 1px; /* room for top rule */
@@ -214,7 +213,7 @@
       left: 0;
       right: 0;
       height: 1px;
-      background: #000;
+      background: transparent;
       z-index: 3;
       pointer-events: none;
     }
@@ -254,11 +253,20 @@
       transform: translateY(-5px);    }
     /* IMPORTANT: disable old separator system completely */
     .project::after{
-      content: none !important;
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: calc(15px - var(--news-divider-offset, 20px));
+      right: 0;
+      height: 1px;
+      background: #000;
+      pointer-events: none;
     }
 .right-block a:first-child .project::before{
   display: none;
 }
+    .left-inner > .project:last-child::after{ content: none; }
+
     .project h1{
       font-size: 15px;
       margin: 0 0 0 0;
@@ -275,24 +283,10 @@
       text-decoration: underline;
     }
 /* separator between plain articles (your current structure) */
-.left-inner > .project + .project{
-  border-top: 1px solid #000;
-}
+
 
 /* make it full-width by canceling left-inner padding */
-.left-inner > .project + .project{
-  position: relative;
-}
-.left-inner > .project + .project::before{
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: -20px;   /* same as .left-inner padding-left */
-  right: 0;
-  height: 1px;
-  background: #000;
-  pointer-events: none;
-}
+
 
 	  .text-thin{
 		  font-weight: 400;}
@@ -360,7 +354,7 @@
   }
 
   .left-stack{
-    border: 1px solid #000;
+    border: none;
   }
 
   /* left panels become natural heights */
@@ -382,9 +376,7 @@
   .right-block{
     height: auto;
     overflow: visible;
-    border: 1px solid #000;
-    border-top: 0;      /* share border with left-stack bottom edge visually */
-    border-left: 1px solid #000;
+    border: none;
     padding-top: 0;     /* remove the top-rule offset */
     position: relative;
   }
@@ -398,7 +390,9 @@
   .left-inner{
     padding-left: 18px;
     padding-right: 0;
-  }
+  
+    --news-divider-offset: 18px;
+}
 
   /* project becomes single column like desktop mobile intent */
   .project{
