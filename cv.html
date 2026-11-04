@@ -116,7 +116,7 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      border: 1px solid #000;
+      border: none;
     }
 
     .left-panel{
@@ -130,7 +130,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      border-bottom: 1px solid #000;
+      border-bottom: none;
     }
 
     .left-panel.mid{
@@ -138,7 +138,7 @@
       flex: 0 0 12%;
       display: flex;
       align-items: center;
-      border-bottom: 1px solid #000;
+      border-bottom: none;
     }
 
     .left-panel.bot{
@@ -187,15 +187,16 @@
       flex-direction: column;
       background: var(--right-bg);
 
-      border: 1px solid #000;
-      border-left: 0;
+      border: none;
+      border-left: none;
       position: relative;
 
-      padding-top: 1px; /* room for top rule */
+      padding-top: 0; /* no outer border */
     }
 
     /* top rule (always visible, no sticky bugs) */
     .right-block::before{
+      display: none;
       content: "";
       position: absolute;
       top: 0;
@@ -247,41 +248,34 @@
 }
     .project h2{
       font-size: 15px;
-      background: #000;
-		color: fff;
-      padding-left: 2px;
-      padding-right: 2px;
-		     border: 1.5px solid #000;
-		            display: inline-block;
+      background: transparent;
+      color: #000;
+      padding: 0;
+      border: none;
+      display: inline-block;
       margin: 1px 0 0 0;
     }
     .custom-link{
       color: #000;
       text-decoration: underline;
     }
-/* separator between plain articles (your current structure) */
-.left-inner > .project + .project{
-  border-top: 1px solid #000;
-}
-
-/* make it full-width by canceling left-inner padding */
-.left-inner > .project + .project{
-  position: relative;
-}
-.left-inner > .project + .project::before{
+/* Section separators: only at the bottom of each section */
+.left-inner > .project:not(:last-child)::before{
   content: "";
   position: absolute;
-  top: -1px;
-  left: -20px;   /* same as .left-inner padding-left */
+  bottom: 0;
+  left: -20px; /* reach the right-panel left edge */
   right: 0;
+  transform: translateX(15px); /* move section divider 5px right */
   height: 1px;
   background: #000;
   pointer-events: none;
 }
 
-	  .text-thin{
-		  font-weight: 400;}
-  /* page starts below topbar */
+.text-thin{
+  font-weight: 400;
+}
+
     /* ================= Mobile ================= */
 /* ================= Mobile ================= */
 @media (max-width: 900px){
@@ -345,7 +339,7 @@
   }
 
   .left-stack{
-    border: 1px solid #000;
+    border: none;
   }
 
   /* left panels become natural heights */
@@ -367,9 +361,9 @@
   .right-block{
     height: auto;
     overflow: visible;
-    border: 1px solid #000;
-    border-top: 0;      /* share border with left-stack bottom edge visually */
-    border-left: 1px solid #000;
+    border: none;
+    border-top: none;
+    border-left: none;
     padding-top: 0;     /* remove the top-rule offset */
     position: relative;
   }
@@ -400,6 +394,9 @@
   .block-link + .block-link::before{
     left: -18px;  /* cancel left-inner padding (mobile version) */
     right: 0;
+  }
+  .left-inner > .project:not(:last-child)::before{
+    left: -18px;
   }
 
   /* Mobile: reduce typography by approximately 2pt (2.67px) */
@@ -647,7 +644,7 @@
           <article class="project">
             <div>
               <h2>Research Projects</h2>
-              <br> <br> <Strong>Development of a multimodal haptic rendering technology based on atypical objects (ETRI)</Strong><br>
+              <br> <br> <Strong>﻿Development of Spatial Media Technology and Interaction Technology for Convergence of the Real and Virtual World (ETRI)</Strong><br>
                 (2024.1 ~) <br><br>
 					<Strong> Emotional Expression through Robot Arm Movement (XYZ) </Strong><br>
                 (2025.8~) <br><br>
