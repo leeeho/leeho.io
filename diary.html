@@ -429,6 +429,22 @@
     .block-link + .block-link::before,
     .project::after { background: #fff; }
     .project h1 { background: var(--main-color); color: #000; border-color: var(--main-color); }
+
+    /* Mobile: symmetric margins for news cards */
+    @media (max-width: 900px) {
+      .right-block .left-inner {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .right-block .project {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+      .right-block .project::after {
+        left: 18px;
+        right: 18px;
+      }
+    }
 </style>
 </head>
 
