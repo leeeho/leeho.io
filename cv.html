@@ -399,6 +399,22 @@
     left: -18px;
   }
 
+  /* Balanced horizontal spacing for CV content on mobile */
+  .left-inner{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .project{
+    padding-left: 18px;
+    padding-right: 18px;
+    min-width: 0;
+  }
+  .left-inner > .project:not(:last-child)::before{
+    left: 18px;
+    right: 18px;
+    transform: none;
+  }
+
   /* Mobile: reduce typography by approximately 2pt (2.67px) */
   body { font-size: 13.33px; }
   .brand { font-size: 21.33px; }
